@@ -1,0 +1,6 @@
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|1c6bc837-a941-4ff5-8057-917262a0697f
+\\myhome01.spu.edu\users\tdoan1\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|2ed8d0c5-6b56-402c-83c4-362867ca700d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|6896c0fe-20f1-4f55-a62e-3e3db8b0095d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|7a4c312f-268e-4972-82ac-8db10ff60775
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|3f119733-8091-47c2-ab92-976a219a9898
+\\myhome01.spu.edu\users\tdoan1\Documents\PSoC Creator\PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test.cydsn\PSoC 4 Wi-Fi Module Test.cyprj|a58fccd6-b72c-4351-91e6-fc2284b7b714

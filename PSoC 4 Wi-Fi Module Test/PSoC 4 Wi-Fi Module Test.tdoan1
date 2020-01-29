@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test">
+<ExpandedNodeIds>
+<v>PSoC 4 Wi-Fi Module tEst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\TopDesign</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.cydwr</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.cydwr\Pins</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.cydwr\Analog</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.cydwr\Clocks</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.cydwr\Interrupts</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.cydwr\System</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.cydwr\Directives</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.cydwr\Flash Security</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Header Files</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Header Files\cyapicallbacks.h</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Header Files\Data_and_Func.h</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Header Files\device.h</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Source Files</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Source Files\Data_and_Func.c</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Source Files\main.c</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Generated_Source</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>PSoC 4 Wi-Fi Module tEst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\TopDesign</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.cydwr</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.cydwr\Pins</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.cydwr\Analog</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.cydwr\Clocks</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.cydwr\Interrupts</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.cydwr\System</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.cydwr\Directives</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.cydwr\Flash Security</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Header Files</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Header Files\cyapicallbacks.h</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Header Files\Data_and_Func.h</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Header Files\device.h</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Source Files</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Source Files\Data_and_Func.c</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Source Files\main.c</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Generated_Source</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Generated_Source\PSoC4</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>PSoC 4 Wi-Fi Module tEst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\TopDesign</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>PSoC 4 Wi-Fi Module tEst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\TopDesign</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>PSoC 4 Wi-Fi Module tEst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\Cm0Start.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLFClk.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\Data_and_Func.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\RST.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\RST_PM.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\RX.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\Rx_Int.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\RX_PM.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\TX.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\TX_PM.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_INT.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_IntClock.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\USB_UART.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\USB_UART_BOOT.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\USB_UART_PM.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\USB_UART_rx.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\USB_UART_rx_PM.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\USB_UART_SCB_IRQ.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\USB_UART_SCBCLK.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\USB_UART_SPI_UART.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\USB_UART_SPI_UART_INT.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\USB_UART_tx.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\USB_UART_tx_PM.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\USB_UART_UART.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\Listing Files\USB_UART_UART_BOOT.lst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\PSoC 4 Wi-Fi Module Test.elf</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\PSoC 4 Wi-Fi Module Test.hex</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\CortexM0\ARM_GCC_541\Debug\PSoC 4 Wi-Fi Module Test.map</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module Test.gpdsc</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module tEst.rpt</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module tEst_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>PSoC 4 Wi-Fi Module tEst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module tEst.rpt</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Wi-Fi Module tEst_timing.html</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>PSoC 4 Wi-Fi Module tEst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Architecture TRM</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4200 Family Datasheet</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\System Reference Guides</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\System Reference Guides\cy_boot_v5_70</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\System Reference Guides\cy_lfclk_v1_20</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\cy_isr_v1_70.pdf</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\cy_pins_v2_20</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Gnd_v1_0.pdf</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Power_v1_0.pdf</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\SCB_P4_v3_20.pdf</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\UART_v2_50.pdf</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\ZeroTerminal.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>PSoC 4 Wi-Fi Module tEst</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4 Architecture TRM</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\PSoC 4200 Family Datasheet</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\System Reference Guides</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\System Reference Guides\cy_boot_v5_70</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\System Reference Guides\cy_lfclk_v1_20</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\cy_isr_v1_70.pdf</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\cy_pins_v2_20</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Gnd_v1_0.pdf</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\Power_v1_0.pdf</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\SCB_P4_v3_20.pdf</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\UART_v2_50.pdf</v>
+<v>PSoC 4 Wi-Fi Module tEst\PSoC 4 Wi-Fi Module Test\ZeroTerminal.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+<dataGuid v="5f2be1a5-0687-4501-bb8c-cf21cb8211bf">
+<CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
+<indicators />
+</CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs />
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

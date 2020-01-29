@@ -1,0 +1,13 @@
+# PSoC 4 Wi-Fi Module Test
+# 2020-01-29 04:04:18Z
+
+# IO_2@[IOP=(3)][IoId=(2)] is reserved: SWDDebugEnabled
+dont_use_io iocell 3 2
+# IO_3@[IOP=(3)][IoId=(3)] is reserved: SWDDebugEnabled
+dont_use_io iocell 3 3
+set_location "ClockGenBlock" m0s8clockgenblockcell -1 -1 0
+set_io "RX(0)" iocell 1 0
+set_io "TX(0)" iocell 1 1
+set_io "RST(0)" iocell 2 2
+set_io "\USB_UART:tx(0)\" iocell 0 5
+set_io "\USB_UART:rx(0)\" iocell 0 4

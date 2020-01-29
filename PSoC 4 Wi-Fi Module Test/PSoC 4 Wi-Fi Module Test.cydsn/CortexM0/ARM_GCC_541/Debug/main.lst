@@ -1,0 +1,1331 @@
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Reconnect,"ax",%progbits
+  20              		.align	2
+  21              		.global	Reconnect
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	Reconnect, %function
+  25              	Reconnect:
+  26              	.LFB33:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include <device.h>
+  13:main.c        **** #include <stdio.h>   				/* sprintf() */
+  14:main.c        **** #include "Data_and_Func.h"
+  15:main.c        **** int uart_test();
+  16:main.c        **** #define SSID "TD" 				        // ваш SSID
+  17:main.c        **** #define PASS "244466666" 			    // ваш пароль
+  18:main.c        **** #define Wait(x)							//	Just for better readability
+  19:main.c        **** 
+  20:main.c        **** int i=0;
+  21:main.c        **** 
+  22:main.c        **** CY_ISR_PROTO(WIFI_Reconnect);
+  23:main.c        **** CY_ISR(Reconnect)
+  24:main.c        **** 	{ recon++; }
+  28              		.loc 1 24 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              		.loc 1 24 0
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 2
+
+
+  34 0000 024A     		ldr	r2, .L2
+  35 0002 1378     		ldrb	r3, [r2]
+  36 0004 0133     		adds	r3, r3, #1
+  37 0006 1370     		strb	r3, [r2]
+  38              		@ sp needed
+  39 0008 7047     		bx	lr
+  40              	.L3:
+  41 000a C046     		.align	2
+  42              	.L2:
+  43 000c 00000000 		.word	recon
+  44              		.cfi_endproc
+  45              	.LFE33:
+  46              		.size	Reconnect, .-Reconnect
+  47              		.section	.text.InitializeSystem,"ax",%progbits
+  48              		.align	2
+  49              		.global	InitializeSystem
+  50              		.code	16
+  51              		.thumb_func
+  52              		.type	InitializeSystem, %function
+  53              	InitializeSystem:
+  54              	.LFB34:
+  25:main.c        **** void InitializeSystem(void)
+  26:main.c        **** {
+  55              		.loc 1 26 0
+  56              		.cfi_startproc
+  57              		@ args = 0, pretend = 0, frame = 0
+  58              		@ frame_needed = 0, uses_anonymous_args = 0
+  59 0000 10B5     		push	{r4, lr}
+  60              		.cfi_def_cfa_offset 8
+  61              		.cfi_offset 4, -8
+  62              		.cfi_offset 14, -4
+  27:main.c        **** 	CyGlobalIntEnable;
+  63              		.loc 1 27 0
+  64              		.syntax divided
+  65              	@ 27 "main.c" 1
+  66 0002 62B6     		CPSIE   i
+  67              	@ 0 "" 2
+  28:main.c        ****     UART_Start();
+  68              		.loc 1 28 0
+  69              		.thumb
+  70              		.syntax unified
+  71 0004 FFF7FEFF 		bl	UART_Start
+  72              	.LVL0:
+  29:main.c        ****     USB_UART_Start();	
+  73              		.loc 1 29 0
+  74 0008 FFF7FEFF 		bl	USB_UART_Start
+  75              	.LVL1:
+  30:main.c        **** 	Rx_Int_StartEx(GetChar);
+  76              		.loc 1 30 0
+  77 000c 0148     		ldr	r0, .L5
+  78 000e FFF7FEFF 		bl	Rx_Int_StartEx
+  79              	.LVL2:
+  31:main.c        **** }
+  80              		.loc 1 31 0
+  81              		@ sp needed
+  82 0012 10BD     		pop	{r4, pc}
+  83              	.L6:
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 3
+
+
+  84              		.align	2
+  85              	.L5:
+  86 0014 00000000 		.word	GetChar
+  87              		.cfi_endproc
+  88              	.LFE34:
+  89              		.size	InitializeSystem, .-InitializeSystem
+  90              		.section	.text.main,"ax",%progbits
+  91              		.align	2
+  92              		.global	main
+  93              		.code	16
+  94              		.thumb_func
+  95              		.type	main, %function
+  96              	main:
+  97              	.LFB35:
+  32:main.c        **** 
+  33:main.c        **** //-------------------------------------------------------------------------------------------------
+  34:main.c        **** int main()
+  35:main.c        **** { 
+  98              		.loc 1 35 0
+  99              		.cfi_startproc
+ 100              		@ Volatile: function does not return.
+ 101              		@ args = 0, pretend = 0, frame = 0
+ 102              		@ frame_needed = 0, uses_anonymous_args = 0
+ 103 0000 10B5     		push	{r4, lr}
+ 104              		.cfi_def_cfa_offset 8
+ 105              		.cfi_offset 4, -8
+ 106              		.cfi_offset 14, -4
+  36:main.c        ****     //char Rxbyte[10]={0};
+  37:main.c        ****     //char data[32];
+  38:main.c        ****     InitializeSystem();
+ 107              		.loc 1 38 0
+ 108 0002 FFF7FEFF 		bl	InitializeSystem
+ 109              	.LVL3:
+  39:main.c        ****         //   uart_test();
+  40:main.c        **** 
+  41:main.c        **** 
+  42:main.c        ****     
+  43:main.c        ****     //CyDelay(5000);
+  44:main.c        ****     UART_PutString("AT+CWMODE=1\r\n");   
+ 110              		.loc 1 44 0
+ 111 0006 2548     		ldr	r0, .L15
+ 112 0008 FFF7FEFF 		bl	UART_PutString
+ 113              	.LVL4:
+  45:main.c        **** 	UART_PutString("AT+CIFSR\r\n");   
+ 114              		.loc 1 45 0
+ 115 000c 2448     		ldr	r0, .L15+4
+ 116 000e FFF7FEFF 		bl	UART_PutString
+ 117              	.LVL5:
+ 118              	.L8:
+  46:main.c        **** 	while(!HaveAnswer)	Wait();			//	Wait for answer from device
+ 119              		.loc 1 46 0 discriminator 1
+ 120 0012 244B     		ldr	r3, .L15+8
+ 121 0014 1B78     		ldrb	r3, [r3]
+ 122 0016 002B     		cmp	r3, #0
+ 123 0018 FBD0     		beq	.L8
+  47:main.c        **** 	USB_UART_UartPutString("\n WELCOME\n\r");
+ 124              		.loc 1 47 0
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 4
+
+
+ 125 001a 2348     		ldr	r0, .L15+12
+ 126 001c FFF7FEFF 		bl	USB_UART_UartPutString
+ 127              	.LVL6:
+  48:main.c        **** 	USB_UART_UartPutString(ATanswer);
+ 128              		.loc 1 48 0
+ 129 0020 2248     		ldr	r0, .L15+16
+ 130 0022 FFF7FEFF 		bl	USB_UART_UartPutString
+ 131              	.LVL7:
+  49:main.c        **** 	USB_UART_UartPutCRLF(' ');
+ 132              		.loc 1 49 0
+ 133 0026 2020     		movs	r0, #32
+ 134 0028 FFF7FEFF 		bl	USB_UART_UartPutCRLF
+ 135              	.LVL8:
+  50:main.c        **** 	HaveAnswer = 0;		
+ 136              		.loc 1 50 0
+ 137 002c 0024     		movs	r4, #0
+ 138 002e 1D4B     		ldr	r3, .L15+8
+ 139 0030 1C70     		strb	r4, [r3]
+  51:main.c        **** 	CyDelay(1000);
+ 140              		.loc 1 51 0
+ 141 0032 FA20     		movs	r0, #250
+ 142 0034 8000     		lsls	r0, r0, #2
+ 143 0036 FFF7FEFF 		bl	CyDelay
+ 144              	.LVL9:
+  52:main.c        ****         
+  53:main.c        **** 
+  54:main.c        **** 
+  55:main.c        **** // ****************try to connect to wifi ********************************************
+  56:main.c        ****     for(i=0; i<3; i++)
+ 145              		.loc 1 56 0
+ 146 003a 1D4B     		ldr	r3, .L15+20
+ 147 003c 1C60     		str	r4, [r3]
+ 148 003e 10E0     		b	.L9
+ 149              	.L12:
+  57:main.c        ****     {
+  58:main.c        ****         USB_UART_UartPutString("Connecting...\n");
+ 150              		.loc 1 58 0
+ 151 0040 1C48     		ldr	r0, .L15+24
+ 152 0042 FFF7FEFF 		bl	USB_UART_UartPutString
+ 153              	.LVL10:
+  59:main.c        ****         if(connectWiFi(SSID, PASS))
+ 154              		.loc 1 59 0
+ 155 0046 1C49     		ldr	r1, .L15+28
+ 156 0048 1C48     		ldr	r0, .L15+32
+ 157 004a FFF7FEFF 		bl	connectWiFi
+ 158              	.LVL11:
+ 159 004e 0028     		cmp	r0, #0
+ 160 0050 03D0     		beq	.L10
+  60:main.c        ****         { 
+  61:main.c        ****             USB_UART_UartPutString("Wi-Fi connected!\n");
+ 161              		.loc 1 61 0
+ 162 0052 1B48     		ldr	r0, .L15+36
+ 163 0054 FFF7FEFF 		bl	USB_UART_UartPutString
+ 164              	.LVL12:
+  62:main.c        ****             break;
+ 165              		.loc 1 62 0
+ 166 0058 07E0     		b	.L11
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 5
+
+
+ 167              	.L10:
+  56:main.c        ****     {
+ 168              		.loc 1 56 0 discriminator 2
+ 169 005a 154A     		ldr	r2, .L15+20
+ 170 005c 1368     		ldr	r3, [r2]
+ 171 005e 0133     		adds	r3, r3, #1
+ 172 0060 1360     		str	r3, [r2]
+ 173              	.L9:
+  56:main.c        ****     {
+ 174              		.loc 1 56 0 is_stmt 0 discriminator 1
+ 175 0062 134B     		ldr	r3, .L15+20
+ 176 0064 1B68     		ldr	r3, [r3]
+ 177 0066 022B     		cmp	r3, #2
+ 178 0068 EADD     		ble	.L12
+ 179              	.L11:
+  63:main.c        ****         } 
+  64:main.c        ****     }
+  65:main.c        **** 
+  66:main.c        ****     if (i==3) 
+ 180              		.loc 1 66 0 is_stmt 1
+ 181 006a 114B     		ldr	r3, .L15+20
+ 182 006c 1B68     		ldr	r3, [r3]
+ 183 006e 032B     		cmp	r3, #3
+ 184 0070 07D1     		bne	.L13
+  67:main.c        ****     {
+  68:main.c        ****         USB_UART_UartPutString("Wi-Fi not connected\n");
+ 185              		.loc 1 68 0
+ 186 0072 1448     		ldr	r0, .L15+40
+ 187 0074 FFF7FEFF 		bl	USB_UART_UartPutString
+ 188              	.LVL13:
+  69:main.c        ****         CyDelay(3000); 
+ 189              		.loc 1 69 0
+ 190 0078 1348     		ldr	r0, .L15+44
+ 191 007a FFF7FEFF 		bl	CyDelay
+ 192              	.LVL14:
+  70:main.c        ****         CySoftwareReset();
+ 193              		.loc 1 70 0
+ 194 007e FFF7FEFF 		bl	CySoftwareReset
+ 195              	.LVL15:
+ 196              	.L13:
+  71:main.c        ****     }	// сброс чипа
+  72:main.c        ****     //---------------------------------------------------------------------------------------------
+  73:main.c        ****     IP_to_USB();
+ 197              		.loc 1 73 0
+ 198 0082 FFF7FEFF 		bl	IP_to_USB
+ 199              	.LVL16:
+  74:main.c        ****     SetServer(8045);		// включаем сервер на порт  8046 ( или какой ва
+ 200              		.loc 1 74 0
+ 201 0086 1148     		ldr	r0, .L15+48
+ 202 0088 FFF7FEFF 		bl	SetServer
+ 203              	.LVL17:
+  75:main.c        ****     CyDelay(500);
+ 204              		.loc 1 75 0
+ 205 008c FA20     		movs	r0, #250
+ 206 008e 4000     		lsls	r0, r0, #1
+ 207 0090 FFF7FEFF 		bl	CyDelay
+ 208              	.LVL18:
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 6
+
+
+  76:main.c        ****     UART_ClearRxBuffer();	// начнем жизнь с нового листа ))
+ 209              		.loc 1 76 0
+ 210 0094 FFF7FEFF 		bl	UART_ClearRxBuffer
+ 211              	.LVL19:
+ 212              	.L14:
+ 213 0098 FEE7     		b	.L14
+ 214              	.L16:
+ 215 009a C046     		.align	2
+ 216              	.L15:
+ 217 009c 00000000 		.word	.LC2
+ 218 00a0 10000000 		.word	.LC4
+ 219 00a4 00000000 		.word	HaveAnswer
+ 220 00a8 1C000000 		.word	.LC7
+ 221 00ac 00000000 		.word	ATanswer
+ 222 00b0 00000000 		.word	.LANCHOR0
+ 223 00b4 28000000 		.word	.LC11
+ 224 00b8 38000000 		.word	.LC13
+ 225 00bc 44000000 		.word	.LC15
+ 226 00c0 48000000 		.word	.LC17
+ 227 00c4 5C000000 		.word	.LC19
+ 228 00c8 B80B0000 		.word	3000
+ 229 00cc 6D1F0000 		.word	8045
+ 230              		.cfi_endproc
+ 231              	.LFE35:
+ 232              		.size	main, .-main
+ 233              		.global	i
+ 234              		.global	count_RX
+ 235              		.comm	ch,1,1
+ 236              		.comm	recon,1,1
+ 237              		.comm	Com_Data,1,1
+ 238              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 239              		.align	2
+ 240              	.LC2:
+ 241 0000 41542B43 		.ascii	"AT+CWMODE=1\015\012\000"
+ 241      574D4F44 
+ 241      453D310D 
+ 241      0A00
+ 242 000e 0000     		.space	2
+ 243              	.LC4:
+ 244 0010 41542B43 		.ascii	"AT+CIFSR\015\012\000"
+ 244      49465352 
+ 244      0D0A00
+ 245 001b 00       		.space	1
+ 246              	.LC7:
+ 247 001c 0A205745 		.ascii	"\012 WELCOME\012\015\000"
+ 247      4C434F4D 
+ 247      450A0D00 
+ 248              	.LC11:
+ 249 0028 436F6E6E 		.ascii	"Connecting...\012\000"
+ 249      65637469 
+ 249      6E672E2E 
+ 249      2E0A00
+ 250 0037 00       		.space	1
+ 251              	.LC13:
+ 252 0038 32343434 		.ascii	"244466666\000"
+ 252      36363636 
+ 252      3600
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 7
+
+
+ 253 0042 0000     		.space	2
+ 254              	.LC15:
+ 255 0044 544400   		.ascii	"TD\000"
+ 256 0047 00       		.space	1
+ 257              	.LC17:
+ 258 0048 57692D46 		.ascii	"Wi-Fi connected!\012\000"
+ 258      6920636F 
+ 258      6E6E6563 
+ 258      74656421 
+ 258      0A00
+ 259 005a 0000     		.space	2
+ 260              	.LC19:
+ 261 005c 57692D46 		.ascii	"Wi-Fi not connected\012\000"
+ 261      69206E6F 
+ 261      7420636F 
+ 261      6E6E6563 
+ 261      7465640A 
+ 262              		.bss
+ 263              		.align	2
+ 264              		.set	.LANCHOR0,. + 0
+ 265              		.type	i, %object
+ 266              		.size	i, 4
+ 267              	i:
+ 268 0000 00000000 		.space	4
+ 269              		.type	count_RX, %object
+ 270              		.size	count_RX, 1
+ 271              	count_RX:
+ 272 0004 00       		.space	1
+ 273              		.text
+ 274              	.Letext0:
+ 275              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 276              		.file 3 "Data_and_Func.h"
+ 277              		.file 4 "Generated_Source\\PSoC4/UART.h"
+ 278              		.file 5 "Generated_Source\\PSoC4/USB_UART.h"
+ 279              		.file 6 "Generated_Source\\PSoC4/Rx_Int.h"
+ 280              		.file 7 "Generated_Source\\PSoC4/USB_UART_SPI_UART.h"
+ 281              		.file 8 "Generated_Source\\PSoC4/CyLib.h"
+ 282              		.section	.debug_info,"",%progbits
+ 283              	.Ldebug_info0:
+ 284 0000 3C030000 		.4byte	0x33c
+ 285 0004 0400     		.2byte	0x4
+ 286 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 287 000a 04       		.byte	0x4
+ 288 000b 01       		.uleb128 0x1
+ 289 000c BD000000 		.4byte	.LASF33
+ 290 0010 0C       		.byte	0xc
+ 291 0011 17020000 		.4byte	.LASF34
+ 292 0015 00000000 		.4byte	.LASF35
+ 293 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 294 001d 00000000 		.4byte	0
+ 295 0021 00000000 		.4byte	.Ldebug_line0
+ 296 0025 02       		.uleb128 0x2
+ 297 0026 01       		.byte	0x1
+ 298 0027 06       		.byte	0x6
+ 299 0028 51010000 		.4byte	.LASF0
+ 300 002c 02       		.uleb128 0x2
+ 301 002d 01       		.byte	0x1
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 8
+
+
+ 302 002e 08       		.byte	0x8
+ 303 002f 5D010000 		.4byte	.LASF1
+ 304 0033 02       		.uleb128 0x2
+ 305 0034 02       		.byte	0x2
+ 306 0035 05       		.byte	0x5
+ 307 0036 3E020000 		.4byte	.LASF2
+ 308 003a 02       		.uleb128 0x2
+ 309 003b 02       		.byte	0x2
+ 310 003c 07       		.byte	0x7
+ 311 003d 83010000 		.4byte	.LASF3
+ 312 0041 02       		.uleb128 0x2
+ 313 0042 04       		.byte	0x4
+ 314 0043 05       		.byte	0x5
+ 315 0044 5E020000 		.4byte	.LASF4
+ 316 0048 02       		.uleb128 0x2
+ 317 0049 04       		.byte	0x4
+ 318 004a 07       		.byte	0x7
+ 319 004b 71010000 		.4byte	.LASF5
+ 320 004f 02       		.uleb128 0x2
+ 321 0050 08       		.byte	0x8
+ 322 0051 05       		.byte	0x5
+ 323 0052 FD010000 		.4byte	.LASF6
+ 324 0056 02       		.uleb128 0x2
+ 325 0057 08       		.byte	0x8
+ 326 0058 07       		.byte	0x7
+ 327 0059 C4010000 		.4byte	.LASF7
+ 328 005d 03       		.uleb128 0x3
+ 329 005e 04       		.byte	0x4
+ 330 005f 05       		.byte	0x5
+ 331 0060 696E7400 		.ascii	"int\000"
+ 332 0064 02       		.uleb128 0x2
+ 333 0065 04       		.byte	0x4
+ 334 0066 07       		.byte	0x7
+ 335 0067 AD010000 		.4byte	.LASF8
+ 336 006b 04       		.uleb128 0x4
+ 337 006c 48020000 		.4byte	.LASF11
+ 338 0070 02       		.byte	0x2
+ 339 0071 E401     		.2byte	0x1e4
+ 340 0073 2C000000 		.4byte	0x2c
+ 341 0077 02       		.uleb128 0x2
+ 342 0078 04       		.byte	0x4
+ 343 0079 04       		.byte	0x4
+ 344 007a 4B010000 		.4byte	.LASF9
+ 345 007e 02       		.uleb128 0x2
+ 346 007f 08       		.byte	0x8
+ 347 0080 04       		.byte	0x4
+ 348 0081 A1010000 		.4byte	.LASF10
+ 349 0085 04       		.uleb128 0x4
+ 350 0086 6B010000 		.4byte	.LASF12
+ 351 008a 02       		.byte	0x2
+ 352 008b F501     		.2byte	0x1f5
+ 353 008d 91000000 		.4byte	0x91
+ 354 0091 02       		.uleb128 0x2
+ 355 0092 01       		.byte	0x1
+ 356 0093 08       		.byte	0x8
+ 357 0094 1E020000 		.4byte	.LASF13
+ 358 0098 02       		.uleb128 0x2
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 9
+
+
+ 359 0099 08       		.byte	0x8
+ 360 009a 04       		.byte	0x4
+ 361 009b 67020000 		.4byte	.LASF14
+ 362 009f 02       		.uleb128 0x2
+ 363 00a0 04       		.byte	0x4
+ 364 00a1 07       		.byte	0x7
+ 365 00a2 F4010000 		.4byte	.LASF15
+ 366 00a6 05       		.uleb128 0x5
+ 367 00a7 BA010000 		.4byte	.LASF36
+ 368 00ab 01       		.byte	0x1
+ 369 00ac 17       		.byte	0x17
+ 370 00ad 00000000 		.4byte	.LFB33
+ 371 00b1 10000000 		.4byte	.LFE33-.LFB33
+ 372 00b5 01       		.uleb128 0x1
+ 373 00b6 9C       		.byte	0x9c
+ 374 00b7 06       		.uleb128 0x6
+ 375 00b8 AC000000 		.4byte	.LASF37
+ 376 00bc 01       		.byte	0x1
+ 377 00bd 19       		.byte	0x19
+ 378 00be 00000000 		.4byte	.LFB34
+ 379 00c2 18000000 		.4byte	.LFE34-.LFB34
+ 380 00c6 01       		.uleb128 0x1
+ 381 00c7 9C       		.byte	0x9c
+ 382 00c8 E8000000 		.4byte	0xe8
+ 383 00cc 07       		.uleb128 0x7
+ 384 00cd 08000000 		.4byte	.LVL0
+ 385 00d1 B9020000 		.4byte	0x2b9
+ 386 00d5 07       		.uleb128 0x7
+ 387 00d6 0C000000 		.4byte	.LVL1
+ 388 00da C4020000 		.4byte	0x2c4
+ 389 00de 07       		.uleb128 0x7
+ 390 00df 12000000 		.4byte	.LVL2
+ 391 00e3 CF020000 		.4byte	0x2cf
+ 392 00e7 00       		.byte	0
+ 393 00e8 08       		.uleb128 0x8
+ 394 00e9 A8010000 		.4byte	.LASF38
+ 395 00ed 01       		.byte	0x1
+ 396 00ee 22       		.byte	0x22
+ 397 00ef 5D000000 		.4byte	0x5d
+ 398 00f3 00000000 		.4byte	.LFB35
+ 399 00f7 D0000000 		.4byte	.LFE35-.LFB35
+ 400 00fb 01       		.uleb128 0x1
+ 401 00fc 9C       		.byte	0x9c
+ 402 00fd 41020000 		.4byte	0x241
+ 403 0101 07       		.uleb128 0x7
+ 404 0102 06000000 		.4byte	.LVL3
+ 405 0106 B7000000 		.4byte	0xb7
+ 406 010a 09       		.uleb128 0x9
+ 407 010b 0C000000 		.4byte	.LVL4
+ 408 010f DA020000 		.4byte	0x2da
+ 409 0113 21010000 		.4byte	0x121
+ 410 0117 0A       		.uleb128 0xa
+ 411 0118 01       		.uleb128 0x1
+ 412 0119 50       		.byte	0x50
+ 413 011a 05       		.uleb128 0x5
+ 414 011b 03       		.byte	0x3
+ 415 011c 00000000 		.4byte	.LC2
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 10
+
+
+ 416 0120 00       		.byte	0
+ 417 0121 09       		.uleb128 0x9
+ 418 0122 12000000 		.4byte	.LVL5
+ 419 0126 DA020000 		.4byte	0x2da
+ 420 012a 38010000 		.4byte	0x138
+ 421 012e 0A       		.uleb128 0xa
+ 422 012f 01       		.uleb128 0x1
+ 423 0130 50       		.byte	0x50
+ 424 0131 05       		.uleb128 0x5
+ 425 0132 03       		.byte	0x3
+ 426 0133 10000000 		.4byte	.LC4
+ 427 0137 00       		.byte	0
+ 428 0138 09       		.uleb128 0x9
+ 429 0139 20000000 		.4byte	.LVL6
+ 430 013d E5020000 		.4byte	0x2e5
+ 431 0141 4F010000 		.4byte	0x14f
+ 432 0145 0A       		.uleb128 0xa
+ 433 0146 01       		.uleb128 0x1
+ 434 0147 50       		.byte	0x50
+ 435 0148 05       		.uleb128 0x5
+ 436 0149 03       		.byte	0x3
+ 437 014a 1C000000 		.4byte	.LC7
+ 438 014e 00       		.byte	0
+ 439 014f 07       		.uleb128 0x7
+ 440 0150 26000000 		.4byte	.LVL7
+ 441 0154 E5020000 		.4byte	0x2e5
+ 442 0158 09       		.uleb128 0x9
+ 443 0159 2C000000 		.4byte	.LVL8
+ 444 015d F1020000 		.4byte	0x2f1
+ 445 0161 6C010000 		.4byte	0x16c
+ 446 0165 0A       		.uleb128 0xa
+ 447 0166 01       		.uleb128 0x1
+ 448 0167 50       		.byte	0x50
+ 449 0168 02       		.uleb128 0x2
+ 450 0169 08       		.byte	0x8
+ 451 016a 20       		.byte	0x20
+ 452 016b 00       		.byte	0
+ 453 016c 09       		.uleb128 0x9
+ 454 016d 3A000000 		.4byte	.LVL9
+ 455 0171 FD020000 		.4byte	0x2fd
+ 456 0175 81010000 		.4byte	0x181
+ 457 0179 0A       		.uleb128 0xa
+ 458 017a 01       		.uleb128 0x1
+ 459 017b 50       		.byte	0x50
+ 460 017c 03       		.uleb128 0x3
+ 461 017d 0A       		.byte	0xa
+ 462 017e E803     		.2byte	0x3e8
+ 463 0180 00       		.byte	0
+ 464 0181 09       		.uleb128 0x9
+ 465 0182 46000000 		.4byte	.LVL10
+ 466 0186 E5020000 		.4byte	0x2e5
+ 467 018a 98010000 		.4byte	0x198
+ 468 018e 0A       		.uleb128 0xa
+ 469 018f 01       		.uleb128 0x1
+ 470 0190 50       		.byte	0x50
+ 471 0191 05       		.uleb128 0x5
+ 472 0192 03       		.byte	0x3
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 11
+
+
+ 473 0193 28000000 		.4byte	.LC11
+ 474 0197 00       		.byte	0
+ 475 0198 09       		.uleb128 0x9
+ 476 0199 4E000000 		.4byte	.LVL11
+ 477 019d 08030000 		.4byte	0x308
+ 478 01a1 B8010000 		.4byte	0x1b8
+ 479 01a5 0A       		.uleb128 0xa
+ 480 01a6 01       		.uleb128 0x1
+ 481 01a7 50       		.byte	0x50
+ 482 01a8 05       		.uleb128 0x5
+ 483 01a9 03       		.byte	0x3
+ 484 01aa 44000000 		.4byte	.LC15
+ 485 01ae 0A       		.uleb128 0xa
+ 486 01af 01       		.uleb128 0x1
+ 487 01b0 51       		.byte	0x51
+ 488 01b1 05       		.uleb128 0x5
+ 489 01b2 03       		.byte	0x3
+ 490 01b3 38000000 		.4byte	.LC13
+ 491 01b7 00       		.byte	0
+ 492 01b8 09       		.uleb128 0x9
+ 493 01b9 58000000 		.4byte	.LVL12
+ 494 01bd E5020000 		.4byte	0x2e5
+ 495 01c1 CF010000 		.4byte	0x1cf
+ 496 01c5 0A       		.uleb128 0xa
+ 497 01c6 01       		.uleb128 0x1
+ 498 01c7 50       		.byte	0x50
+ 499 01c8 05       		.uleb128 0x5
+ 500 01c9 03       		.byte	0x3
+ 501 01ca 48000000 		.4byte	.LC17
+ 502 01ce 00       		.byte	0
+ 503 01cf 09       		.uleb128 0x9
+ 504 01d0 78000000 		.4byte	.LVL13
+ 505 01d4 E5020000 		.4byte	0x2e5
+ 506 01d8 E6010000 		.4byte	0x1e6
+ 507 01dc 0A       		.uleb128 0xa
+ 508 01dd 01       		.uleb128 0x1
+ 509 01de 50       		.byte	0x50
+ 510 01df 05       		.uleb128 0x5
+ 511 01e0 03       		.byte	0x3
+ 512 01e1 5C000000 		.4byte	.LC19
+ 513 01e5 00       		.byte	0
+ 514 01e6 09       		.uleb128 0x9
+ 515 01e7 7E000000 		.4byte	.LVL14
+ 516 01eb FD020000 		.4byte	0x2fd
+ 517 01ef FB010000 		.4byte	0x1fb
+ 518 01f3 0A       		.uleb128 0xa
+ 519 01f4 01       		.uleb128 0x1
+ 520 01f5 50       		.byte	0x50
+ 521 01f6 03       		.uleb128 0x3
+ 522 01f7 0A       		.byte	0xa
+ 523 01f8 B80B     		.2byte	0xbb8
+ 524 01fa 00       		.byte	0
+ 525 01fb 07       		.uleb128 0x7
+ 526 01fc 82000000 		.4byte	.LVL15
+ 527 0200 13030000 		.4byte	0x313
+ 528 0204 07       		.uleb128 0x7
+ 529 0205 86000000 		.4byte	.LVL16
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 12
+
+
+ 530 0209 1E030000 		.4byte	0x31e
+ 531 020d 09       		.uleb128 0x9
+ 532 020e 8C000000 		.4byte	.LVL17
+ 533 0212 29030000 		.4byte	0x329
+ 534 0216 22020000 		.4byte	0x222
+ 535 021a 0A       		.uleb128 0xa
+ 536 021b 01       		.uleb128 0x1
+ 537 021c 50       		.byte	0x50
+ 538 021d 03       		.uleb128 0x3
+ 539 021e 0A       		.byte	0xa
+ 540 021f 6D1F     		.2byte	0x1f6d
+ 541 0221 00       		.byte	0
+ 542 0222 09       		.uleb128 0x9
+ 543 0223 94000000 		.4byte	.LVL18
+ 544 0227 FD020000 		.4byte	0x2fd
+ 545 022b 37020000 		.4byte	0x237
+ 546 022f 0A       		.uleb128 0xa
+ 547 0230 01       		.uleb128 0x1
+ 548 0231 50       		.byte	0x50
+ 549 0232 03       		.uleb128 0x3
+ 550 0233 0A       		.byte	0xa
+ 551 0234 F401     		.2byte	0x1f4
+ 552 0236 00       		.byte	0
+ 553 0237 07       		.uleb128 0x7
+ 554 0238 98000000 		.4byte	.LVL19
+ 555 023c 34030000 		.4byte	0x334
+ 556 0240 00       		.byte	0
+ 557 0241 0B       		.uleb128 0xb
+ 558 0242 82000000 		.4byte	.LASF16
+ 559 0246 03       		.byte	0x3
+ 560 0247 06       		.byte	0x6
+ 561 0248 6B000000 		.4byte	0x6b
+ 562 024c 05       		.uleb128 0x5
+ 563 024d 03       		.byte	0x3
+ 564 024e 00000000 		.4byte	Com_Data
+ 565 0252 0B       		.uleb128 0xb
+ 566 0253 23020000 		.4byte	.LASF17
+ 567 0257 03       		.byte	0x3
+ 568 0258 07       		.byte	0x7
+ 569 0259 6B000000 		.4byte	0x6b
+ 570 025d 05       		.uleb128 0x5
+ 571 025e 03       		.byte	0x3
+ 572 025f 00000000 		.4byte	recon
+ 573 0263 0C       		.uleb128 0xc
+ 574 0264 636800   		.ascii	"ch\000"
+ 575 0267 03       		.byte	0x3
+ 576 0268 08       		.byte	0x8
+ 577 0269 85000000 		.4byte	0x85
+ 578 026d 05       		.uleb128 0x5
+ 579 026e 03       		.byte	0x3
+ 580 026f 00000000 		.4byte	ch
+ 581 0273 0B       		.uleb128 0xb
+ 582 0274 9C020000 		.4byte	.LASF18
+ 583 0278 03       		.byte	0x3
+ 584 0279 09       		.byte	0x9
+ 585 027a 6B000000 		.4byte	0x6b
+ 586 027e 05       		.uleb128 0x5
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 13
+
+
+ 587 027f 03       		.byte	0x3
+ 588 0280 00000000 		.4byte	count_RX
+ 589 0284 0D       		.uleb128 0xd
+ 590 0285 73020000 		.4byte	.LASF19
+ 591 0289 03       		.byte	0x3
+ 592 028a 0E       		.byte	0xe
+ 593 028b 6B000000 		.4byte	0x6b
+ 594 028f 0E       		.uleb128 0xe
+ 595 0290 91000000 		.4byte	0x91
+ 596 0294 9F020000 		.4byte	0x29f
+ 597 0298 0F       		.uleb128 0xf
+ 598 0299 9F000000 		.4byte	0x9f
+ 599 029d 4F       		.byte	0x4f
+ 600 029e 00       		.byte	0
+ 601 029f 0D       		.uleb128 0xd
+ 602 02a0 AD020000 		.4byte	.LASF20
+ 603 02a4 03       		.byte	0x3
+ 604 02a5 0F       		.byte	0xf
+ 605 02a6 8F020000 		.4byte	0x28f
+ 606 02aa 0C       		.uleb128 0xc
+ 607 02ab 6900     		.ascii	"i\000"
+ 608 02ad 01       		.byte	0x1
+ 609 02ae 14       		.byte	0x14
+ 610 02af 5D000000 		.4byte	0x5d
+ 611 02b3 05       		.uleb128 0x5
+ 612 02b4 03       		.byte	0x3
+ 613 02b5 00000000 		.4byte	i
+ 614 02b9 10       		.uleb128 0x10
+ 615 02ba 96010000 		.4byte	.LASF21
+ 616 02be 96010000 		.4byte	.LASF21
+ 617 02c2 04       		.byte	0x4
+ 618 02c3 54       		.byte	0x54
+ 619 02c4 10       		.uleb128 0x10
+ 620 02c5 E5010000 		.4byte	.LASF22
+ 621 02c9 E5010000 		.4byte	.LASF22
+ 622 02cd 05       		.byte	0x5
+ 623 02ce 6E       		.byte	0x6e
+ 624 02cf 10       		.uleb128 0x10
+ 625 02d0 7E020000 		.4byte	.LASF23
+ 626 02d4 7E020000 		.4byte	.LASF23
+ 627 02d8 06       		.byte	0x6
+ 628 02d9 18       		.byte	0x18
+ 629 02da 10       		.uleb128 0x10
+ 630 02db 8D020000 		.4byte	.LASF24
+ 631 02df 8D020000 		.4byte	.LASF24
+ 632 02e3 04       		.byte	0x4
+ 633 02e4 8B       		.byte	0x8b
+ 634 02e5 11       		.uleb128 0x11
+ 635 02e6 8B000000 		.4byte	.LASF25
+ 636 02ea 8B000000 		.4byte	.LASF25
+ 637 02ee 07       		.byte	0x7
+ 638 02ef 2103     		.2byte	0x321
+ 639 02f1 11       		.uleb128 0x11
+ 640 02f2 29020000 		.4byte	.LASF26
+ 641 02f6 29020000 		.4byte	.LASF26
+ 642 02fa 07       		.byte	0x7
+ 643 02fb 2203     		.2byte	0x322
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 14
+
+
+ 644 02fd 10       		.uleb128 0x10
+ 645 02fe A5020000 		.4byte	.LASF27
+ 646 0302 A5020000 		.4byte	.LASF27
+ 647 0306 08       		.byte	0x8
+ 648 0307 D9       		.byte	0xd9
+ 649 0308 10       		.uleb128 0x10
+ 650 0309 0B020000 		.4byte	.LASF28
+ 651 030d 0B020000 		.4byte	.LASF28
+ 652 0311 03       		.byte	0x3
+ 653 0312 14       		.byte	0x14
+ 654 0313 10       		.uleb128 0x10
+ 655 0314 4E020000 		.4byte	.LASF29
+ 656 0318 4E020000 		.4byte	.LASF29
+ 657 031c 08       		.byte	0x8
+ 658 031d E4       		.byte	0xe4
+ 659 031e 10       		.uleb128 0x10
+ 660 031f DB010000 		.4byte	.LASF30
+ 661 0323 DB010000 		.4byte	.LASF30
+ 662 0327 03       		.byte	0x3
+ 663 0328 18       		.byte	0x18
+ 664 0329 10       		.uleb128 0x10
+ 665 032a A2000000 		.4byte	.LASF31
+ 666 032e A2000000 		.4byte	.LASF31
+ 667 0332 03       		.byte	0x3
+ 668 0333 19       		.byte	0x19
+ 669 0334 10       		.uleb128 0x10
+ 670 0335 6F000000 		.4byte	.LASF32
+ 671 0339 6F000000 		.4byte	.LASF32
+ 672 033d 04       		.byte	0x4
+ 673 033e 75       		.byte	0x75
+ 674 033f 00       		.byte	0
+ 675              		.section	.debug_abbrev,"",%progbits
+ 676              	.Ldebug_abbrev0:
+ 677 0000 01       		.uleb128 0x1
+ 678 0001 11       		.uleb128 0x11
+ 679 0002 01       		.byte	0x1
+ 680 0003 25       		.uleb128 0x25
+ 681 0004 0E       		.uleb128 0xe
+ 682 0005 13       		.uleb128 0x13
+ 683 0006 0B       		.uleb128 0xb
+ 684 0007 03       		.uleb128 0x3
+ 685 0008 0E       		.uleb128 0xe
+ 686 0009 1B       		.uleb128 0x1b
+ 687 000a 0E       		.uleb128 0xe
+ 688 000b 55       		.uleb128 0x55
+ 689 000c 17       		.uleb128 0x17
+ 690 000d 11       		.uleb128 0x11
+ 691 000e 01       		.uleb128 0x1
+ 692 000f 10       		.uleb128 0x10
+ 693 0010 17       		.uleb128 0x17
+ 694 0011 00       		.byte	0
+ 695 0012 00       		.byte	0
+ 696 0013 02       		.uleb128 0x2
+ 697 0014 24       		.uleb128 0x24
+ 698 0015 00       		.byte	0
+ 699 0016 0B       		.uleb128 0xb
+ 700 0017 0B       		.uleb128 0xb
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 15
+
+
+ 701 0018 3E       		.uleb128 0x3e
+ 702 0019 0B       		.uleb128 0xb
+ 703 001a 03       		.uleb128 0x3
+ 704 001b 0E       		.uleb128 0xe
+ 705 001c 00       		.byte	0
+ 706 001d 00       		.byte	0
+ 707 001e 03       		.uleb128 0x3
+ 708 001f 24       		.uleb128 0x24
+ 709 0020 00       		.byte	0
+ 710 0021 0B       		.uleb128 0xb
+ 711 0022 0B       		.uleb128 0xb
+ 712 0023 3E       		.uleb128 0x3e
+ 713 0024 0B       		.uleb128 0xb
+ 714 0025 03       		.uleb128 0x3
+ 715 0026 08       		.uleb128 0x8
+ 716 0027 00       		.byte	0
+ 717 0028 00       		.byte	0
+ 718 0029 04       		.uleb128 0x4
+ 719 002a 16       		.uleb128 0x16
+ 720 002b 00       		.byte	0
+ 721 002c 03       		.uleb128 0x3
+ 722 002d 0E       		.uleb128 0xe
+ 723 002e 3A       		.uleb128 0x3a
+ 724 002f 0B       		.uleb128 0xb
+ 725 0030 3B       		.uleb128 0x3b
+ 726 0031 05       		.uleb128 0x5
+ 727 0032 49       		.uleb128 0x49
+ 728 0033 13       		.uleb128 0x13
+ 729 0034 00       		.byte	0
+ 730 0035 00       		.byte	0
+ 731 0036 05       		.uleb128 0x5
+ 732 0037 2E       		.uleb128 0x2e
+ 733 0038 00       		.byte	0
+ 734 0039 3F       		.uleb128 0x3f
+ 735 003a 19       		.uleb128 0x19
+ 736 003b 03       		.uleb128 0x3
+ 737 003c 0E       		.uleb128 0xe
+ 738 003d 3A       		.uleb128 0x3a
+ 739 003e 0B       		.uleb128 0xb
+ 740 003f 3B       		.uleb128 0x3b
+ 741 0040 0B       		.uleb128 0xb
+ 742 0041 27       		.uleb128 0x27
+ 743 0042 19       		.uleb128 0x19
+ 744 0043 11       		.uleb128 0x11
+ 745 0044 01       		.uleb128 0x1
+ 746 0045 12       		.uleb128 0x12
+ 747 0046 06       		.uleb128 0x6
+ 748 0047 40       		.uleb128 0x40
+ 749 0048 18       		.uleb128 0x18
+ 750 0049 9742     		.uleb128 0x2117
+ 751 004b 19       		.uleb128 0x19
+ 752 004c 00       		.byte	0
+ 753 004d 00       		.byte	0
+ 754 004e 06       		.uleb128 0x6
+ 755 004f 2E       		.uleb128 0x2e
+ 756 0050 01       		.byte	0x1
+ 757 0051 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 16
+
+
+ 758 0052 19       		.uleb128 0x19
+ 759 0053 03       		.uleb128 0x3
+ 760 0054 0E       		.uleb128 0xe
+ 761 0055 3A       		.uleb128 0x3a
+ 762 0056 0B       		.uleb128 0xb
+ 763 0057 3B       		.uleb128 0x3b
+ 764 0058 0B       		.uleb128 0xb
+ 765 0059 27       		.uleb128 0x27
+ 766 005a 19       		.uleb128 0x19
+ 767 005b 11       		.uleb128 0x11
+ 768 005c 01       		.uleb128 0x1
+ 769 005d 12       		.uleb128 0x12
+ 770 005e 06       		.uleb128 0x6
+ 771 005f 40       		.uleb128 0x40
+ 772 0060 18       		.uleb128 0x18
+ 773 0061 9742     		.uleb128 0x2117
+ 774 0063 19       		.uleb128 0x19
+ 775 0064 01       		.uleb128 0x1
+ 776 0065 13       		.uleb128 0x13
+ 777 0066 00       		.byte	0
+ 778 0067 00       		.byte	0
+ 779 0068 07       		.uleb128 0x7
+ 780 0069 898201   		.uleb128 0x4109
+ 781 006c 00       		.byte	0
+ 782 006d 11       		.uleb128 0x11
+ 783 006e 01       		.uleb128 0x1
+ 784 006f 31       		.uleb128 0x31
+ 785 0070 13       		.uleb128 0x13
+ 786 0071 00       		.byte	0
+ 787 0072 00       		.byte	0
+ 788 0073 08       		.uleb128 0x8
+ 789 0074 2E       		.uleb128 0x2e
+ 790 0075 01       		.byte	0x1
+ 791 0076 3F       		.uleb128 0x3f
+ 792 0077 19       		.uleb128 0x19
+ 793 0078 03       		.uleb128 0x3
+ 794 0079 0E       		.uleb128 0xe
+ 795 007a 3A       		.uleb128 0x3a
+ 796 007b 0B       		.uleb128 0xb
+ 797 007c 3B       		.uleb128 0x3b
+ 798 007d 0B       		.uleb128 0xb
+ 799 007e 49       		.uleb128 0x49
+ 800 007f 13       		.uleb128 0x13
+ 801 0080 8701     		.uleb128 0x87
+ 802 0082 19       		.uleb128 0x19
+ 803 0083 11       		.uleb128 0x11
+ 804 0084 01       		.uleb128 0x1
+ 805 0085 12       		.uleb128 0x12
+ 806 0086 06       		.uleb128 0x6
+ 807 0087 40       		.uleb128 0x40
+ 808 0088 18       		.uleb128 0x18
+ 809 0089 9742     		.uleb128 0x2117
+ 810 008b 19       		.uleb128 0x19
+ 811 008c 01       		.uleb128 0x1
+ 812 008d 13       		.uleb128 0x13
+ 813 008e 00       		.byte	0
+ 814 008f 00       		.byte	0
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 17
+
+
+ 815 0090 09       		.uleb128 0x9
+ 816 0091 898201   		.uleb128 0x4109
+ 817 0094 01       		.byte	0x1
+ 818 0095 11       		.uleb128 0x11
+ 819 0096 01       		.uleb128 0x1
+ 820 0097 31       		.uleb128 0x31
+ 821 0098 13       		.uleb128 0x13
+ 822 0099 01       		.uleb128 0x1
+ 823 009a 13       		.uleb128 0x13
+ 824 009b 00       		.byte	0
+ 825 009c 00       		.byte	0
+ 826 009d 0A       		.uleb128 0xa
+ 827 009e 8A8201   		.uleb128 0x410a
+ 828 00a1 00       		.byte	0
+ 829 00a2 02       		.uleb128 0x2
+ 830 00a3 18       		.uleb128 0x18
+ 831 00a4 9142     		.uleb128 0x2111
+ 832 00a6 18       		.uleb128 0x18
+ 833 00a7 00       		.byte	0
+ 834 00a8 00       		.byte	0
+ 835 00a9 0B       		.uleb128 0xb
+ 836 00aa 34       		.uleb128 0x34
+ 837 00ab 00       		.byte	0
+ 838 00ac 03       		.uleb128 0x3
+ 839 00ad 0E       		.uleb128 0xe
+ 840 00ae 3A       		.uleb128 0x3a
+ 841 00af 0B       		.uleb128 0xb
+ 842 00b0 3B       		.uleb128 0x3b
+ 843 00b1 0B       		.uleb128 0xb
+ 844 00b2 49       		.uleb128 0x49
+ 845 00b3 13       		.uleb128 0x13
+ 846 00b4 3F       		.uleb128 0x3f
+ 847 00b5 19       		.uleb128 0x19
+ 848 00b6 02       		.uleb128 0x2
+ 849 00b7 18       		.uleb128 0x18
+ 850 00b8 00       		.byte	0
+ 851 00b9 00       		.byte	0
+ 852 00ba 0C       		.uleb128 0xc
+ 853 00bb 34       		.uleb128 0x34
+ 854 00bc 00       		.byte	0
+ 855 00bd 03       		.uleb128 0x3
+ 856 00be 08       		.uleb128 0x8
+ 857 00bf 3A       		.uleb128 0x3a
+ 858 00c0 0B       		.uleb128 0xb
+ 859 00c1 3B       		.uleb128 0x3b
+ 860 00c2 0B       		.uleb128 0xb
+ 861 00c3 49       		.uleb128 0x49
+ 862 00c4 13       		.uleb128 0x13
+ 863 00c5 3F       		.uleb128 0x3f
+ 864 00c6 19       		.uleb128 0x19
+ 865 00c7 02       		.uleb128 0x2
+ 866 00c8 18       		.uleb128 0x18
+ 867 00c9 00       		.byte	0
+ 868 00ca 00       		.byte	0
+ 869 00cb 0D       		.uleb128 0xd
+ 870 00cc 34       		.uleb128 0x34
+ 871 00cd 00       		.byte	0
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 18
+
+
+ 872 00ce 03       		.uleb128 0x3
+ 873 00cf 0E       		.uleb128 0xe
+ 874 00d0 3A       		.uleb128 0x3a
+ 875 00d1 0B       		.uleb128 0xb
+ 876 00d2 3B       		.uleb128 0x3b
+ 877 00d3 0B       		.uleb128 0xb
+ 878 00d4 49       		.uleb128 0x49
+ 879 00d5 13       		.uleb128 0x13
+ 880 00d6 3F       		.uleb128 0x3f
+ 881 00d7 19       		.uleb128 0x19
+ 882 00d8 3C       		.uleb128 0x3c
+ 883 00d9 19       		.uleb128 0x19
+ 884 00da 00       		.byte	0
+ 885 00db 00       		.byte	0
+ 886 00dc 0E       		.uleb128 0xe
+ 887 00dd 01       		.uleb128 0x1
+ 888 00de 01       		.byte	0x1
+ 889 00df 49       		.uleb128 0x49
+ 890 00e0 13       		.uleb128 0x13
+ 891 00e1 01       		.uleb128 0x1
+ 892 00e2 13       		.uleb128 0x13
+ 893 00e3 00       		.byte	0
+ 894 00e4 00       		.byte	0
+ 895 00e5 0F       		.uleb128 0xf
+ 896 00e6 21       		.uleb128 0x21
+ 897 00e7 00       		.byte	0
+ 898 00e8 49       		.uleb128 0x49
+ 899 00e9 13       		.uleb128 0x13
+ 900 00ea 2F       		.uleb128 0x2f
+ 901 00eb 0B       		.uleb128 0xb
+ 902 00ec 00       		.byte	0
+ 903 00ed 00       		.byte	0
+ 904 00ee 10       		.uleb128 0x10
+ 905 00ef 2E       		.uleb128 0x2e
+ 906 00f0 00       		.byte	0
+ 907 00f1 3F       		.uleb128 0x3f
+ 908 00f2 19       		.uleb128 0x19
+ 909 00f3 3C       		.uleb128 0x3c
+ 910 00f4 19       		.uleb128 0x19
+ 911 00f5 6E       		.uleb128 0x6e
+ 912 00f6 0E       		.uleb128 0xe
+ 913 00f7 03       		.uleb128 0x3
+ 914 00f8 0E       		.uleb128 0xe
+ 915 00f9 3A       		.uleb128 0x3a
+ 916 00fa 0B       		.uleb128 0xb
+ 917 00fb 3B       		.uleb128 0x3b
+ 918 00fc 0B       		.uleb128 0xb
+ 919 00fd 00       		.byte	0
+ 920 00fe 00       		.byte	0
+ 921 00ff 11       		.uleb128 0x11
+ 922 0100 2E       		.uleb128 0x2e
+ 923 0101 00       		.byte	0
+ 924 0102 3F       		.uleb128 0x3f
+ 925 0103 19       		.uleb128 0x19
+ 926 0104 3C       		.uleb128 0x3c
+ 927 0105 19       		.uleb128 0x19
+ 928 0106 6E       		.uleb128 0x6e
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 19
+
+
+ 929 0107 0E       		.uleb128 0xe
+ 930 0108 03       		.uleb128 0x3
+ 931 0109 0E       		.uleb128 0xe
+ 932 010a 3A       		.uleb128 0x3a
+ 933 010b 0B       		.uleb128 0xb
+ 934 010c 3B       		.uleb128 0x3b
+ 935 010d 05       		.uleb128 0x5
+ 936 010e 00       		.byte	0
+ 937 010f 00       		.byte	0
+ 938 0110 00       		.byte	0
+ 939              		.section	.debug_aranges,"",%progbits
+ 940 0000 2C000000 		.4byte	0x2c
+ 941 0004 0200     		.2byte	0x2
+ 942 0006 00000000 		.4byte	.Ldebug_info0
+ 943 000a 04       		.byte	0x4
+ 944 000b 00       		.byte	0
+ 945 000c 0000     		.2byte	0
+ 946 000e 0000     		.2byte	0
+ 947 0010 00000000 		.4byte	.LFB33
+ 948 0014 10000000 		.4byte	.LFE33-.LFB33
+ 949 0018 00000000 		.4byte	.LFB34
+ 950 001c 18000000 		.4byte	.LFE34-.LFB34
+ 951 0020 00000000 		.4byte	.LFB35
+ 952 0024 D0000000 		.4byte	.LFE35-.LFB35
+ 953 0028 00000000 		.4byte	0
+ 954 002c 00000000 		.4byte	0
+ 955              		.section	.debug_ranges,"",%progbits
+ 956              	.Ldebug_ranges0:
+ 957 0000 00000000 		.4byte	.LFB33
+ 958 0004 10000000 		.4byte	.LFE33
+ 959 0008 00000000 		.4byte	.LFB34
+ 960 000c 18000000 		.4byte	.LFE34
+ 961 0010 00000000 		.4byte	.LFB35
+ 962 0014 D0000000 		.4byte	.LFE35
+ 963 0018 00000000 		.4byte	0
+ 964 001c 00000000 		.4byte	0
+ 965              		.section	.debug_line,"",%progbits
+ 966              	.Ldebug_line0:
+ 967 0000 FD000000 		.section	.debug_str,"MS",%progbits,1
+ 967      02009A00 
+ 967      00000201 
+ 967      FB0E0D00 
+ 967      01010101 
+ 968              	.LASF35:
+ 969 0000 5C5C6D79 		.ascii	"\\\\myhome01.spu.edu\\users\\tdoan1\\Documents\\PSo"
+ 969      686F6D65 
+ 969      30312E73 
+ 969      70752E65 
+ 969      64755C75 
+ 970 002d 43204372 		.ascii	"C Creator\\PSoC 4 Wi-Fi Module tEst\\PSoC 4 Wi-Fi M"
+ 970      6561746F 
+ 970      725C5053 
+ 970      6F432034 
+ 970      2057692D 
+ 971 005e 6F64756C 		.ascii	"odule Test.cydsn\000"
+ 971      65205465 
+ 971      73742E63 
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 20
+
+
+ 971      7964736E 
+ 971      00
+ 972              	.LASF32:
+ 973 006f 55415254 		.ascii	"UART_ClearRxBuffer\000"
+ 973      5F436C65 
+ 973      61725278 
+ 973      42756666 
+ 973      657200
+ 974              	.LASF16:
+ 975 0082 436F6D5F 		.ascii	"Com_Data\000"
+ 975      44617461 
+ 975      00
+ 976              	.LASF25:
+ 977 008b 5553425F 		.ascii	"USB_UART_UartPutString\000"
+ 977      55415254 
+ 977      5F556172 
+ 977      74507574 
+ 977      53747269 
+ 978              	.LASF31:
+ 979 00a2 53657453 		.ascii	"SetServer\000"
+ 979      65727665 
+ 979      7200
+ 980              	.LASF37:
+ 981 00ac 496E6974 		.ascii	"InitializeSystem\000"
+ 981      69616C69 
+ 981      7A655379 
+ 981      7374656D 
+ 981      00
+ 982              	.LASF33:
+ 983 00bd 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 983      43313120 
+ 983      352E342E 
+ 983      31203230 
+ 983      31363036 
+ 984 00f0 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 984      20726576 
+ 984      6973696F 
+ 984      6E203233 
+ 984      37373135 
+ 985 0123 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 985      66756E63 
+ 985      74696F6E 
+ 985      2D736563 
+ 985      74696F6E 
+ 986              	.LASF9:
+ 987 014b 666C6F61 		.ascii	"float\000"
+ 987      7400
+ 988              	.LASF0:
+ 989 0151 7369676E 		.ascii	"signed char\000"
+ 989      65642063 
+ 989      68617200 
+ 990              	.LASF1:
+ 991 015d 756E7369 		.ascii	"unsigned char\000"
+ 991      676E6564 
+ 991      20636861 
+ 991      7200
+ 992              	.LASF12:
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 21
+
+
+ 993 016b 63686172 		.ascii	"char8\000"
+ 993      3800
+ 994              	.LASF5:
+ 995 0171 6C6F6E67 		.ascii	"long unsigned int\000"
+ 995      20756E73 
+ 995      69676E65 
+ 995      6420696E 
+ 995      7400
+ 996              	.LASF3:
+ 997 0183 73686F72 		.ascii	"short unsigned int\000"
+ 997      7420756E 
+ 997      7369676E 
+ 997      65642069 
+ 997      6E7400
+ 998              	.LASF21:
+ 999 0196 55415254 		.ascii	"UART_Start\000"
+ 999      5F537461 
+ 999      727400
+ 1000              	.LASF10:
+ 1001 01a1 646F7562 		.ascii	"double\000"
+ 1001      6C6500
+ 1002              	.LASF38:
+ 1003 01a8 6D61696E 		.ascii	"main\000"
+ 1003      00
+ 1004              	.LASF8:
+ 1005 01ad 756E7369 		.ascii	"unsigned int\000"
+ 1005      676E6564 
+ 1005      20696E74 
+ 1005      00
+ 1006              	.LASF36:
+ 1007 01ba 5265636F 		.ascii	"Reconnect\000"
+ 1007      6E6E6563 
+ 1007      7400
+ 1008              	.LASF7:
+ 1009 01c4 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1009      206C6F6E 
+ 1009      6720756E 
+ 1009      7369676E 
+ 1009      65642069 
+ 1010              	.LASF30:
+ 1011 01db 49505F74 		.ascii	"IP_to_USB\000"
+ 1011      6F5F5553 
+ 1011      4200
+ 1012              	.LASF22:
+ 1013 01e5 5553425F 		.ascii	"USB_UART_Start\000"
+ 1013      55415254 
+ 1013      5F537461 
+ 1013      727400
+ 1014              	.LASF15:
+ 1015 01f4 73697A65 		.ascii	"sizetype\000"
+ 1015      74797065 
+ 1015      00
+ 1016              	.LASF6:
+ 1017 01fd 6C6F6E67 		.ascii	"long long int\000"
+ 1017      206C6F6E 
+ 1017      6720696E 
+ 1017      7400
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 22
+
+
+ 1018              	.LASF28:
+ 1019 020b 636F6E6E 		.ascii	"connectWiFi\000"
+ 1019      65637457 
+ 1019      69466900 
+ 1020              	.LASF34:
+ 1021 0217 6D61696E 		.ascii	"main.c\000"
+ 1021      2E6300
+ 1022              	.LASF13:
+ 1023 021e 63686172 		.ascii	"char\000"
+ 1023      00
+ 1024              	.LASF17:
+ 1025 0223 7265636F 		.ascii	"recon\000"
+ 1025      6E00
+ 1026              	.LASF26:
+ 1027 0229 5553425F 		.ascii	"USB_UART_UartPutCRLF\000"
+ 1027      55415254 
+ 1027      5F556172 
+ 1027      74507574 
+ 1027      43524C46 
+ 1028              	.LASF2:
+ 1029 023e 73686F72 		.ascii	"short int\000"
+ 1029      7420696E 
+ 1029      7400
+ 1030              	.LASF11:
+ 1031 0248 75696E74 		.ascii	"uint8\000"
+ 1031      3800
+ 1032              	.LASF29:
+ 1033 024e 4379536F 		.ascii	"CySoftwareReset\000"
+ 1033      66747761 
+ 1033      72655265 
+ 1033      73657400 
+ 1034              	.LASF4:
+ 1035 025e 6C6F6E67 		.ascii	"long int\000"
+ 1035      20696E74 
+ 1035      00
+ 1036              	.LASF14:
+ 1037 0267 6C6F6E67 		.ascii	"long double\000"
+ 1037      20646F75 
+ 1037      626C6500 
+ 1038              	.LASF19:
+ 1039 0273 48617665 		.ascii	"HaveAnswer\000"
+ 1039      416E7377 
+ 1039      657200
+ 1040              	.LASF23:
+ 1041 027e 52785F49 		.ascii	"Rx_Int_StartEx\000"
+ 1041      6E745F53 
+ 1041      74617274 
+ 1041      457800
+ 1042              	.LASF24:
+ 1043 028d 55415254 		.ascii	"UART_PutString\000"
+ 1043      5F507574 
+ 1043      53747269 
+ 1043      6E6700
+ 1044              	.LASF18:
+ 1045 029c 636F756E 		.ascii	"count_RX\000"
+ 1045      745F5258 
+ 1045      00
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccGtvNis.s 			page 23
+
+
+ 1046              	.LASF27:
+ 1047 02a5 43794465 		.ascii	"CyDelay\000"
+ 1047      6C617900 
+ 1048              	.LASF20:
+ 1049 02ad 4154616E 		.ascii	"ATanswer\000"
+ 1049      73776572 
+ 1049      00
+ 1050              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

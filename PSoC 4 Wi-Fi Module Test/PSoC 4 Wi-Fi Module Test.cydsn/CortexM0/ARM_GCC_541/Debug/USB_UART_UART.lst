@@ -1,0 +1,2447 @@
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"USB_UART_UART.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.USB_UART_UartInit,"ax",%progbits
+  20              		.align	2
+  21              		.global	USB_UART_UartInit
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	USB_UART_UartInit, %function
+  25              	USB_UART_UartInit:
+  26              	.LFB0:
+  27              		.file 1 "Generated_Source\\PSoC4\\USB_UART_UART.c"
+   1:Generated_Source\PSoC4/USB_UART_UART.c **** /***************************************************************************//**
+   2:Generated_Source\PSoC4/USB_UART_UART.c **** * \file USB_UART_UART.c
+   3:Generated_Source\PSoC4/USB_UART_UART.c **** * \version 3.20
+   4:Generated_Source\PSoC4/USB_UART_UART.c **** *
+   5:Generated_Source\PSoC4/USB_UART_UART.c **** * \brief
+   6:Generated_Source\PSoC4/USB_UART_UART.c **** *  This file provides the source code to the API for the SCB Component in
+   7:Generated_Source\PSoC4/USB_UART_UART.c **** *  UART mode.
+   8:Generated_Source\PSoC4/USB_UART_UART.c **** *
+   9:Generated_Source\PSoC4/USB_UART_UART.c **** * Note:
+  10:Generated_Source\PSoC4/USB_UART_UART.c **** *
+  11:Generated_Source\PSoC4/USB_UART_UART.c **** *******************************************************************************
+  12:Generated_Source\PSoC4/USB_UART_UART.c **** * \copyright
+  13:Generated_Source\PSoC4/USB_UART_UART.c **** * Copyright 2013-2016, Cypress Semiconductor Corporation.  All rights reserved.
+  14:Generated_Source\PSoC4/USB_UART_UART.c **** * You may use this file only in accordance with the license, terms, conditions,
+  15:Generated_Source\PSoC4/USB_UART_UART.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:Generated_Source\PSoC4/USB_UART_UART.c **** * the software package with which this file was provided.
+  17:Generated_Source\PSoC4/USB_UART_UART.c **** *******************************************************************************/
+  18:Generated_Source\PSoC4/USB_UART_UART.c **** 
+  19:Generated_Source\PSoC4/USB_UART_UART.c **** #include "USB_UART_PVT.h"
+  20:Generated_Source\PSoC4/USB_UART_UART.c **** #include "USB_UART_SPI_UART_PVT.h"
+  21:Generated_Source\PSoC4/USB_UART_UART.c **** #include "cyapicallbacks.h"
+  22:Generated_Source\PSoC4/USB_UART_UART.c **** 
+  23:Generated_Source\PSoC4/USB_UART_UART.c **** #if (USB_UART_UART_WAKE_ENABLE_CONST && USB_UART_UART_RX_WAKEUP_IRQ)
+  24:Generated_Source\PSoC4/USB_UART_UART.c ****     /**
+  25:Generated_Source\PSoC4/USB_UART_UART.c ****     * \addtogroup group_globals
+  26:Generated_Source\PSoC4/USB_UART_UART.c ****     * \{
+  27:Generated_Source\PSoC4/USB_UART_UART.c ****     */
+  28:Generated_Source\PSoC4/USB_UART_UART.c ****     /** This global variable determines whether to enable Skip Start
+  29:Generated_Source\PSoC4/USB_UART_UART.c ****     * functionality when USB_UART_Sleep() function is called:
+  30:Generated_Source\PSoC4/USB_UART_UART.c ****     * 0 – disable, other values – enable. Default value is 1.
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 2
+
+
+  31:Generated_Source\PSoC4/USB_UART_UART.c ****     * It is only available when Enable wakeup from Deep Sleep Mode is enabled.
+  32:Generated_Source\PSoC4/USB_UART_UART.c ****     */
+  33:Generated_Source\PSoC4/USB_UART_UART.c ****     uint8 USB_UART_skipStart = 1u;
+  34:Generated_Source\PSoC4/USB_UART_UART.c ****     /** \} globals */
+  35:Generated_Source\PSoC4/USB_UART_UART.c **** #endif /* (USB_UART_UART_WAKE_ENABLE_CONST && USB_UART_UART_RX_WAKEUP_IRQ) */
+  36:Generated_Source\PSoC4/USB_UART_UART.c **** 
+  37:Generated_Source\PSoC4/USB_UART_UART.c **** #if(USB_UART_SCB_MODE_UNCONFIG_CONST_CFG)
+  38:Generated_Source\PSoC4/USB_UART_UART.c **** 
+  39:Generated_Source\PSoC4/USB_UART_UART.c ****     /***************************************
+  40:Generated_Source\PSoC4/USB_UART_UART.c ****     *  Configuration Structure Initialization
+  41:Generated_Source\PSoC4/USB_UART_UART.c ****     ***************************************/
+  42:Generated_Source\PSoC4/USB_UART_UART.c **** 
+  43:Generated_Source\PSoC4/USB_UART_UART.c ****     const USB_UART_UART_INIT_STRUCT USB_UART_configUart =
+  44:Generated_Source\PSoC4/USB_UART_UART.c ****     {
+  45:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_SUB_MODE,
+  46:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_DIRECTION,
+  47:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_DATA_BITS_NUM,
+  48:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_PARITY_TYPE,
+  49:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_STOP_BITS_NUM,
+  50:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_OVS_FACTOR,
+  51:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_IRDA_LOW_POWER,
+  52:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_MEDIAN_FILTER_ENABLE,
+  53:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_RETRY_ON_NACK,
+  54:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_IRDA_POLARITY,
+  55:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_DROP_ON_PARITY_ERR,
+  56:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_DROP_ON_FRAME_ERR,
+  57:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_WAKE_ENABLE,
+  58:Generated_Source\PSoC4/USB_UART_UART.c ****         0u,
+  59:Generated_Source\PSoC4/USB_UART_UART.c ****         NULL,
+  60:Generated_Source\PSoC4/USB_UART_UART.c ****         0u,
+  61:Generated_Source\PSoC4/USB_UART_UART.c ****         NULL,
+  62:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_MP_MODE_ENABLE,
+  63:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_MP_ACCEPT_ADDRESS,
+  64:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_MP_RX_ADDRESS,
+  65:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_MP_RX_ADDRESS_MASK,
+  66:Generated_Source\PSoC4/USB_UART_UART.c ****         (uint32) USB_UART_SCB_IRQ_INTERNAL,
+  67:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_INTR_RX_MASK,
+  68:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_RX_TRIGGER_LEVEL,
+  69:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_INTR_TX_MASK,
+  70:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_TX_TRIGGER_LEVEL,
+  71:Generated_Source\PSoC4/USB_UART_UART.c ****         (uint8) USB_UART_UART_BYTE_MODE_ENABLE,
+  72:Generated_Source\PSoC4/USB_UART_UART.c ****         (uint8) USB_UART_UART_CTS_ENABLE,
+  73:Generated_Source\PSoC4/USB_UART_UART.c ****         (uint8) USB_UART_UART_CTS_POLARITY,
+  74:Generated_Source\PSoC4/USB_UART_UART.c ****         (uint8) USB_UART_UART_RTS_POLARITY,
+  75:Generated_Source\PSoC4/USB_UART_UART.c ****         (uint8) USB_UART_UART_RTS_FIFO_LEVEL
+  76:Generated_Source\PSoC4/USB_UART_UART.c ****     };
+  77:Generated_Source\PSoC4/USB_UART_UART.c **** 
+  78:Generated_Source\PSoC4/USB_UART_UART.c **** 
+  79:Generated_Source\PSoC4/USB_UART_UART.c ****     /*******************************************************************************
+  80:Generated_Source\PSoC4/USB_UART_UART.c ****     * Function Name: USB_UART_UartInit
+  81:Generated_Source\PSoC4/USB_UART_UART.c ****     ****************************************************************************//**
+  82:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+  83:Generated_Source\PSoC4/USB_UART_UART.c ****     *  Configures the USB_UART for UART operation.
+  84:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+  85:Generated_Source\PSoC4/USB_UART_UART.c ****     *  This function is intended specifically to be used when the USB_UART
+  86:Generated_Source\PSoC4/USB_UART_UART.c ****     *  configuration is set to “Unconfigured USB_UART” in the customizer.
+  87:Generated_Source\PSoC4/USB_UART_UART.c ****     *  After initializing the USB_UART in UART mode using this function,
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 3
+
+
+  88:Generated_Source\PSoC4/USB_UART_UART.c ****     *  the component can be enabled using the USB_UART_Start() or
+  89:Generated_Source\PSoC4/USB_UART_UART.c ****     * USB_UART_Enable() function.
+  90:Generated_Source\PSoC4/USB_UART_UART.c ****     *  This function uses a pointer to a structure that provides the configuration
+  91:Generated_Source\PSoC4/USB_UART_UART.c ****     *  settings. This structure contains the same information that would otherwise
+  92:Generated_Source\PSoC4/USB_UART_UART.c ****     *  be provided by the customizer settings.
+  93:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+  94:Generated_Source\PSoC4/USB_UART_UART.c ****     *  \param config: pointer to a structure that contains the following list of
+  95:Generated_Source\PSoC4/USB_UART_UART.c ****     *   fields. These fields match the selections available in the customizer.
+  96:Generated_Source\PSoC4/USB_UART_UART.c ****     *   Refer to the customizer for further description of the settings.
+  97:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+  98:Generated_Source\PSoC4/USB_UART_UART.c ****     *******************************************************************************/
+  99:Generated_Source\PSoC4/USB_UART_UART.c ****     void USB_UART_UartInit(const USB_UART_UART_INIT_STRUCT *config)
+ 100:Generated_Source\PSoC4/USB_UART_UART.c ****     {
+ 101:Generated_Source\PSoC4/USB_UART_UART.c ****         uint32 pinsConfig;
+ 102:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 103:Generated_Source\PSoC4/USB_UART_UART.c ****         if (NULL == config)
+ 104:Generated_Source\PSoC4/USB_UART_UART.c ****         {
+ 105:Generated_Source\PSoC4/USB_UART_UART.c ****             CYASSERT(0u != 0u); /* Halt execution due to bad function parameter */
+ 106:Generated_Source\PSoC4/USB_UART_UART.c ****         }
+ 107:Generated_Source\PSoC4/USB_UART_UART.c ****         else
+ 108:Generated_Source\PSoC4/USB_UART_UART.c ****         {
+ 109:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Get direction to configure UART pins: TX, RX or TX+RX */
+ 110:Generated_Source\PSoC4/USB_UART_UART.c ****             pinsConfig  = config->direction;
+ 111:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 112:Generated_Source\PSoC4/USB_UART_UART.c ****         #if !(USB_UART_CY_SCBIP_V0 || USB_UART_CY_SCBIP_V1)
+ 113:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Add RTS and CTS pins to configure */
+ 114:Generated_Source\PSoC4/USB_UART_UART.c ****             pinsConfig |= (0u != config->rtsRxFifoLevel) ? (USB_UART_UART_RTS_PIN_ENABLE) : (0u);
+ 115:Generated_Source\PSoC4/USB_UART_UART.c ****             pinsConfig |= (0u != config->enableCts)      ? (USB_UART_UART_CTS_PIN_ENABLE) : (0u);
+ 116:Generated_Source\PSoC4/USB_UART_UART.c ****         #endif /* !(USB_UART_CY_SCBIP_V0 || USB_UART_CY_SCBIP_V1) */
+ 117:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 118:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Configure pins */
+ 119:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_SetPins(USB_UART_SCB_MODE_UART, config->mode, pinsConfig);
+ 120:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 121:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Store internal configuration */
+ 122:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_scbMode       = (uint8) USB_UART_SCB_MODE_UART;
+ 123:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_scbEnableWake = (uint8) config->enableWake;
+ 124:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_scbEnableIntr = (uint8) config->enableInterrupt;
+ 125:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 126:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Set RX direction internal variables */
+ 127:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_rxBuffer      =         config->rxBuffer;
+ 128:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_rxDataBits    = (uint8) config->dataBits;
+ 129:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_rxBufferSize  = (uint8) config->rxBufferSize;
+ 130:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 131:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Set TX direction internal variables */
+ 132:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_txBuffer      =         config->txBuffer;
+ 133:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_txDataBits    = (uint8) config->dataBits;
+ 134:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_txBufferSize  = (uint8) config->txBufferSize;
+ 135:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 136:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Configure UART interface */
+ 137:Generated_Source\PSoC4/USB_UART_UART.c ****             if(USB_UART_UART_MODE_IRDA == config->mode)
+ 138:Generated_Source\PSoC4/USB_UART_UART.c ****             {
+ 139:Generated_Source\PSoC4/USB_UART_UART.c ****                 /* OVS settings: IrDA */
+ 140:Generated_Source\PSoC4/USB_UART_UART.c ****                 USB_UART_CTRL_REG  = ((0u != config->enableIrdaLowPower) ?
+ 141:Generated_Source\PSoC4/USB_UART_UART.c ****                                                 (USB_UART_UART_GET_CTRL_OVS_IRDA_LP(config->oversam
+ 142:Generated_Source\PSoC4/USB_UART_UART.c ****                                                 (USB_UART_CTRL_OVS_IRDA_OVS16));
+ 143:Generated_Source\PSoC4/USB_UART_UART.c ****             }
+ 144:Generated_Source\PSoC4/USB_UART_UART.c ****             else
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 4
+
+
+ 145:Generated_Source\PSoC4/USB_UART_UART.c ****             {
+ 146:Generated_Source\PSoC4/USB_UART_UART.c ****                 /* OVS settings: UART and SmartCard */
+ 147:Generated_Source\PSoC4/USB_UART_UART.c ****                 USB_UART_CTRL_REG  = USB_UART_GET_CTRL_OVS(config->oversample);
+ 148:Generated_Source\PSoC4/USB_UART_UART.c ****             }
+ 149:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 150:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_CTRL_REG     |= USB_UART_GET_CTRL_BYTE_MODE  (config->enableByteMode)      |
+ 151:Generated_Source\PSoC4/USB_UART_UART.c ****                                              USB_UART_GET_CTRL_ADDR_ACCEPT(config->multiprocAcceptA
+ 152:Generated_Source\PSoC4/USB_UART_UART.c ****                                              USB_UART_CTRL_UART;
+ 153:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 154:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Configure sub-mode: UART, SmartCard or IrDA */
+ 155:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_UART_CTRL_REG = USB_UART_GET_UART_CTRL_MODE(config->mode);
+ 156:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 157:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Configure RX direction */
+ 158:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_UART_RX_CTRL_REG = USB_UART_GET_UART_RX_CTRL_MODE(config->stopBits)           
+ 159:Generated_Source\PSoC4/USB_UART_UART.c ****                                         USB_UART_GET_UART_RX_CTRL_POLARITY(config->enableInvertedRx
+ 160:Generated_Source\PSoC4/USB_UART_UART.c ****                                         USB_UART_GET_UART_RX_CTRL_MP_MODE(config->enableMultiproc) 
+ 161:Generated_Source\PSoC4/USB_UART_UART.c ****                                         USB_UART_GET_UART_RX_CTRL_DROP_ON_PARITY_ERR(config->dropOn
+ 162:Generated_Source\PSoC4/USB_UART_UART.c ****                                         USB_UART_GET_UART_RX_CTRL_DROP_ON_FRAME_ERR(config->dropOnF
+ 163:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 164:Generated_Source\PSoC4/USB_UART_UART.c ****             if(USB_UART_UART_PARITY_NONE != config->parity)
+ 165:Generated_Source\PSoC4/USB_UART_UART.c ****             {
+ 166:Generated_Source\PSoC4/USB_UART_UART.c ****                USB_UART_UART_RX_CTRL_REG |= USB_UART_GET_UART_RX_CTRL_PARITY(config->parity) |
+ 167:Generated_Source\PSoC4/USB_UART_UART.c ****                                                     USB_UART_UART_RX_CTRL_PARITY_ENABLED;
+ 168:Generated_Source\PSoC4/USB_UART_UART.c ****             }
+ 169:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 170:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_RX_CTRL_REG      = USB_UART_GET_RX_CTRL_DATA_WIDTH(config->dataBits)       |
+ 171:Generated_Source\PSoC4/USB_UART_UART.c ****                                                 USB_UART_GET_RX_CTRL_MEDIAN(config->enableMedianFil
+ 172:Generated_Source\PSoC4/USB_UART_UART.c ****                                                 USB_UART_GET_UART_RX_CTRL_ENABLED(config->direction
+ 173:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 174:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_RX_FIFO_CTRL_REG = USB_UART_GET_RX_FIFO_CTRL_TRIGGER_LEVEL(config->rxTriggerLe
+ 175:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 176:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Configure MP address */
+ 177:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_RX_MATCH_REG     = USB_UART_GET_RX_MATCH_ADDR(config->multiprocAddr) |
+ 178:Generated_Source\PSoC4/USB_UART_UART.c ****                                                 USB_UART_GET_RX_MATCH_MASK(config->multiprocAddrMas
+ 179:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 180:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Configure RX direction */
+ 181:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_UART_TX_CTRL_REG = USB_UART_GET_UART_TX_CTRL_MODE(config->stopBits) |
+ 182:Generated_Source\PSoC4/USB_UART_UART.c ****                                                 USB_UART_GET_UART_TX_CTRL_RETRY_NACK(config->enable
+ 183:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 184:Generated_Source\PSoC4/USB_UART_UART.c ****             if(USB_UART_UART_PARITY_NONE != config->parity)
+ 185:Generated_Source\PSoC4/USB_UART_UART.c ****             {
+ 186:Generated_Source\PSoC4/USB_UART_UART.c ****                USB_UART_UART_TX_CTRL_REG |= USB_UART_GET_UART_TX_CTRL_PARITY(config->parity) |
+ 187:Generated_Source\PSoC4/USB_UART_UART.c ****                                                     USB_UART_UART_TX_CTRL_PARITY_ENABLED;
+ 188:Generated_Source\PSoC4/USB_UART_UART.c ****             }
+ 189:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 190:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_TX_CTRL_REG      = USB_UART_GET_TX_CTRL_DATA_WIDTH(config->dataBits)    |
+ 191:Generated_Source\PSoC4/USB_UART_UART.c ****                                                 USB_UART_GET_UART_TX_CTRL_ENABLED(config->direction
+ 192:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 193:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_TX_FIFO_CTRL_REG = USB_UART_GET_TX_FIFO_CTRL_TRIGGER_LEVEL(config->txTriggerLe
+ 194:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 195:Generated_Source\PSoC4/USB_UART_UART.c ****         #if !(USB_UART_CY_SCBIP_V0 || USB_UART_CY_SCBIP_V1)
+ 196:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_UART_FLOW_CTRL_REG = USB_UART_GET_UART_FLOW_CTRL_CTS_ENABLE(config->enableCts)
+ 197:Generated_Source\PSoC4/USB_UART_UART.c ****                                             USB_UART_GET_UART_FLOW_CTRL_CTS_POLARITY (config->ctsPo
+ 198:Generated_Source\PSoC4/USB_UART_UART.c ****                                             USB_UART_GET_UART_FLOW_CTRL_RTS_POLARITY (config->rtsPo
+ 199:Generated_Source\PSoC4/USB_UART_UART.c ****                                             USB_UART_GET_UART_FLOW_CTRL_TRIGGER_LEVEL(config->rtsRx
+ 200:Generated_Source\PSoC4/USB_UART_UART.c ****         #endif /* !(USB_UART_CY_SCBIP_V0 || USB_UART_CY_SCBIP_V1) */
+ 201:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 5
+
+
+ 202:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Configure interrupt with UART handler but do not enable it */
+ 203:Generated_Source\PSoC4/USB_UART_UART.c ****             CyIntDisable    (USB_UART_ISR_NUMBER);
+ 204:Generated_Source\PSoC4/USB_UART_UART.c ****             CyIntSetPriority(USB_UART_ISR_NUMBER, USB_UART_ISR_PRIORITY);
+ 205:Generated_Source\PSoC4/USB_UART_UART.c ****             (void) CyIntSetVector(USB_UART_ISR_NUMBER, &USB_UART_SPI_UART_ISR);
+ 206:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 207:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Configure WAKE interrupt */
+ 208:Generated_Source\PSoC4/USB_UART_UART.c ****         #if(USB_UART_UART_RX_WAKEUP_IRQ)
+ 209:Generated_Source\PSoC4/USB_UART_UART.c ****             CyIntDisable    (USB_UART_RX_WAKE_ISR_NUMBER);
+ 210:Generated_Source\PSoC4/USB_UART_UART.c ****             CyIntSetPriority(USB_UART_RX_WAKE_ISR_NUMBER, USB_UART_RX_WAKE_ISR_PRIORITY);
+ 211:Generated_Source\PSoC4/USB_UART_UART.c ****             (void) CyIntSetVector(USB_UART_RX_WAKE_ISR_NUMBER, &USB_UART_UART_WAKEUP_ISR);
+ 212:Generated_Source\PSoC4/USB_UART_UART.c ****         #endif /* (USB_UART_UART_RX_WAKEUP_IRQ) */
+ 213:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 214:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Configure interrupt sources */
+ 215:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_INTR_I2C_EC_MASK_REG = USB_UART_NO_INTR_SOURCES;
+ 216:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_INTR_SPI_EC_MASK_REG = USB_UART_NO_INTR_SOURCES;
+ 217:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_INTR_SLAVE_MASK_REG  = USB_UART_NO_INTR_SOURCES;
+ 218:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_INTR_MASTER_MASK_REG = USB_UART_NO_INTR_SOURCES;
+ 219:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_INTR_RX_MASK_REG     = config->rxInterruptMask;
+ 220:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_INTR_TX_MASK_REG     = config->txInterruptMask;
+ 221:Generated_Source\PSoC4/USB_UART_UART.c ****         
+ 222:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Configure TX interrupt sources to restore. */
+ 223:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_IntrTxMask = LO16(USB_UART_INTR_TX_MASK_REG);
+ 224:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 225:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Clear RX buffer indexes */
+ 226:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_rxBufferHead     = 0u;
+ 227:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_rxBufferTail     = 0u;
+ 228:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_rxBufferOverflow = 0u;
+ 229:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 230:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Clear TX buffer indexes */
+ 231:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_txBufferHead = 0u;
+ 232:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_txBufferTail = 0u;
+ 233:Generated_Source\PSoC4/USB_UART_UART.c ****         }
+ 234:Generated_Source\PSoC4/USB_UART_UART.c ****     }
+ 235:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 236:Generated_Source\PSoC4/USB_UART_UART.c **** #else
+ 237:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 238:Generated_Source\PSoC4/USB_UART_UART.c ****     /*******************************************************************************
+ 239:Generated_Source\PSoC4/USB_UART_UART.c ****     * Function Name: USB_UART_UartInit
+ 240:Generated_Source\PSoC4/USB_UART_UART.c ****     ****************************************************************************//**
+ 241:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+ 242:Generated_Source\PSoC4/USB_UART_UART.c ****     *  Configures the SCB for the UART operation.
+ 243:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+ 244:Generated_Source\PSoC4/USB_UART_UART.c ****     *******************************************************************************/
+ 245:Generated_Source\PSoC4/USB_UART_UART.c ****     void USB_UART_UartInit(void)
+ 246:Generated_Source\PSoC4/USB_UART_UART.c ****     {
+  28              		.loc 1 246 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+ 247:Generated_Source\PSoC4/USB_UART_UART.c ****         /* Configure UART interface */
+ 248:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_CTRL_REG = USB_UART_UART_DEFAULT_CTRL;
+  36              		.loc 1 248 0
+  37 0002 194A     		ldr	r2, .L2
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 6
+
+
+  38 0004 194B     		ldr	r3, .L2+4
+  39 0006 1A60     		str	r2, [r3]
+ 249:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 250:Generated_Source\PSoC4/USB_UART_UART.c ****         /* Configure sub-mode: UART, SmartCard or IrDA */
+ 251:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_CTRL_REG = USB_UART_UART_DEFAULT_UART_CTRL;
+  40              		.loc 1 251 0
+  41 0008 0024     		movs	r4, #0
+  42 000a 194B     		ldr	r3, .L2+8
+  43 000c 1C60     		str	r4, [r3]
+ 252:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 253:Generated_Source\PSoC4/USB_UART_UART.c ****         /* Configure RX direction */
+ 254:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_RX_CTRL_REG = USB_UART_UART_DEFAULT_UART_RX_CTRL;
+  44              		.loc 1 254 0
+  45 000e 0122     		movs	r2, #1
+  46 0010 184B     		ldr	r3, .L2+12
+  47 0012 1A60     		str	r2, [r3]
+ 255:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_RX_CTRL_REG      = USB_UART_UART_DEFAULT_RX_CTRL;
+  48              		.loc 1 255 0
+  49 0014 184B     		ldr	r3, .L2+16
+  50 0016 1949     		ldr	r1, .L2+20
+  51 0018 0B60     		str	r3, [r1]
+ 256:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_RX_FIFO_CTRL_REG = USB_UART_UART_DEFAULT_RX_FIFO_CTRL;
+  52              		.loc 1 256 0
+  53 001a 0720     		movs	r0, #7
+  54 001c 1849     		ldr	r1, .L2+24
+  55 001e 0860     		str	r0, [r1]
+ 257:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_RX_MATCH_REG     = USB_UART_UART_DEFAULT_RX_MATCH_REG;
+  56              		.loc 1 257 0
+  57 0020 1849     		ldr	r1, .L2+28
+  58 0022 0C60     		str	r4, [r1]
+ 258:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 259:Generated_Source\PSoC4/USB_UART_UART.c ****         /* Configure TX direction */
+ 260:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_TX_CTRL_REG = USB_UART_UART_DEFAULT_UART_TX_CTRL;
+  59              		.loc 1 260 0
+  60 0024 1849     		ldr	r1, .L2+32
+  61 0026 0A60     		str	r2, [r1]
+ 261:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_TX_CTRL_REG      = USB_UART_UART_DEFAULT_TX_CTRL;
+  62              		.loc 1 261 0
+  63 0028 184A     		ldr	r2, .L2+36
+  64 002a 1360     		str	r3, [r2]
+ 262:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_TX_FIFO_CTRL_REG = USB_UART_UART_DEFAULT_TX_FIFO_CTRL;
+  65              		.loc 1 262 0
+  66 002c 184B     		ldr	r3, .L2+40
+  67 002e 1C60     		str	r4, [r3]
+ 263:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 264:Generated_Source\PSoC4/USB_UART_UART.c ****     #if !(USB_UART_CY_SCBIP_V0 || USB_UART_CY_SCBIP_V1)
+ 265:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UART_FLOW_CTRL_REG = USB_UART_UART_DEFAULT_FLOW_CTRL;
+ 266:Generated_Source\PSoC4/USB_UART_UART.c ****     #endif /* !(USB_UART_CY_SCBIP_V0 || USB_UART_CY_SCBIP_V1) */
+ 267:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 268:Generated_Source\PSoC4/USB_UART_UART.c ****         /* Configure interrupt with UART handler but do not enable it */
+ 269:Generated_Source\PSoC4/USB_UART_UART.c ****     #if(USB_UART_SCB_IRQ_INTERNAL)
+ 270:Generated_Source\PSoC4/USB_UART_UART.c ****         CyIntDisable    (USB_UART_ISR_NUMBER);
+  68              		.loc 1 270 0
+  69 0030 0430     		adds	r0, r0, #4
+  70 0032 FFF7FEFF 		bl	CyIntDisable
+  71              	.LVL0:
+ 271:Generated_Source\PSoC4/USB_UART_UART.c ****         CyIntSetPriority(USB_UART_ISR_NUMBER, USB_UART_ISR_PRIORITY);
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 7
+
+
+  72              		.loc 1 271 0
+  73 0036 0321     		movs	r1, #3
+  74 0038 0B20     		movs	r0, #11
+  75 003a FFF7FEFF 		bl	CyIntSetPriority
+  76              	.LVL1:
+ 272:Generated_Source\PSoC4/USB_UART_UART.c ****         (void) CyIntSetVector(USB_UART_ISR_NUMBER, &USB_UART_SPI_UART_ISR);
+  77              		.loc 1 272 0
+  78 003e 1549     		ldr	r1, .L2+44
+  79 0040 0B20     		movs	r0, #11
+  80 0042 FFF7FEFF 		bl	CyIntSetVector
+  81              	.LVL2:
+ 273:Generated_Source\PSoC4/USB_UART_UART.c ****     #endif /* (USB_UART_SCB_IRQ_INTERNAL) */
+ 274:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 275:Generated_Source\PSoC4/USB_UART_UART.c ****         /* Configure WAKE interrupt */
+ 276:Generated_Source\PSoC4/USB_UART_UART.c ****     #if(USB_UART_UART_RX_WAKEUP_IRQ)
+ 277:Generated_Source\PSoC4/USB_UART_UART.c ****         CyIntDisable    (USB_UART_RX_WAKE_ISR_NUMBER);
+ 278:Generated_Source\PSoC4/USB_UART_UART.c ****         CyIntSetPriority(USB_UART_RX_WAKE_ISR_NUMBER, USB_UART_RX_WAKE_ISR_PRIORITY);
+ 279:Generated_Source\PSoC4/USB_UART_UART.c ****         (void) CyIntSetVector(USB_UART_RX_WAKE_ISR_NUMBER, &USB_UART_UART_WAKEUP_ISR);
+ 280:Generated_Source\PSoC4/USB_UART_UART.c ****     #endif /* (USB_UART_UART_RX_WAKEUP_IRQ) */
+ 281:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 282:Generated_Source\PSoC4/USB_UART_UART.c ****         /* Configure interrupt sources */
+ 283:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_INTR_I2C_EC_MASK_REG = USB_UART_UART_DEFAULT_INTR_I2C_EC_MASK;
+  82              		.loc 1 283 0
+  83 0046 144B     		ldr	r3, .L2+48
+  84 0048 1C60     		str	r4, [r3]
+ 284:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_INTR_SPI_EC_MASK_REG = USB_UART_UART_DEFAULT_INTR_SPI_EC_MASK;
+  85              		.loc 1 284 0
+  86 004a 144B     		ldr	r3, .L2+52
+  87 004c 1C60     		str	r4, [r3]
+ 285:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_INTR_SLAVE_MASK_REG  = USB_UART_UART_DEFAULT_INTR_SLAVE_MASK;
+  88              		.loc 1 285 0
+  89 004e 144B     		ldr	r3, .L2+56
+  90 0050 1C60     		str	r4, [r3]
+ 286:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_INTR_MASTER_MASK_REG = USB_UART_UART_DEFAULT_INTR_MASTER_MASK;
+  91              		.loc 1 286 0
+  92 0052 144B     		ldr	r3, .L2+60
+  93 0054 1C60     		str	r4, [r3]
+ 287:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_INTR_RX_MASK_REG     = USB_UART_UART_DEFAULT_INTR_RX_MASK;
+  94              		.loc 1 287 0
+  95 0056 144B     		ldr	r3, .L2+64
+  96 0058 1C60     		str	r4, [r3]
+ 288:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_INTR_TX_MASK_REG     = USB_UART_UART_DEFAULT_INTR_TX_MASK;
+  97              		.loc 1 288 0
+  98 005a 144B     		ldr	r3, .L2+68
+  99 005c 1C60     		str	r4, [r3]
+ 289:Generated_Source\PSoC4/USB_UART_UART.c ****     
+ 290:Generated_Source\PSoC4/USB_UART_UART.c ****         /* Configure TX interrupt sources to restore. */
+ 291:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_IntrTxMask = LO16(USB_UART_INTR_TX_MASK_REG);
+ 100              		.loc 1 291 0
+ 101 005e 1A68     		ldr	r2, [r3]
+ 102 0060 134B     		ldr	r3, .L2+72
+ 103 0062 1A80     		strh	r2, [r3]
+ 292:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 293:Generated_Source\PSoC4/USB_UART_UART.c ****     #if(USB_UART_INTERNAL_RX_SW_BUFFER_CONST)
+ 294:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_rxBufferHead     = 0u;
+ 295:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_rxBufferTail     = 0u;
+ 296:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_rxBufferOverflow = 0u;
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 8
+
+
+ 297:Generated_Source\PSoC4/USB_UART_UART.c ****     #endif /* (USB_UART_INTERNAL_RX_SW_BUFFER_CONST) */
+ 298:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 299:Generated_Source\PSoC4/USB_UART_UART.c ****     #if(USB_UART_INTERNAL_TX_SW_BUFFER_CONST)
+ 300:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_txBufferHead = 0u;
+ 301:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_txBufferTail = 0u;
+ 302:Generated_Source\PSoC4/USB_UART_UART.c ****     #endif /* (USB_UART_INTERNAL_TX_SW_BUFFER_CONST) */
+ 303:Generated_Source\PSoC4/USB_UART_UART.c ****     }
+ 104              		.loc 1 303 0
+ 105              		@ sp needed
+ 106 0064 10BD     		pop	{r4, pc}
+ 107              	.L3:
+ 108 0066 C046     		.align	2
+ 109              	.L2:
+ 110 0068 0B000002 		.word	33554443
+ 111 006c 00000740 		.word	1074200576
+ 112 0070 40000740 		.word	1074200640
+ 113 0074 48000740 		.word	1074200648
+ 114 0078 07000080 		.word	-2147483641
+ 115 007c 00030740 		.word	1074201344
+ 116 0080 04030740 		.word	1074201348
+ 117 0084 10030740 		.word	1074201360
+ 118 0088 44000740 		.word	1074200644
+ 119 008c 00020740 		.word	1074201088
+ 120 0090 04020740 		.word	1074201092
+ 121 0094 00000000 		.word	USB_UART_SPI_UART_ISR
+ 122 0098 880E0740 		.word	1074204296
+ 123 009c C80E0740 		.word	1074204360
+ 124 00a0 480F0740 		.word	1074204488
+ 125 00a4 080F0740 		.word	1074204424
+ 126 00a8 C80F0740 		.word	1074204616
+ 127 00ac 880F0740 		.word	1074204552
+ 128 00b0 00000000 		.word	USB_UART_IntrTxMask
+ 129              		.cfi_endproc
+ 130              	.LFE0:
+ 131              		.size	USB_UART_UartInit, .-USB_UART_UartInit
+ 132              		.section	.text.USB_UART_UartPostEnable,"ax",%progbits
+ 133              		.align	2
+ 134              		.global	USB_UART_UartPostEnable
+ 135              		.code	16
+ 136              		.thumb_func
+ 137              		.type	USB_UART_UartPostEnable, %function
+ 138              	USB_UART_UartPostEnable:
+ 139              	.LFB1:
+ 304:Generated_Source\PSoC4/USB_UART_UART.c **** #endif /* (USB_UART_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 305:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 306:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 307:Generated_Source\PSoC4/USB_UART_UART.c **** /*******************************************************************************
+ 308:Generated_Source\PSoC4/USB_UART_UART.c **** * Function Name: USB_UART_UartPostEnable
+ 309:Generated_Source\PSoC4/USB_UART_UART.c **** ****************************************************************************//**
+ 310:Generated_Source\PSoC4/USB_UART_UART.c **** *
+ 311:Generated_Source\PSoC4/USB_UART_UART.c **** *  Restores HSIOM settings for the UART output pins (TX and/or RTS) to be
+ 312:Generated_Source\PSoC4/USB_UART_UART.c **** *  controlled by the SCB UART.
+ 313:Generated_Source\PSoC4/USB_UART_UART.c **** *
+ 314:Generated_Source\PSoC4/USB_UART_UART.c **** *******************************************************************************/
+ 315:Generated_Source\PSoC4/USB_UART_UART.c **** void USB_UART_UartPostEnable(void)
+ 316:Generated_Source\PSoC4/USB_UART_UART.c **** {
+ 140              		.loc 1 316 0
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 9
+
+
+ 141              		.cfi_startproc
+ 142              		@ args = 0, pretend = 0, frame = 0
+ 143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144              		@ link register save eliminated.
+ 317:Generated_Source\PSoC4/USB_UART_UART.c **** #if (USB_UART_SCB_MODE_UNCONFIG_CONST_CFG)
+ 318:Generated_Source\PSoC4/USB_UART_UART.c ****     #if (USB_UART_TX_SDA_MISO_PIN)
+ 319:Generated_Source\PSoC4/USB_UART_UART.c ****         if (USB_UART_CHECK_TX_SDA_MISO_PIN_USED)
+ 320:Generated_Source\PSoC4/USB_UART_UART.c ****         {
+ 321:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Set SCB UART to drive the output pin */
+ 322:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_SET_HSIOM_SEL(USB_UART_TX_SDA_MISO_HSIOM_REG, USB_UART_TX_SDA_MISO_HSIOM_MASK,
+ 323:Generated_Source\PSoC4/USB_UART_UART.c ****                                            USB_UART_TX_SDA_MISO_HSIOM_POS, USB_UART_TX_SDA_MISO_HSI
+ 324:Generated_Source\PSoC4/USB_UART_UART.c ****         }
+ 325:Generated_Source\PSoC4/USB_UART_UART.c ****     #endif /* (USB_UART_TX_SDA_MISO_PIN_PIN) */
+ 326:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 327:Generated_Source\PSoC4/USB_UART_UART.c ****     #if !(USB_UART_CY_SCBIP_V0 || USB_UART_CY_SCBIP_V1)
+ 328:Generated_Source\PSoC4/USB_UART_UART.c ****         #if (USB_UART_SS0_PIN)
+ 329:Generated_Source\PSoC4/USB_UART_UART.c ****             if (USB_UART_CHECK_SS0_PIN_USED)
+ 330:Generated_Source\PSoC4/USB_UART_UART.c ****             {
+ 331:Generated_Source\PSoC4/USB_UART_UART.c ****                 /* Set SCB UART to drive the output pin */
+ 332:Generated_Source\PSoC4/USB_UART_UART.c ****                 USB_UART_SET_HSIOM_SEL(USB_UART_SS0_HSIOM_REG, USB_UART_SS0_HSIOM_MASK,
+ 333:Generated_Source\PSoC4/USB_UART_UART.c ****                                                USB_UART_SS0_HSIOM_POS, USB_UART_SS0_HSIOM_SEL_UART)
+ 334:Generated_Source\PSoC4/USB_UART_UART.c ****             }
+ 335:Generated_Source\PSoC4/USB_UART_UART.c ****         #endif /* (USB_UART_SS0_PIN) */
+ 336:Generated_Source\PSoC4/USB_UART_UART.c ****     #endif /* !(USB_UART_CY_SCBIP_V0 || USB_UART_CY_SCBIP_V1) */
+ 337:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 338:Generated_Source\PSoC4/USB_UART_UART.c **** #else
+ 339:Generated_Source\PSoC4/USB_UART_UART.c ****     #if (USB_UART_UART_TX_PIN)
+ 340:Generated_Source\PSoC4/USB_UART_UART.c ****          /* Set SCB UART to drive the output pin */
+ 341:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_SET_HSIOM_SEL(USB_UART_TX_HSIOM_REG, USB_UART_TX_HSIOM_MASK,
+ 145              		.loc 1 341 0
+ 146 0000 064A     		ldr	r2, .L5
+ 147 0002 1168     		ldr	r1, [r2]
+ 148 0004 064B     		ldr	r3, .L5+4
+ 149 0006 0B40     		ands	r3, r1
+ 150 0008 9021     		movs	r1, #144
+ 151 000a 0904     		lsls	r1, r1, #16
+ 152 000c 0B43     		orrs	r3, r1
+ 153 000e 1360     		str	r3, [r2]
+ 342:Generated_Source\PSoC4/USB_UART_UART.c ****                                        USB_UART_TX_HSIOM_POS, USB_UART_TX_HSIOM_SEL_UART);
+ 343:Generated_Source\PSoC4/USB_UART_UART.c ****     #endif /* (USB_UART_UART_TX_PIN) */
+ 344:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 345:Generated_Source\PSoC4/USB_UART_UART.c ****     #if (USB_UART_UART_RTS_PIN)
+ 346:Generated_Source\PSoC4/USB_UART_UART.c ****         /* Set SCB UART to drive the output pin */
+ 347:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_SET_HSIOM_SEL(USB_UART_RTS_HSIOM_REG, USB_UART_RTS_HSIOM_MASK,
+ 348:Generated_Source\PSoC4/USB_UART_UART.c ****                                        USB_UART_RTS_HSIOM_POS, USB_UART_RTS_HSIOM_SEL_UART);
+ 349:Generated_Source\PSoC4/USB_UART_UART.c ****     #endif /* (USB_UART_UART_RTS_PIN) */
+ 350:Generated_Source\PSoC4/USB_UART_UART.c **** #endif /* (USB_UART_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 351:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 352:Generated_Source\PSoC4/USB_UART_UART.c ****     /* Restore TX interrupt sources. */
+ 353:Generated_Source\PSoC4/USB_UART_UART.c ****     USB_UART_SetTxInterruptMode(USB_UART_IntrTxMask);
+ 154              		.loc 1 353 0
+ 155 0010 044B     		ldr	r3, .L5+8
+ 156 0012 1A88     		ldrh	r2, [r3]
+ 157 0014 044B     		ldr	r3, .L5+12
+ 158 0016 1A60     		str	r2, [r3]
+ 354:Generated_Source\PSoC4/USB_UART_UART.c **** }
+ 159              		.loc 1 354 0
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 10
+
+
+ 160              		@ sp needed
+ 161 0018 7047     		bx	lr
+ 162              	.L6:
+ 163 001a C046     		.align	2
+ 164              	.L5:
+ 165 001c 00000140 		.word	1073807360
+ 166 0020 FFFF0FFF 		.word	-15728641
+ 167 0024 00000000 		.word	USB_UART_IntrTxMask
+ 168 0028 880F0740 		.word	1074204552
+ 169              		.cfi_endproc
+ 170              	.LFE1:
+ 171              		.size	USB_UART_UartPostEnable, .-USB_UART_UartPostEnable
+ 172              		.section	.text.USB_UART_UartStop,"ax",%progbits
+ 173              		.align	2
+ 174              		.global	USB_UART_UartStop
+ 175              		.code	16
+ 176              		.thumb_func
+ 177              		.type	USB_UART_UartStop, %function
+ 178              	USB_UART_UartStop:
+ 179              	.LFB2:
+ 355:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 356:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 357:Generated_Source\PSoC4/USB_UART_UART.c **** /*******************************************************************************
+ 358:Generated_Source\PSoC4/USB_UART_UART.c **** * Function Name: USB_UART_UartStop
+ 359:Generated_Source\PSoC4/USB_UART_UART.c **** ****************************************************************************//**
+ 360:Generated_Source\PSoC4/USB_UART_UART.c **** *
+ 361:Generated_Source\PSoC4/USB_UART_UART.c **** *  Changes the HSIOM settings for the UART output pins (TX and/or RTS) to keep
+ 362:Generated_Source\PSoC4/USB_UART_UART.c **** *  them inactive after the block is disabled. The output pins are controlled by
+ 363:Generated_Source\PSoC4/USB_UART_UART.c **** *  the GPIO data register. Also, the function disables the skip start feature
+ 364:Generated_Source\PSoC4/USB_UART_UART.c **** *  to not cause it to trigger after the component is enabled.
+ 365:Generated_Source\PSoC4/USB_UART_UART.c **** *
+ 366:Generated_Source\PSoC4/USB_UART_UART.c **** *******************************************************************************/
+ 367:Generated_Source\PSoC4/USB_UART_UART.c **** void USB_UART_UartStop(void)
+ 368:Generated_Source\PSoC4/USB_UART_UART.c **** {
+ 180              		.loc 1 368 0
+ 181              		.cfi_startproc
+ 182              		@ args = 0, pretend = 0, frame = 0
+ 183              		@ frame_needed = 0, uses_anonymous_args = 0
+ 184              		@ link register save eliminated.
+ 369:Generated_Source\PSoC4/USB_UART_UART.c **** #if(USB_UART_SCB_MODE_UNCONFIG_CONST_CFG)
+ 370:Generated_Source\PSoC4/USB_UART_UART.c ****     #if (USB_UART_TX_SDA_MISO_PIN)
+ 371:Generated_Source\PSoC4/USB_UART_UART.c ****         if (USB_UART_CHECK_TX_SDA_MISO_PIN_USED)
+ 372:Generated_Source\PSoC4/USB_UART_UART.c ****         {
+ 373:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Set GPIO to drive output pin */
+ 374:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_SET_HSIOM_SEL(USB_UART_TX_SDA_MISO_HSIOM_REG, USB_UART_TX_SDA_MISO_HSIOM_MASK,
+ 375:Generated_Source\PSoC4/USB_UART_UART.c ****                                            USB_UART_TX_SDA_MISO_HSIOM_POS, USB_UART_TX_SDA_MISO_HSI
+ 376:Generated_Source\PSoC4/USB_UART_UART.c ****         }
+ 377:Generated_Source\PSoC4/USB_UART_UART.c ****     #endif /* (USB_UART_TX_SDA_MISO_PIN_PIN) */
+ 378:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 379:Generated_Source\PSoC4/USB_UART_UART.c ****     #if !(USB_UART_CY_SCBIP_V0 || USB_UART_CY_SCBIP_V1)
+ 380:Generated_Source\PSoC4/USB_UART_UART.c ****         #if (USB_UART_SS0_PIN)
+ 381:Generated_Source\PSoC4/USB_UART_UART.c ****             if (USB_UART_CHECK_SS0_PIN_USED)
+ 382:Generated_Source\PSoC4/USB_UART_UART.c ****             {
+ 383:Generated_Source\PSoC4/USB_UART_UART.c ****                 /* Set output pin state after block is disabled */
+ 384:Generated_Source\PSoC4/USB_UART_UART.c ****                 USB_UART_spi_ss0_Write(USB_UART_GET_UART_RTS_INACTIVE);
+ 385:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 386:Generated_Source\PSoC4/USB_UART_UART.c ****                 /* Set GPIO to drive output pin */
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 11
+
+
+ 387:Generated_Source\PSoC4/USB_UART_UART.c ****                 USB_UART_SET_HSIOM_SEL(USB_UART_SS0_HSIOM_REG, USB_UART_SS0_HSIOM_MASK,
+ 388:Generated_Source\PSoC4/USB_UART_UART.c ****                                                USB_UART_SS0_HSIOM_POS, USB_UART_SS0_HSIOM_SEL_GPIO)
+ 389:Generated_Source\PSoC4/USB_UART_UART.c ****             }
+ 390:Generated_Source\PSoC4/USB_UART_UART.c ****         #endif /* (USB_UART_SS0_PIN) */
+ 391:Generated_Source\PSoC4/USB_UART_UART.c ****     #endif /* !(USB_UART_CY_SCBIP_V0 || USB_UART_CY_SCBIP_V1) */
+ 392:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 393:Generated_Source\PSoC4/USB_UART_UART.c **** #else
+ 394:Generated_Source\PSoC4/USB_UART_UART.c ****     #if (USB_UART_UART_TX_PIN)
+ 395:Generated_Source\PSoC4/USB_UART_UART.c ****         /* Set GPIO to drive output pin */
+ 396:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_SET_HSIOM_SEL(USB_UART_TX_HSIOM_REG, USB_UART_TX_HSIOM_MASK,
+ 185              		.loc 1 396 0
+ 186 0000 064A     		ldr	r2, .L8
+ 187 0002 1168     		ldr	r1, [r2]
+ 188 0004 064B     		ldr	r3, .L8+4
+ 189 0006 0B40     		ands	r3, r1
+ 190 0008 1360     		str	r3, [r2]
+ 397:Generated_Source\PSoC4/USB_UART_UART.c ****                                        USB_UART_TX_HSIOM_POS, USB_UART_TX_HSIOM_SEL_GPIO);
+ 398:Generated_Source\PSoC4/USB_UART_UART.c ****     #endif /* (USB_UART_UART_TX_PIN) */
+ 399:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 400:Generated_Source\PSoC4/USB_UART_UART.c ****     #if (USB_UART_UART_RTS_PIN)
+ 401:Generated_Source\PSoC4/USB_UART_UART.c ****         /* Set output pin state after block is disabled */
+ 402:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_rts_Write(USB_UART_GET_UART_RTS_INACTIVE);
+ 403:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 404:Generated_Source\PSoC4/USB_UART_UART.c ****         /* Set GPIO to drive output pin */
+ 405:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_SET_HSIOM_SEL(USB_UART_RTS_HSIOM_REG, USB_UART_RTS_HSIOM_MASK,
+ 406:Generated_Source\PSoC4/USB_UART_UART.c ****                                        USB_UART_RTS_HSIOM_POS, USB_UART_RTS_HSIOM_SEL_GPIO);
+ 407:Generated_Source\PSoC4/USB_UART_UART.c ****     #endif /* (USB_UART_UART_RTS_PIN) */
+ 408:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 409:Generated_Source\PSoC4/USB_UART_UART.c **** #endif /* (USB_UART_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 410:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 411:Generated_Source\PSoC4/USB_UART_UART.c **** #if (USB_UART_UART_WAKE_ENABLE_CONST)
+ 412:Generated_Source\PSoC4/USB_UART_UART.c ****     /* Disable skip start feature used for wakeup */
+ 413:Generated_Source\PSoC4/USB_UART_UART.c ****     USB_UART_UART_RX_CTRL_REG &= (uint32) ~USB_UART_UART_RX_CTRL_SKIP_START;
+ 414:Generated_Source\PSoC4/USB_UART_UART.c **** #endif /* (USB_UART_UART_WAKE_ENABLE_CONST) */
+ 415:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 416:Generated_Source\PSoC4/USB_UART_UART.c ****     /* Store TX interrupt sources (exclude level triggered). */
+ 417:Generated_Source\PSoC4/USB_UART_UART.c ****     USB_UART_IntrTxMask = LO16(USB_UART_GetTxInterruptMode() & USB_UART_INTR_UART_TX_RESTORE);
+ 191              		.loc 1 417 0
+ 192 000a 064B     		ldr	r3, .L8+8
+ 193 000c 1A68     		ldr	r2, [r3]
+ 194 000e E423     		movs	r3, #228
+ 195 0010 DB00     		lsls	r3, r3, #3
+ 196 0012 1340     		ands	r3, r2
+ 197 0014 044A     		ldr	r2, .L8+12
+ 198 0016 1380     		strh	r3, [r2]
+ 418:Generated_Source\PSoC4/USB_UART_UART.c **** }
+ 199              		.loc 1 418 0
+ 200              		@ sp needed
+ 201 0018 7047     		bx	lr
+ 202              	.L9:
+ 203 001a C046     		.align	2
+ 204              	.L8:
+ 205 001c 00000140 		.word	1073807360
+ 206 0020 FFFF0FFF 		.word	-15728641
+ 207 0024 880F0740 		.word	1074204552
+ 208 0028 00000000 		.word	USB_UART_IntrTxMask
+ 209              		.cfi_endproc
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 12
+
+
+ 210              	.LFE2:
+ 211              		.size	USB_UART_UartStop, .-USB_UART_UartStop
+ 212              		.section	.text.USB_UART_UartSetRxAddress,"ax",%progbits
+ 213              		.align	2
+ 214              		.global	USB_UART_UartSetRxAddress
+ 215              		.code	16
+ 216              		.thumb_func
+ 217              		.type	USB_UART_UartSetRxAddress, %function
+ 218              	USB_UART_UartSetRxAddress:
+ 219              	.LFB3:
+ 419:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 420:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 421:Generated_Source\PSoC4/USB_UART_UART.c **** /*******************************************************************************
+ 422:Generated_Source\PSoC4/USB_UART_UART.c **** * Function Name: USB_UART_UartSetRxAddress
+ 423:Generated_Source\PSoC4/USB_UART_UART.c **** ****************************************************************************//**
+ 424:Generated_Source\PSoC4/USB_UART_UART.c **** *
+ 425:Generated_Source\PSoC4/USB_UART_UART.c **** *  Sets the hardware detectable receiver address for the UART in the
+ 426:Generated_Source\PSoC4/USB_UART_UART.c **** *  Multiprocessor mode.
+ 427:Generated_Source\PSoC4/USB_UART_UART.c **** *
+ 428:Generated_Source\PSoC4/USB_UART_UART.c **** *  \param address: Address for hardware address detection.
+ 429:Generated_Source\PSoC4/USB_UART_UART.c **** *
+ 430:Generated_Source\PSoC4/USB_UART_UART.c **** *******************************************************************************/
+ 431:Generated_Source\PSoC4/USB_UART_UART.c **** void USB_UART_UartSetRxAddress(uint32 address)
+ 432:Generated_Source\PSoC4/USB_UART_UART.c **** {
+ 220              		.loc 1 432 0
+ 221              		.cfi_startproc
+ 222              		@ args = 0, pretend = 0, frame = 0
+ 223              		@ frame_needed = 0, uses_anonymous_args = 0
+ 224              		@ link register save eliminated.
+ 225              	.LVL3:
+ 433:Generated_Source\PSoC4/USB_UART_UART.c ****      uint32 matchReg;
+ 434:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 435:Generated_Source\PSoC4/USB_UART_UART.c ****     matchReg = USB_UART_RX_MATCH_REG;
+ 226              		.loc 1 435 0
+ 227 0000 034A     		ldr	r2, .L11
+ 228 0002 1368     		ldr	r3, [r2]
+ 229              	.LVL4:
+ 436:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 437:Generated_Source\PSoC4/USB_UART_UART.c ****     matchReg &= ((uint32) ~USB_UART_RX_MATCH_ADDR_MASK); /* Clear address bits */
+ 230              		.loc 1 437 0
+ 231 0004 FF21     		movs	r1, #255
+ 232 0006 8B43     		bics	r3, r1
+ 233              	.LVL5:
+ 438:Generated_Source\PSoC4/USB_UART_UART.c ****     matchReg |= ((uint32)  (address & USB_UART_RX_MATCH_ADDR_MASK)); /* Set address  */
+ 234              		.loc 1 438 0
+ 235 0008 0840     		ands	r0, r1
+ 236              	.LVL6:
+ 237 000a 1843     		orrs	r0, r3
+ 238              	.LVL7:
+ 439:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 440:Generated_Source\PSoC4/USB_UART_UART.c ****     USB_UART_RX_MATCH_REG = matchReg;
+ 239              		.loc 1 440 0
+ 240 000c 1060     		str	r0, [r2]
+ 441:Generated_Source\PSoC4/USB_UART_UART.c **** }
+ 241              		.loc 1 441 0
+ 242              		@ sp needed
+ 243 000e 7047     		bx	lr
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 13
+
+
+ 244              	.L12:
+ 245              		.align	2
+ 246              	.L11:
+ 247 0010 10030740 		.word	1074201360
+ 248              		.cfi_endproc
+ 249              	.LFE3:
+ 250              		.size	USB_UART_UartSetRxAddress, .-USB_UART_UartSetRxAddress
+ 251              		.section	.text.USB_UART_UartSetRxAddressMask,"ax",%progbits
+ 252              		.align	2
+ 253              		.global	USB_UART_UartSetRxAddressMask
+ 254              		.code	16
+ 255              		.thumb_func
+ 256              		.type	USB_UART_UartSetRxAddressMask, %function
+ 257              	USB_UART_UartSetRxAddressMask:
+ 258              	.LFB4:
+ 442:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 443:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 444:Generated_Source\PSoC4/USB_UART_UART.c **** /*******************************************************************************
+ 445:Generated_Source\PSoC4/USB_UART_UART.c **** * Function Name: USB_UART_UartSetRxAddressMask
+ 446:Generated_Source\PSoC4/USB_UART_UART.c **** ****************************************************************************//**
+ 447:Generated_Source\PSoC4/USB_UART_UART.c **** *
+ 448:Generated_Source\PSoC4/USB_UART_UART.c **** *  Sets the hardware address mask for the UART in the Multiprocessor mode.
+ 449:Generated_Source\PSoC4/USB_UART_UART.c **** *
+ 450:Generated_Source\PSoC4/USB_UART_UART.c **** *  \param addressMask: Address mask.
+ 451:Generated_Source\PSoC4/USB_UART_UART.c **** *   - Bit value 0 – excludes bit from address comparison.
+ 452:Generated_Source\PSoC4/USB_UART_UART.c **** *   - Bit value 1 – the bit needs to match with the corresponding bit
+ 453:Generated_Source\PSoC4/USB_UART_UART.c **** *     of the address.
+ 454:Generated_Source\PSoC4/USB_UART_UART.c **** *
+ 455:Generated_Source\PSoC4/USB_UART_UART.c **** *******************************************************************************/
+ 456:Generated_Source\PSoC4/USB_UART_UART.c **** void USB_UART_UartSetRxAddressMask(uint32 addressMask)
+ 457:Generated_Source\PSoC4/USB_UART_UART.c **** {
+ 259              		.loc 1 457 0
+ 260              		.cfi_startproc
+ 261              		@ args = 0, pretend = 0, frame = 0
+ 262              		@ frame_needed = 0, uses_anonymous_args = 0
+ 263              		@ link register save eliminated.
+ 264              	.LVL8:
+ 458:Generated_Source\PSoC4/USB_UART_UART.c ****     uint32 matchReg;
+ 459:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 460:Generated_Source\PSoC4/USB_UART_UART.c ****     matchReg = USB_UART_RX_MATCH_REG;
+ 265              		.loc 1 460 0
+ 266 0000 034A     		ldr	r2, .L14
+ 267 0002 1168     		ldr	r1, [r2]
+ 268              	.LVL9:
+ 461:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 462:Generated_Source\PSoC4/USB_UART_UART.c ****     matchReg &= ((uint32) ~USB_UART_RX_MATCH_MASK_MASK); /* Clear address mask bits */
+ 269              		.loc 1 462 0
+ 270 0004 034B     		ldr	r3, .L14+4
+ 271 0006 0B40     		ands	r3, r1
+ 272              	.LVL10:
+ 463:Generated_Source\PSoC4/USB_UART_UART.c ****     matchReg |= ((uint32) (addressMask << USB_UART_RX_MATCH_MASK_POS));
+ 273              		.loc 1 463 0
+ 274 0008 0004     		lsls	r0, r0, #16
+ 275              	.LVL11:
+ 276 000a 1843     		orrs	r0, r3
+ 277              	.LVL12:
+ 464:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 14
+
+
+ 465:Generated_Source\PSoC4/USB_UART_UART.c ****     USB_UART_RX_MATCH_REG = matchReg;
+ 278              		.loc 1 465 0
+ 279 000c 1060     		str	r0, [r2]
+ 466:Generated_Source\PSoC4/USB_UART_UART.c **** }
+ 280              		.loc 1 466 0
+ 281              		@ sp needed
+ 282 000e 7047     		bx	lr
+ 283              	.L15:
+ 284              		.align	2
+ 285              	.L14:
+ 286 0010 10030740 		.word	1074201360
+ 287 0014 FFFF00FF 		.word	-16711681
+ 288              		.cfi_endproc
+ 289              	.LFE4:
+ 290              		.size	USB_UART_UartSetRxAddressMask, .-USB_UART_UartSetRxAddressMask
+ 291              		.section	.text.USB_UART_UartGetChar,"ax",%progbits
+ 292              		.align	2
+ 293              		.global	USB_UART_UartGetChar
+ 294              		.code	16
+ 295              		.thumb_func
+ 296              		.type	USB_UART_UartGetChar, %function
+ 297              	USB_UART_UartGetChar:
+ 298              	.LFB5:
+ 467:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 468:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 469:Generated_Source\PSoC4/USB_UART_UART.c **** #if(USB_UART_UART_RX_DIRECTION)
+ 470:Generated_Source\PSoC4/USB_UART_UART.c ****     /*******************************************************************************
+ 471:Generated_Source\PSoC4/USB_UART_UART.c ****     * Function Name: USB_UART_UartGetChar
+ 472:Generated_Source\PSoC4/USB_UART_UART.c ****     ****************************************************************************//**
+ 473:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+ 474:Generated_Source\PSoC4/USB_UART_UART.c ****     *  Retrieves next data element from receive buffer.
+ 475:Generated_Source\PSoC4/USB_UART_UART.c ****     *  This function is designed for ASCII characters and returns a char where
+ 476:Generated_Source\PSoC4/USB_UART_UART.c ****     *  1 to 255 are valid characters and 0 indicates an error occurred or no data
+ 477:Generated_Source\PSoC4/USB_UART_UART.c ****     *  is present.
+ 478:Generated_Source\PSoC4/USB_UART_UART.c ****     *  - RX software buffer is disabled: Returns data element retrieved from RX
+ 479:Generated_Source\PSoC4/USB_UART_UART.c ****     *    FIFO.
+ 480:Generated_Source\PSoC4/USB_UART_UART.c ****     *  - RX software buffer is enabled: Returns data element from the software
+ 481:Generated_Source\PSoC4/USB_UART_UART.c ****     *    receive buffer.
+ 482:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+ 483:Generated_Source\PSoC4/USB_UART_UART.c ****     *  \return
+ 484:Generated_Source\PSoC4/USB_UART_UART.c ****     *   Next data element from the receive buffer. ASCII character values from
+ 485:Generated_Source\PSoC4/USB_UART_UART.c ****     *   1 to 255 are valid. A returned zero signifies an error condition or no
+ 486:Generated_Source\PSoC4/USB_UART_UART.c ****     *   data available.
+ 487:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+ 488:Generated_Source\PSoC4/USB_UART_UART.c ****     *  \sideeffect
+ 489:Generated_Source\PSoC4/USB_UART_UART.c ****     *   The errors bits may not correspond with reading characters due to
+ 490:Generated_Source\PSoC4/USB_UART_UART.c ****     *   RX FIFO and software buffer usage.
+ 491:Generated_Source\PSoC4/USB_UART_UART.c ****     *   RX software buffer is enabled: The internal software buffer overflow
+ 492:Generated_Source\PSoC4/USB_UART_UART.c ****     *   is not treated as an error condition.
+ 493:Generated_Source\PSoC4/USB_UART_UART.c ****     *   Check USB_UART_rxBufferOverflow to capture that error condition.
+ 494:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+ 495:Generated_Source\PSoC4/USB_UART_UART.c ****     *******************************************************************************/
+ 496:Generated_Source\PSoC4/USB_UART_UART.c ****     uint32 USB_UART_UartGetChar(void)
+ 497:Generated_Source\PSoC4/USB_UART_UART.c ****     {
+ 299              		.loc 1 497 0
+ 300              		.cfi_startproc
+ 301              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 15
+
+
+ 302              		@ frame_needed = 0, uses_anonymous_args = 0
+ 303 0000 10B5     		push	{r4, lr}
+ 304              		.cfi_def_cfa_offset 8
+ 305              		.cfi_offset 4, -8
+ 306              		.cfi_offset 14, -4
+ 307              	.LVL13:
+ 498:Generated_Source\PSoC4/USB_UART_UART.c ****         uint32 rxData = 0u;
+ 499:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 500:Generated_Source\PSoC4/USB_UART_UART.c ****         /* Reads data only if there is data to read */
+ 501:Generated_Source\PSoC4/USB_UART_UART.c ****         if (0u != USB_UART_SpiUartGetRxBufferSize())
+ 308              		.loc 1 501 0
+ 309 0002 FFF7FEFF 		bl	USB_UART_SpiUartGetRxBufferSize
+ 310              	.LVL14:
+ 311 0006 0028     		cmp	r0, #0
+ 312 0008 02D0     		beq	.L19
+ 502:Generated_Source\PSoC4/USB_UART_UART.c ****         {
+ 503:Generated_Source\PSoC4/USB_UART_UART.c ****             rxData = USB_UART_SpiUartReadRxData();
+ 313              		.loc 1 503 0
+ 314 000a FFF7FEFF 		bl	USB_UART_SpiUartReadRxData
+ 315              	.LVL15:
+ 316 000e 00E0     		b	.L17
+ 317              	.LVL16:
+ 318              	.L19:
+ 498:Generated_Source\PSoC4/USB_UART_UART.c ****         uint32 rxData = 0u;
+ 319              		.loc 1 498 0
+ 320 0010 0020     		movs	r0, #0
+ 321              	.LVL17:
+ 322              	.L17:
+ 504:Generated_Source\PSoC4/USB_UART_UART.c ****         }
+ 505:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 506:Generated_Source\PSoC4/USB_UART_UART.c ****         if (USB_UART_CHECK_INTR_RX(USB_UART_INTR_RX_ERR))
+ 323              		.loc 1 506 0
+ 324 0012 054B     		ldr	r3, .L20
+ 325 0014 1A68     		ldr	r2, [r3]
+ 326 0016 D823     		movs	r3, #216
+ 327 0018 9B00     		lsls	r3, r3, #2
+ 328 001a 1A42     		tst	r2, r3
+ 329 001c 03D0     		beq	.L18
+ 330              	.LVL18:
+ 507:Generated_Source\PSoC4/USB_UART_UART.c ****         {
+ 508:Generated_Source\PSoC4/USB_UART_UART.c ****             rxData = 0u; /* Error occurred: returns zero */
+ 509:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_ClearRxInterruptSource(USB_UART_INTR_RX_ERR);
+ 331              		.loc 1 509 0
+ 332 001e 1A00     		movs	r2, r3
+ 333 0020 014B     		ldr	r3, .L20
+ 334 0022 1A60     		str	r2, [r3]
+ 508:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_ClearRxInterruptSource(USB_UART_INTR_RX_ERR);
+ 335              		.loc 1 508 0
+ 336 0024 0020     		movs	r0, #0
+ 337              	.LVL19:
+ 338              	.L18:
+ 510:Generated_Source\PSoC4/USB_UART_UART.c ****         }
+ 511:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 512:Generated_Source\PSoC4/USB_UART_UART.c ****         return (rxData);
+ 513:Generated_Source\PSoC4/USB_UART_UART.c ****     }
+ 339              		.loc 1 513 0
+ 340              		@ sp needed
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 16
+
+
+ 341 0026 10BD     		pop	{r4, pc}
+ 342              	.L21:
+ 343              		.align	2
+ 344              	.L20:
+ 345 0028 C00F0740 		.word	1074204608
+ 346              		.cfi_endproc
+ 347              	.LFE5:
+ 348              		.size	USB_UART_UartGetChar, .-USB_UART_UartGetChar
+ 349              		.section	.text.USB_UART_UartGetByte,"ax",%progbits
+ 350              		.align	2
+ 351              		.global	USB_UART_UartGetByte
+ 352              		.code	16
+ 353              		.thumb_func
+ 354              		.type	USB_UART_UartGetByte, %function
+ 355              	USB_UART_UartGetByte:
+ 356              	.LFB6:
+ 514:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 515:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 516:Generated_Source\PSoC4/USB_UART_UART.c ****     /*******************************************************************************
+ 517:Generated_Source\PSoC4/USB_UART_UART.c ****     * Function Name: USB_UART_UartGetByte
+ 518:Generated_Source\PSoC4/USB_UART_UART.c ****     ****************************************************************************//**
+ 519:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+ 520:Generated_Source\PSoC4/USB_UART_UART.c ****     *  Retrieves the next data element from the receive buffer, returns the
+ 521:Generated_Source\PSoC4/USB_UART_UART.c ****     *  received byte and error condition.
+ 522:Generated_Source\PSoC4/USB_UART_UART.c ****     *   - The RX software buffer is disabled: returns the data element retrieved
+ 523:Generated_Source\PSoC4/USB_UART_UART.c ****     *     from the RX FIFO. Undefined data will be returned if the RX FIFO is
+ 524:Generated_Source\PSoC4/USB_UART_UART.c ****     *     empty.
+ 525:Generated_Source\PSoC4/USB_UART_UART.c ****     *   - The RX software buffer is enabled: returns data element from the
+ 526:Generated_Source\PSoC4/USB_UART_UART.c ****     *     software receive buffer.
+ 527:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+ 528:Generated_Source\PSoC4/USB_UART_UART.c ****     *  \return
+ 529:Generated_Source\PSoC4/USB_UART_UART.c ****     *   Bits 7-0 contain the next data element from the receive buffer and
+ 530:Generated_Source\PSoC4/USB_UART_UART.c ****     *   other bits contain the error condition.
+ 531:Generated_Source\PSoC4/USB_UART_UART.c ****     *   - USB_UART_UART_RX_OVERFLOW - Attempt to write to a full
+ 532:Generated_Source\PSoC4/USB_UART_UART.c ****     *     receiver FIFO.
+ 533:Generated_Source\PSoC4/USB_UART_UART.c ****     *   - USB_UART_UART_RX_UNDERFLOW	Attempt to read from an empty
+ 534:Generated_Source\PSoC4/USB_UART_UART.c ****     *     receiver FIFO.
+ 535:Generated_Source\PSoC4/USB_UART_UART.c ****     *   - USB_UART_UART_RX_FRAME_ERROR - UART framing error detected.
+ 536:Generated_Source\PSoC4/USB_UART_UART.c ****     *   - USB_UART_UART_RX_PARITY_ERROR - UART parity error detected.
+ 537:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+ 538:Generated_Source\PSoC4/USB_UART_UART.c ****     *  \sideeffect
+ 539:Generated_Source\PSoC4/USB_UART_UART.c ****     *   The errors bits may not correspond with reading characters due to
+ 540:Generated_Source\PSoC4/USB_UART_UART.c ****     *   RX FIFO and software buffer usage.
+ 541:Generated_Source\PSoC4/USB_UART_UART.c ****     *   RX software buffer is enabled: The internal software buffer overflow
+ 542:Generated_Source\PSoC4/USB_UART_UART.c ****     *   is not treated as an error condition.
+ 543:Generated_Source\PSoC4/USB_UART_UART.c ****     *   Check USB_UART_rxBufferOverflow to capture that error condition.
+ 544:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+ 545:Generated_Source\PSoC4/USB_UART_UART.c ****     *******************************************************************************/
+ 546:Generated_Source\PSoC4/USB_UART_UART.c ****     uint32 USB_UART_UartGetByte(void)
+ 547:Generated_Source\PSoC4/USB_UART_UART.c ****     {
+ 357              		.loc 1 547 0
+ 358              		.cfi_startproc
+ 359              		@ args = 0, pretend = 0, frame = 0
+ 360              		@ frame_needed = 0, uses_anonymous_args = 0
+ 361 0000 10B5     		push	{r4, lr}
+ 362              		.cfi_def_cfa_offset 8
+ 363              		.cfi_offset 4, -8
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 17
+
+
+ 364              		.cfi_offset 14, -4
+ 548:Generated_Source\PSoC4/USB_UART_UART.c ****         uint32 rxData;
+ 549:Generated_Source\PSoC4/USB_UART_UART.c ****         uint32 tmpStatus;
+ 550:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 551:Generated_Source\PSoC4/USB_UART_UART.c ****         #if (USB_UART_CHECK_RX_SW_BUFFER)
+ 552:Generated_Source\PSoC4/USB_UART_UART.c ****         {
+ 553:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_DisableInt();
+ 554:Generated_Source\PSoC4/USB_UART_UART.c ****         }
+ 555:Generated_Source\PSoC4/USB_UART_UART.c ****         #endif
+ 556:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 557:Generated_Source\PSoC4/USB_UART_UART.c ****         if (0u != USB_UART_SpiUartGetRxBufferSize())
+ 365              		.loc 1 557 0
+ 366 0002 FFF7FEFF 		bl	USB_UART_SpiUartGetRxBufferSize
+ 367              	.LVL20:
+ 368 0006 0028     		cmp	r0, #0
+ 369 0008 02D0     		beq	.L23
+ 558:Generated_Source\PSoC4/USB_UART_UART.c ****         {
+ 559:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Enables interrupt to receive more bytes: at least one byte is in
+ 560:Generated_Source\PSoC4/USB_UART_UART.c ****             * buffer.
+ 561:Generated_Source\PSoC4/USB_UART_UART.c ****             */
+ 562:Generated_Source\PSoC4/USB_UART_UART.c ****             #if (USB_UART_CHECK_RX_SW_BUFFER)
+ 563:Generated_Source\PSoC4/USB_UART_UART.c ****             {
+ 564:Generated_Source\PSoC4/USB_UART_UART.c ****                 USB_UART_EnableInt();
+ 565:Generated_Source\PSoC4/USB_UART_UART.c ****             }
+ 566:Generated_Source\PSoC4/USB_UART_UART.c ****             #endif
+ 567:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 568:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Get received byte */
+ 569:Generated_Source\PSoC4/USB_UART_UART.c ****             rxData = USB_UART_SpiUartReadRxData();
+ 370              		.loc 1 569 0
+ 371 000a FFF7FEFF 		bl	USB_UART_SpiUartReadRxData
+ 372              	.LVL21:
+ 373 000e 01E0     		b	.L24
+ 374              	.LVL22:
+ 375              	.L23:
+ 570:Generated_Source\PSoC4/USB_UART_UART.c ****         }
+ 571:Generated_Source\PSoC4/USB_UART_UART.c ****         else
+ 572:Generated_Source\PSoC4/USB_UART_UART.c ****         {
+ 573:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Reads a byte directly from RX FIFO: underflow is raised in the
+ 574:Generated_Source\PSoC4/USB_UART_UART.c ****             * case of empty. Otherwise the first received byte will be read.
+ 575:Generated_Source\PSoC4/USB_UART_UART.c ****             */
+ 576:Generated_Source\PSoC4/USB_UART_UART.c ****             rxData = USB_UART_RX_FIFO_RD_REG;
+ 376              		.loc 1 576 0
+ 377 0010 064B     		ldr	r3, .L25
+ 378 0012 1868     		ldr	r0, [r3]
+ 379              	.LVL23:
+ 380              	.L24:
+ 577:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 578:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 579:Generated_Source\PSoC4/USB_UART_UART.c ****             /* Enables interrupt to receive more bytes. */
+ 580:Generated_Source\PSoC4/USB_UART_UART.c ****             #if (USB_UART_CHECK_RX_SW_BUFFER)
+ 581:Generated_Source\PSoC4/USB_UART_UART.c ****             {
+ 582:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 583:Generated_Source\PSoC4/USB_UART_UART.c ****                 /* The byte has been read from RX FIFO. Clear RX interrupt to
+ 584:Generated_Source\PSoC4/USB_UART_UART.c ****                 * not involve interrupt handler when RX FIFO is empty.
+ 585:Generated_Source\PSoC4/USB_UART_UART.c ****                 */
+ 586:Generated_Source\PSoC4/USB_UART_UART.c ****                 USB_UART_ClearRxInterruptSource(USB_UART_INTR_RX_NOT_EMPTY);
+ 587:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 18
+
+
+ 588:Generated_Source\PSoC4/USB_UART_UART.c ****                 USB_UART_EnableInt();
+ 589:Generated_Source\PSoC4/USB_UART_UART.c ****             }
+ 590:Generated_Source\PSoC4/USB_UART_UART.c ****             #endif
+ 591:Generated_Source\PSoC4/USB_UART_UART.c ****         }
+ 592:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 593:Generated_Source\PSoC4/USB_UART_UART.c ****         /* Get and clear RX error mask */
+ 594:Generated_Source\PSoC4/USB_UART_UART.c ****         tmpStatus = (USB_UART_GetRxInterruptSource() & USB_UART_INTR_RX_ERR);
+ 381              		.loc 1 594 0
+ 382 0014 064A     		ldr	r2, .L25+4
+ 383 0016 1368     		ldr	r3, [r2]
+ 384              	.LVL24:
+ 595:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_ClearRxInterruptSource(USB_UART_INTR_RX_ERR);
+ 385              		.loc 1 595 0
+ 386 0018 D821     		movs	r1, #216
+ 387 001a 8900     		lsls	r1, r1, #2
+ 388 001c 1160     		str	r1, [r2]
+ 596:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 597:Generated_Source\PSoC4/USB_UART_UART.c ****         /* Puts together data and error status:
+ 598:Generated_Source\PSoC4/USB_UART_UART.c ****         * MP mode and accept address: 9th bit is set to notify mark.
+ 599:Generated_Source\PSoC4/USB_UART_UART.c ****         */
+ 600:Generated_Source\PSoC4/USB_UART_UART.c ****         rxData |= ((uint32) (tmpStatus << 8u));
+ 389              		.loc 1 600 0
+ 390 001e 1B02     		lsls	r3, r3, #8
+ 391              	.LVL25:
+ 392 0020 D822     		movs	r2, #216
+ 393 0022 9202     		lsls	r2, r2, #10
+ 394 0024 1340     		ands	r3, r2
+ 395 0026 1843     		orrs	r0, r3
+ 396              	.LVL26:
+ 601:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 602:Generated_Source\PSoC4/USB_UART_UART.c ****         return (rxData);
+ 603:Generated_Source\PSoC4/USB_UART_UART.c ****     }
+ 397              		.loc 1 603 0
+ 398              		@ sp needed
+ 399 0028 10BD     		pop	{r4, pc}
+ 400              	.L26:
+ 401 002a C046     		.align	2
+ 402              	.L25:
+ 403 002c 40030740 		.word	1074201408
+ 404 0030 C00F0740 		.word	1074204608
+ 405              		.cfi_endproc
+ 406              	.LFE6:
+ 407              		.size	USB_UART_UartGetByte, .-USB_UART_UartGetByte
+ 408              		.section	.text.USB_UART_UartPutString,"ax",%progbits
+ 409              		.align	2
+ 410              		.global	USB_UART_UartPutString
+ 411              		.code	16
+ 412              		.thumb_func
+ 413              		.type	USB_UART_UartPutString, %function
+ 414              	USB_UART_UartPutString:
+ 415              	.LFB7:
+ 604:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 605:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 606:Generated_Source\PSoC4/USB_UART_UART.c ****     #if !(USB_UART_CY_SCBIP_V0 || USB_UART_CY_SCBIP_V1)
+ 607:Generated_Source\PSoC4/USB_UART_UART.c ****         /*******************************************************************************
+ 608:Generated_Source\PSoC4/USB_UART_UART.c ****         * Function Name: USB_UART_UartSetRtsPolarity
+ 609:Generated_Source\PSoC4/USB_UART_UART.c ****         ****************************************************************************//**
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 19
+
+
+ 610:Generated_Source\PSoC4/USB_UART_UART.c ****         *
+ 611:Generated_Source\PSoC4/USB_UART_UART.c ****         *  Sets active polarity of RTS output signal.
+ 612:Generated_Source\PSoC4/USB_UART_UART.c ****         *  Only available for PSoC 4100 BLE / PSoC 4200 BLE / PSoC 4100M / PSoC 4200M /
+ 613:Generated_Source\PSoC4/USB_UART_UART.c ****         *  PSoC 4200L / PSoC 4000S / PSoC 4100S / PSoC Analog Coprocessor devices.
+ 614:Generated_Source\PSoC4/USB_UART_UART.c ****         *
+ 615:Generated_Source\PSoC4/USB_UART_UART.c ****         *  \param polarity: Active polarity of RTS output signal.
+ 616:Generated_Source\PSoC4/USB_UART_UART.c ****         *   - USB_UART_UART_RTS_ACTIVE_LOW  - RTS signal is active low.
+ 617:Generated_Source\PSoC4/USB_UART_UART.c ****         *   - USB_UART_UART_RTS_ACTIVE_HIGH - RTS signal is active high.
+ 618:Generated_Source\PSoC4/USB_UART_UART.c ****         *
+ 619:Generated_Source\PSoC4/USB_UART_UART.c ****         *******************************************************************************/
+ 620:Generated_Source\PSoC4/USB_UART_UART.c ****         void USB_UART_UartSetRtsPolarity(uint32 polarity)
+ 621:Generated_Source\PSoC4/USB_UART_UART.c ****         {
+ 622:Generated_Source\PSoC4/USB_UART_UART.c ****             if(0u != polarity)
+ 623:Generated_Source\PSoC4/USB_UART_UART.c ****             {
+ 624:Generated_Source\PSoC4/USB_UART_UART.c ****                 USB_UART_UART_FLOW_CTRL_REG |= (uint32)  USB_UART_UART_FLOW_CTRL_RTS_POLARITY;
+ 625:Generated_Source\PSoC4/USB_UART_UART.c ****             }
+ 626:Generated_Source\PSoC4/USB_UART_UART.c ****             else
+ 627:Generated_Source\PSoC4/USB_UART_UART.c ****             {
+ 628:Generated_Source\PSoC4/USB_UART_UART.c ****                 USB_UART_UART_FLOW_CTRL_REG &= (uint32) ~USB_UART_UART_FLOW_CTRL_RTS_POLARITY;
+ 629:Generated_Source\PSoC4/USB_UART_UART.c ****             }
+ 630:Generated_Source\PSoC4/USB_UART_UART.c ****         }
+ 631:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 632:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 633:Generated_Source\PSoC4/USB_UART_UART.c ****         /*******************************************************************************
+ 634:Generated_Source\PSoC4/USB_UART_UART.c ****         * Function Name: USB_UART_UartSetRtsFifoLevel
+ 635:Generated_Source\PSoC4/USB_UART_UART.c ****         ****************************************************************************//**
+ 636:Generated_Source\PSoC4/USB_UART_UART.c ****         *
+ 637:Generated_Source\PSoC4/USB_UART_UART.c ****         *  Sets level in the RX FIFO for RTS signal activation.
+ 638:Generated_Source\PSoC4/USB_UART_UART.c ****         *  While the RX FIFO has fewer entries than the RX FIFO level the RTS signal
+ 639:Generated_Source\PSoC4/USB_UART_UART.c ****         *  remains active, otherwise the RTS signal becomes inactive.
+ 640:Generated_Source\PSoC4/USB_UART_UART.c ****         *  Only available for PSoC 4100 BLE / PSoC 4200 BLE / PSoC 4100M / PSoC 4200M /
+ 641:Generated_Source\PSoC4/USB_UART_UART.c ****         *  PSoC 4200L / PSoC 4000S / PSoC 4100S / PSoC Analog Coprocessor devices.
+ 642:Generated_Source\PSoC4/USB_UART_UART.c ****         *
+ 643:Generated_Source\PSoC4/USB_UART_UART.c ****         *  \param level: Level in the RX FIFO for RTS signal activation.
+ 644:Generated_Source\PSoC4/USB_UART_UART.c ****         *   The range of valid level values is between 0 and RX FIFO depth - 1.
+ 645:Generated_Source\PSoC4/USB_UART_UART.c ****         *   Setting level value to 0 disables RTS signal activation.
+ 646:Generated_Source\PSoC4/USB_UART_UART.c ****         *
+ 647:Generated_Source\PSoC4/USB_UART_UART.c ****         *******************************************************************************/
+ 648:Generated_Source\PSoC4/USB_UART_UART.c ****         void USB_UART_UartSetRtsFifoLevel(uint32 level)
+ 649:Generated_Source\PSoC4/USB_UART_UART.c ****         {
+ 650:Generated_Source\PSoC4/USB_UART_UART.c ****             uint32 uartFlowCtrl;
+ 651:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 652:Generated_Source\PSoC4/USB_UART_UART.c ****             uartFlowCtrl = USB_UART_UART_FLOW_CTRL_REG;
+ 653:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 654:Generated_Source\PSoC4/USB_UART_UART.c ****             uartFlowCtrl &= ((uint32) ~USB_UART_UART_FLOW_CTRL_TRIGGER_LEVEL_MASK); /* Clear level 
+ 655:Generated_Source\PSoC4/USB_UART_UART.c ****             uartFlowCtrl |= ((uint32) (USB_UART_UART_FLOW_CTRL_TRIGGER_LEVEL_MASK & level));
+ 656:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 657:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_UART_FLOW_CTRL_REG = uartFlowCtrl;
+ 658:Generated_Source\PSoC4/USB_UART_UART.c ****         }
+ 659:Generated_Source\PSoC4/USB_UART_UART.c ****     #endif /* !(USB_UART_CY_SCBIP_V0 || USB_UART_CY_SCBIP_V1) */
+ 660:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 661:Generated_Source\PSoC4/USB_UART_UART.c **** #endif /* (USB_UART_UART_RX_DIRECTION) */
+ 662:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 663:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 664:Generated_Source\PSoC4/USB_UART_UART.c **** #if(USB_UART_UART_TX_DIRECTION)
+ 665:Generated_Source\PSoC4/USB_UART_UART.c ****     /*******************************************************************************
+ 666:Generated_Source\PSoC4/USB_UART_UART.c ****     * Function Name: USB_UART_UartPutString
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 20
+
+
+ 667:Generated_Source\PSoC4/USB_UART_UART.c ****     ****************************************************************************//**
+ 668:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+ 669:Generated_Source\PSoC4/USB_UART_UART.c ****     *  Places a NULL terminated string in the transmit buffer to be sent at the
+ 670:Generated_Source\PSoC4/USB_UART_UART.c ****     *  next available bus time.
+ 671:Generated_Source\PSoC4/USB_UART_UART.c ****     *  This function is blocking and waits until there is a space available to put
+ 672:Generated_Source\PSoC4/USB_UART_UART.c ****     *  requested data in transmit buffer.
+ 673:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+ 674:Generated_Source\PSoC4/USB_UART_UART.c ****     *  \param string: pointer to the null terminated string array to be placed in the
+ 675:Generated_Source\PSoC4/USB_UART_UART.c ****     *   transmit buffer.
+ 676:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+ 677:Generated_Source\PSoC4/USB_UART_UART.c ****     *******************************************************************************/
+ 678:Generated_Source\PSoC4/USB_UART_UART.c ****     void USB_UART_UartPutString(const char8 string[])
+ 679:Generated_Source\PSoC4/USB_UART_UART.c ****     {
+ 416              		.loc 1 679 0
+ 417              		.cfi_startproc
+ 418              		@ args = 0, pretend = 0, frame = 0
+ 419              		@ frame_needed = 0, uses_anonymous_args = 0
+ 420              	.LVL27:
+ 421 0000 70B5     		push	{r4, r5, r6, lr}
+ 422              		.cfi_def_cfa_offset 16
+ 423              		.cfi_offset 4, -16
+ 424              		.cfi_offset 5, -12
+ 425              		.cfi_offset 6, -8
+ 426              		.cfi_offset 14, -4
+ 427 0002 0500     		movs	r5, r0
+ 428              	.LVL28:
+ 680:Generated_Source\PSoC4/USB_UART_UART.c ****         uint32 bufIndex;
+ 681:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 682:Generated_Source\PSoC4/USB_UART_UART.c ****         bufIndex = 0u;
+ 429              		.loc 1 682 0
+ 430 0004 0024     		movs	r4, #0
+ 683:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 684:Generated_Source\PSoC4/USB_UART_UART.c ****         /* Blocks the control flow until all data has been sent */
+ 685:Generated_Source\PSoC4/USB_UART_UART.c ****         while(string[bufIndex] != ((char8) 0))
+ 431              		.loc 1 685 0
+ 432 0006 02E0     		b	.L28
+ 433              	.LVL29:
+ 434              	.L29:
+ 686:Generated_Source\PSoC4/USB_UART_UART.c ****         {
+ 687:Generated_Source\PSoC4/USB_UART_UART.c ****             USB_UART_UartPutChar((uint32) string[bufIndex]);
+ 435              		.loc 1 687 0
+ 436 0008 FFF7FEFF 		bl	USB_UART_SpiUartWriteTxData
+ 437              	.LVL30:
+ 688:Generated_Source\PSoC4/USB_UART_UART.c ****             bufIndex++;
+ 438              		.loc 1 688 0
+ 439 000c 0134     		adds	r4, r4, #1
+ 440              	.LVL31:
+ 441              	.L28:
+ 685:Generated_Source\PSoC4/USB_UART_UART.c ****         {
+ 442              		.loc 1 685 0
+ 443 000e 285D     		ldrb	r0, [r5, r4]
+ 444 0010 0028     		cmp	r0, #0
+ 445 0012 F9D1     		bne	.L29
+ 689:Generated_Source\PSoC4/USB_UART_UART.c ****         }
+ 690:Generated_Source\PSoC4/USB_UART_UART.c ****     }
+ 446              		.loc 1 690 0
+ 447              		@ sp needed
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 21
+
+
+ 448              	.LVL32:
+ 449              	.LVL33:
+ 450 0014 70BD     		pop	{r4, r5, r6, pc}
+ 451              		.cfi_endproc
+ 452              	.LFE7:
+ 453              		.size	USB_UART_UartPutString, .-USB_UART_UartPutString
+ 454 0016 C046     		.section	.text.USB_UART_UartPutCRLF,"ax",%progbits
+ 455              		.align	2
+ 456              		.global	USB_UART_UartPutCRLF
+ 457              		.code	16
+ 458              		.thumb_func
+ 459              		.type	USB_UART_UartPutCRLF, %function
+ 460              	USB_UART_UartPutCRLF:
+ 461              	.LFB8:
+ 691:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 692:Generated_Source\PSoC4/USB_UART_UART.c **** 
+ 693:Generated_Source\PSoC4/USB_UART_UART.c ****     /*******************************************************************************
+ 694:Generated_Source\PSoC4/USB_UART_UART.c ****     * Function Name: USB_UART_UartPutCRLF
+ 695:Generated_Source\PSoC4/USB_UART_UART.c ****     ****************************************************************************//**
+ 696:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+ 697:Generated_Source\PSoC4/USB_UART_UART.c ****     *  Places byte of data followed by a carriage return (0x0D) and line feed
+ 698:Generated_Source\PSoC4/USB_UART_UART.c ****     *  (0x0A) in the transmit buffer.
+ 699:Generated_Source\PSoC4/USB_UART_UART.c ****     *  This function is blocking and waits until there is a space available to put
+ 700:Generated_Source\PSoC4/USB_UART_UART.c ****     *  all requested data in transmit buffer.
+ 701:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+ 702:Generated_Source\PSoC4/USB_UART_UART.c ****     *  \param txDataByte: the data to be transmitted.
+ 703:Generated_Source\PSoC4/USB_UART_UART.c ****     *
+ 704:Generated_Source\PSoC4/USB_UART_UART.c ****     *******************************************************************************/
+ 705:Generated_Source\PSoC4/USB_UART_UART.c ****     void USB_UART_UartPutCRLF(uint32 txDataByte)
+ 706:Generated_Source\PSoC4/USB_UART_UART.c ****     {
+ 462              		.loc 1 706 0
+ 463              		.cfi_startproc
+ 464              		@ args = 0, pretend = 0, frame = 0
+ 465              		@ frame_needed = 0, uses_anonymous_args = 0
+ 466              	.LVL34:
+ 467 0000 10B5     		push	{r4, lr}
+ 468              		.cfi_def_cfa_offset 8
+ 469              		.cfi_offset 4, -8
+ 470              		.cfi_offset 14, -4
+ 707:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UartPutChar(txDataByte);  /* Blocks control flow until all data has been sent */
+ 471              		.loc 1 707 0
+ 472 0002 FFF7FEFF 		bl	USB_UART_SpiUartWriteTxData
+ 473              	.LVL35:
+ 708:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UartPutChar(0x0Du);       /* Blocks control flow until all data has been sent */
+ 474              		.loc 1 708 0
+ 475 0006 0D20     		movs	r0, #13
+ 476 0008 FFF7FEFF 		bl	USB_UART_SpiUartWriteTxData
+ 477              	.LVL36:
+ 709:Generated_Source\PSoC4/USB_UART_UART.c ****         USB_UART_UartPutChar(0x0Au);       /* Blocks control flow until all data has been sent */
+ 478              		.loc 1 709 0
+ 479 000c 0A20     		movs	r0, #10
+ 480 000e FFF7FEFF 		bl	USB_UART_SpiUartWriteTxData
+ 481              	.LVL37:
+ 710:Generated_Source\PSoC4/USB_UART_UART.c ****     }
+ 482              		.loc 1 710 0
+ 483              		@ sp needed
+ 484 0012 10BD     		pop	{r4, pc}
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 22
+
+
+ 485              		.cfi_endproc
+ 486              	.LFE8:
+ 487              		.size	USB_UART_UartPutCRLF, .-USB_UART_UartPutCRLF
+ 488              		.text
+ 489              	.Letext0:
+ 490              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 491              		.file 3 "Generated_Source\\PSoC4/CyLib.h"
+ 492              		.file 4 "Generated_Source\\PSoC4\\USB_UART_SPI_UART.h"
+ 493              		.file 5 "Generated_Source\\PSoC4\\USB_UART_PVT.h"
+ 494              		.section	.debug_info,"",%progbits
+ 495              	.Ldebug_info0:
+ 496 0000 31030000 		.4byte	0x331
+ 497 0004 0400     		.2byte	0x4
+ 498 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 499 000a 04       		.byte	0x4
+ 500 000b 01       		.uleb128 0x1
+ 501 000c 57020000 		.4byte	.LASF42
+ 502 0010 0C       		.byte	0xc
+ 503 0011 20030000 		.4byte	.LASF43
+ 504 0015 0E000000 		.4byte	.LASF44
+ 505 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 506 001d 00000000 		.4byte	0
+ 507 0021 00000000 		.4byte	.Ldebug_line0
+ 508 0025 02       		.uleb128 0x2
+ 509 0026 01       		.byte	0x1
+ 510 0027 06       		.byte	0x6
+ 511 0028 79030000 		.4byte	.LASF0
+ 512 002c 02       		.uleb128 0x2
+ 513 002d 01       		.byte	0x1
+ 514 002e 08       		.byte	0x8
+ 515 002f 11010000 		.4byte	.LASF1
+ 516 0033 02       		.uleb128 0x2
+ 517 0034 02       		.byte	0x2
+ 518 0035 05       		.byte	0x5
+ 519 0036 47030000 		.4byte	.LASF2
+ 520 003a 02       		.uleb128 0x2
+ 521 003b 02       		.byte	0x2
+ 522 003c 07       		.byte	0x7
+ 523 003d F1000000 		.4byte	.LASF3
+ 524 0041 02       		.uleb128 0x2
+ 525 0042 04       		.byte	0x4
+ 526 0043 05       		.byte	0x5
+ 527 0044 51030000 		.4byte	.LASF4
+ 528 0048 02       		.uleb128 0x2
+ 529 0049 04       		.byte	0x4
+ 530 004a 07       		.byte	0x7
+ 531 004b 3F010000 		.4byte	.LASF5
+ 532 004f 02       		.uleb128 0x2
+ 533 0050 08       		.byte	0x8
+ 534 0051 05       		.byte	0x5
+ 535 0052 00000000 		.4byte	.LASF6
+ 536 0056 02       		.uleb128 0x2
+ 537 0057 08       		.byte	0x8
+ 538 0058 07       		.byte	0x7
+ 539 0059 EA010000 		.4byte	.LASF7
+ 540 005d 03       		.uleb128 0x3
+ 541 005e 04       		.byte	0x4
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 23
+
+
+ 542 005f 05       		.byte	0x5
+ 543 0060 696E7400 		.ascii	"int\000"
+ 544 0064 02       		.uleb128 0x2
+ 545 0065 04       		.byte	0x4
+ 546 0066 07       		.byte	0x7
+ 547 0067 D5010000 		.4byte	.LASF8
+ 548 006b 04       		.uleb128 0x4
+ 549 006c 51010000 		.4byte	.LASF9
+ 550 0070 02       		.byte	0x2
+ 551 0071 E401     		.2byte	0x1e4
+ 552 0073 2C000000 		.4byte	0x2c
+ 553 0077 04       		.uleb128 0x4
+ 554 0078 B2010000 		.4byte	.LASF10
+ 555 007c 02       		.byte	0x2
+ 556 007d E501     		.2byte	0x1e5
+ 557 007f 3A000000 		.4byte	0x3a
+ 558 0083 04       		.uleb128 0x4
+ 559 0084 CE010000 		.4byte	.LASF11
+ 560 0088 02       		.byte	0x2
+ 561 0089 E601     		.2byte	0x1e6
+ 562 008b 48000000 		.4byte	0x48
+ 563 008f 02       		.uleb128 0x2
+ 564 0090 04       		.byte	0x4
+ 565 0091 04       		.byte	0x4
+ 566 0092 0B010000 		.4byte	.LASF12
+ 567 0096 02       		.uleb128 0x2
+ 568 0097 08       		.byte	0x8
+ 569 0098 04       		.byte	0x4
+ 570 0099 97010000 		.4byte	.LASF13
+ 571 009d 04       		.uleb128 0x4
+ 572 009e 1F010000 		.4byte	.LASF14
+ 573 00a2 02       		.byte	0x2
+ 574 00a3 F501     		.2byte	0x1f5
+ 575 00a5 A9000000 		.4byte	0xa9
+ 576 00a9 02       		.uleb128 0x2
+ 577 00aa 01       		.byte	0x1
+ 578 00ab 08       		.byte	0x8
+ 579 00ac F9020000 		.4byte	.LASF15
+ 580 00b0 04       		.uleb128 0x4
+ 581 00b1 7D000000 		.4byte	.LASF16
+ 582 00b5 02       		.byte	0x2
+ 583 00b6 9002     		.2byte	0x290
+ 584 00b8 BC000000 		.4byte	0xbc
+ 585 00bc 05       		.uleb128 0x5
+ 586 00bd 83000000 		.4byte	0x83
+ 587 00c1 02       		.uleb128 0x2
+ 588 00c2 08       		.byte	0x8
+ 589 00c3 04       		.byte	0x4
+ 590 00c4 6D030000 		.4byte	.LASF17
+ 591 00c8 02       		.uleb128 0x2
+ 592 00c9 04       		.byte	0x4
+ 593 00ca 07       		.byte	0x7
+ 594 00cb E5020000 		.4byte	.LASF18
+ 595 00cf 06       		.uleb128 0x6
+ 596 00d0 AA000000 		.4byte	.LASF21
+ 597 00d4 01       		.byte	0x1
+ 598 00d5 F5       		.byte	0xf5
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 24
+
+
+ 599 00d6 00000000 		.4byte	.LFB0
+ 600 00da B4000000 		.4byte	.LFE0-.LFB0
+ 601 00de 01       		.uleb128 0x1
+ 602 00df 9C       		.byte	0x9c
+ 603 00e0 1F010000 		.4byte	0x11f
+ 604 00e4 07       		.uleb128 0x7
+ 605 00e5 36000000 		.4byte	.LVL0
+ 606 00e9 EF020000 		.4byte	0x2ef
+ 607 00ed F7000000 		.4byte	0xf7
+ 608 00f1 08       		.uleb128 0x8
+ 609 00f2 01       		.uleb128 0x1
+ 610 00f3 50       		.byte	0x50
+ 611 00f4 01       		.uleb128 0x1
+ 612 00f5 3B       		.byte	0x3b
+ 613 00f6 00       		.byte	0
+ 614 00f7 07       		.uleb128 0x7
+ 615 00f8 3E000000 		.4byte	.LVL1
+ 616 00fc FA020000 		.4byte	0x2fa
+ 617 0100 0F010000 		.4byte	0x10f
+ 618 0104 08       		.uleb128 0x8
+ 619 0105 01       		.uleb128 0x1
+ 620 0106 50       		.byte	0x50
+ 621 0107 01       		.uleb128 0x1
+ 622 0108 3B       		.byte	0x3b
+ 623 0109 08       		.uleb128 0x8
+ 624 010a 01       		.uleb128 0x1
+ 625 010b 51       		.byte	0x51
+ 626 010c 01       		.uleb128 0x1
+ 627 010d 33       		.byte	0x33
+ 628 010e 00       		.byte	0
+ 629 010f 09       		.uleb128 0x9
+ 630 0110 46000000 		.4byte	.LVL2
+ 631 0114 05030000 		.4byte	0x305
+ 632 0118 08       		.uleb128 0x8
+ 633 0119 01       		.uleb128 0x1
+ 634 011a 50       		.byte	0x50
+ 635 011b 01       		.uleb128 0x1
+ 636 011c 3B       		.byte	0x3b
+ 637 011d 00       		.byte	0
+ 638 011e 00       		.byte	0
+ 639 011f 0A       		.uleb128 0xa
+ 640 0120 83000000 		.4byte	.LASF19
+ 641 0124 01       		.byte	0x1
+ 642 0125 3B01     		.2byte	0x13b
+ 643 0127 00000000 		.4byte	.LFB1
+ 644 012b 2C000000 		.4byte	.LFE1-.LFB1
+ 645 012f 01       		.uleb128 0x1
+ 646 0130 9C       		.byte	0x9c
+ 647 0131 0A       		.uleb128 0xa
+ 648 0132 85010000 		.4byte	.LASF20
+ 649 0136 01       		.byte	0x1
+ 650 0137 6F01     		.2byte	0x16f
+ 651 0139 00000000 		.4byte	.LFB2
+ 652 013d 2C000000 		.4byte	.LFE2-.LFB2
+ 653 0141 01       		.uleb128 0x1
+ 654 0142 9C       		.byte	0x9c
+ 655 0143 0B       		.uleb128 0xb
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 25
+
+
+ 656 0144 25010000 		.4byte	.LASF22
+ 657 0148 01       		.byte	0x1
+ 658 0149 AF01     		.2byte	0x1af
+ 659 014b 00000000 		.4byte	.LFB3
+ 660 014f 14000000 		.4byte	.LFE3-.LFB3
+ 661 0153 01       		.uleb128 0x1
+ 662 0154 9C       		.byte	0x9c
+ 663 0155 7A010000 		.4byte	0x17a
+ 664 0159 0C       		.uleb128 0xc
+ 665 015a E2010000 		.4byte	.LASF24
+ 666 015e 01       		.byte	0x1
+ 667 015f AF01     		.2byte	0x1af
+ 668 0161 83000000 		.4byte	0x83
+ 669 0165 00000000 		.4byte	.LLST0
+ 670 0169 0D       		.uleb128 0xd
+ 671 016a 64030000 		.4byte	.LASF26
+ 672 016e 01       		.byte	0x1
+ 673 016f B101     		.2byte	0x1b1
+ 674 0171 83000000 		.4byte	0x83
+ 675 0175 21000000 		.4byte	.LLST1
+ 676 0179 00       		.byte	0
+ 677 017a 0B       		.uleb128 0xb
+ 678 017b D3000000 		.4byte	.LASF23
+ 679 017f 01       		.byte	0x1
+ 680 0180 C801     		.2byte	0x1c8
+ 681 0182 00000000 		.4byte	.LFB4
+ 682 0186 18000000 		.4byte	.LFE4-.LFB4
+ 683 018a 01       		.uleb128 0x1
+ 684 018b 9C       		.byte	0x9c
+ 685 018c B1010000 		.4byte	0x1b1
+ 686 0190 0C       		.uleb128 0xc
+ 687 0191 79010000 		.4byte	.LASF25
+ 688 0195 01       		.byte	0x1
+ 689 0196 C801     		.2byte	0x1c8
+ 690 0198 83000000 		.4byte	0x83
+ 691 019c 3F000000 		.4byte	.LLST2
+ 692 01a0 0D       		.uleb128 0xd
+ 693 01a1 64030000 		.4byte	.LASF26
+ 694 01a5 01       		.byte	0x1
+ 695 01a6 CA01     		.2byte	0x1ca
+ 696 01a8 83000000 		.4byte	0x83
+ 697 01ac 60000000 		.4byte	.LLST3
+ 698 01b0 00       		.byte	0
+ 699 01b1 0E       		.uleb128 0xe
+ 700 01b2 85030000 		.4byte	.LASF28
+ 701 01b6 01       		.byte	0x1
+ 702 01b7 F001     		.2byte	0x1f0
+ 703 01b9 83000000 		.4byte	0x83
+ 704 01bd 00000000 		.4byte	.LFB5
+ 705 01c1 2C000000 		.4byte	.LFE5-.LFB5
+ 706 01c5 01       		.uleb128 0x1
+ 707 01c6 9C       		.byte	0x9c
+ 708 01c7 EE010000 		.4byte	0x1ee
+ 709 01cb 0D       		.uleb128 0xd
+ 710 01cc 72010000 		.4byte	.LASF27
+ 711 01d0 01       		.byte	0x1
+ 712 01d1 F201     		.2byte	0x1f2
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 26
+
+
+ 713 01d3 83000000 		.4byte	0x83
+ 714 01d7 89000000 		.4byte	.LLST4
+ 715 01db 0F       		.uleb128 0xf
+ 716 01dc 06000000 		.4byte	.LVL14
+ 717 01e0 10030000 		.4byte	0x310
+ 718 01e4 0F       		.uleb128 0xf
+ 719 01e5 0E000000 		.4byte	.LVL15
+ 720 01e9 1C030000 		.4byte	0x31c
+ 721 01ed 00       		.byte	0
+ 722 01ee 0E       		.uleb128 0xe
+ 723 01ef B9010000 		.4byte	.LASF29
+ 724 01f3 01       		.byte	0x1
+ 725 01f4 2202     		.2byte	0x222
+ 726 01f6 83000000 		.4byte	0x83
+ 727 01fa 00000000 		.4byte	.LFB6
+ 728 01fe 34000000 		.4byte	.LFE6-.LFB6
+ 729 0202 01       		.uleb128 0x1
+ 730 0203 9C       		.byte	0x9c
+ 731 0204 3B020000 		.4byte	0x23b
+ 732 0208 0D       		.uleb128 0xd
+ 733 0209 72010000 		.4byte	.LASF27
+ 734 020d 01       		.byte	0x1
+ 735 020e 2402     		.2byte	0x224
+ 736 0210 83000000 		.4byte	0x83
+ 737 0214 D6000000 		.4byte	.LLST5
+ 738 0218 0D       		.uleb128 0xd
+ 739 0219 5A030000 		.4byte	.LASF30
+ 740 021d 01       		.byte	0x1
+ 741 021e 2502     		.2byte	0x225
+ 742 0220 83000000 		.4byte	0x83
+ 743 0224 F4000000 		.4byte	.LLST6
+ 744 0228 0F       		.uleb128 0xf
+ 745 0229 06000000 		.4byte	.LVL20
+ 746 022d 10030000 		.4byte	0x310
+ 747 0231 0F       		.uleb128 0xf
+ 748 0232 0E000000 		.4byte	.LVL21
+ 749 0236 1C030000 		.4byte	0x31c
+ 750 023a 00       		.byte	0
+ 751 023b 0B       		.uleb128 0xb
+ 752 023c BC000000 		.4byte	.LASF31
+ 753 0240 01       		.byte	0x1
+ 754 0241 A602     		.2byte	0x2a6
+ 755 0243 00000000 		.4byte	.LFB7
+ 756 0247 16000000 		.4byte	.LFE7-.LFB7
+ 757 024b 01       		.uleb128 0x1
+ 758 024c 9C       		.byte	0x9c
+ 759 024d 7B020000 		.4byte	0x27b
+ 760 0251 0C       		.uleb128 0xc
+ 761 0252 04010000 		.4byte	.LASF32
+ 762 0256 01       		.byte	0x1
+ 763 0257 A602     		.2byte	0x2a6
+ 764 0259 7B020000 		.4byte	0x27b
+ 765 025d 0D010000 		.4byte	.LLST7
+ 766 0261 0D       		.uleb128 0xd
+ 767 0262 4E020000 		.4byte	.LASF33
+ 768 0266 01       		.byte	0x1
+ 769 0267 A802     		.2byte	0x2a8
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 27
+
+
+ 770 0269 83000000 		.4byte	0x83
+ 771 026d 39010000 		.4byte	.LLST8
+ 772 0271 0F       		.uleb128 0xf
+ 773 0272 0C000000 		.4byte	.LVL30
+ 774 0276 28030000 		.4byte	0x328
+ 775 027a 00       		.byte	0
+ 776 027b 10       		.uleb128 0x10
+ 777 027c 04       		.byte	0x4
+ 778 027d 81020000 		.4byte	0x281
+ 779 0281 11       		.uleb128 0x11
+ 780 0282 9D000000 		.4byte	0x9d
+ 781 0286 0B       		.uleb128 0xb
+ 782 0287 FE020000 		.4byte	.LASF34
+ 783 028b 01       		.byte	0x1
+ 784 028c C102     		.2byte	0x2c1
+ 785 028e 00000000 		.4byte	.LFB8
+ 786 0292 14000000 		.4byte	.LFE8-.LFB8
+ 787 0296 01       		.uleb128 0x1
+ 788 0297 9C       		.byte	0x9c
+ 789 0298 E4020000 		.4byte	0x2e4
+ 790 029c 0C       		.uleb128 0xc
+ 791 029d EE020000 		.4byte	.LASF35
+ 792 02a1 01       		.byte	0x1
+ 793 02a2 C102     		.2byte	0x2c1
+ 794 02a4 83000000 		.4byte	0x83
+ 795 02a8 58010000 		.4byte	.LLST9
+ 796 02ac 07       		.uleb128 0x7
+ 797 02ad 06000000 		.4byte	.LVL35
+ 798 02b1 28030000 		.4byte	0x328
+ 799 02b5 C1020000 		.4byte	0x2c1
+ 800 02b9 08       		.uleb128 0x8
+ 801 02ba 01       		.uleb128 0x1
+ 802 02bb 50       		.byte	0x50
+ 803 02bc 03       		.uleb128 0x3
+ 804 02bd F3       		.byte	0xf3
+ 805 02be 01       		.uleb128 0x1
+ 806 02bf 50       		.byte	0x50
+ 807 02c0 00       		.byte	0
+ 808 02c1 07       		.uleb128 0x7
+ 809 02c2 0C000000 		.4byte	.LVL36
+ 810 02c6 28030000 		.4byte	0x328
+ 811 02ca D4020000 		.4byte	0x2d4
+ 812 02ce 08       		.uleb128 0x8
+ 813 02cf 01       		.uleb128 0x1
+ 814 02d0 50       		.byte	0x50
+ 815 02d1 01       		.uleb128 0x1
+ 816 02d2 3D       		.byte	0x3d
+ 817 02d3 00       		.byte	0
+ 818 02d4 09       		.uleb128 0x9
+ 819 02d5 12000000 		.4byte	.LVL37
+ 820 02d9 28030000 		.4byte	0x328
+ 821 02dd 08       		.uleb128 0x8
+ 822 02de 01       		.uleb128 0x1
+ 823 02df 50       		.byte	0x50
+ 824 02e0 01       		.uleb128 0x1
+ 825 02e1 3A       		.byte	0x3a
+ 826 02e2 00       		.byte	0
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 28
+
+
+ 827 02e3 00       		.byte	0
+ 828 02e4 12       		.uleb128 0x12
+ 829 02e5 9E010000 		.4byte	.LASF45
+ 830 02e9 05       		.byte	0x5
+ 831 02ea 5B       		.byte	0x5b
+ 832 02eb 77000000 		.4byte	0x77
+ 833 02ef 13       		.uleb128 0x13
+ 834 02f0 13030000 		.4byte	.LASF36
+ 835 02f4 13030000 		.4byte	.LASF36
+ 836 02f8 03       		.byte	0x3
+ 837 02f9 C5       		.byte	0xc5
+ 838 02fa 13       		.uleb128 0x13
+ 839 02fb 01020000 		.4byte	.LASF37
+ 840 02ff 01020000 		.4byte	.LASF37
+ 841 0303 03       		.byte	0x3
+ 842 0304 C0       		.byte	0xc0
+ 843 0305 13       		.uleb128 0x13
+ 844 0306 9B000000 		.4byte	.LASF38
+ 845 030a 9B000000 		.4byte	.LASF38
+ 846 030e 03       		.byte	0x3
+ 847 030f BD       		.byte	0xbd
+ 848 0310 14       		.uleb128 0x14
+ 849 0311 2E020000 		.4byte	.LASF39
+ 850 0315 2E020000 		.4byte	.LASF39
+ 851 0319 04       		.byte	0x4
+ 852 031a 3403     		.2byte	0x334
+ 853 031c 14       		.uleb128 0x14
+ 854 031d 57010000 		.4byte	.LASF40
+ 855 0321 57010000 		.4byte	.LASF40
+ 856 0325 04       		.byte	0x4
+ 857 0326 3303     		.2byte	0x333
+ 858 0328 14       		.uleb128 0x14
+ 859 0329 12020000 		.4byte	.LASF41
+ 860 032d 12020000 		.4byte	.LASF41
+ 861 0331 04       		.byte	0x4
+ 862 0332 3A03     		.2byte	0x33a
+ 863 0334 00       		.byte	0
+ 864              		.section	.debug_abbrev,"",%progbits
+ 865              	.Ldebug_abbrev0:
+ 866 0000 01       		.uleb128 0x1
+ 867 0001 11       		.uleb128 0x11
+ 868 0002 01       		.byte	0x1
+ 869 0003 25       		.uleb128 0x25
+ 870 0004 0E       		.uleb128 0xe
+ 871 0005 13       		.uleb128 0x13
+ 872 0006 0B       		.uleb128 0xb
+ 873 0007 03       		.uleb128 0x3
+ 874 0008 0E       		.uleb128 0xe
+ 875 0009 1B       		.uleb128 0x1b
+ 876 000a 0E       		.uleb128 0xe
+ 877 000b 55       		.uleb128 0x55
+ 878 000c 17       		.uleb128 0x17
+ 879 000d 11       		.uleb128 0x11
+ 880 000e 01       		.uleb128 0x1
+ 881 000f 10       		.uleb128 0x10
+ 882 0010 17       		.uleb128 0x17
+ 883 0011 00       		.byte	0
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 29
+
+
+ 884 0012 00       		.byte	0
+ 885 0013 02       		.uleb128 0x2
+ 886 0014 24       		.uleb128 0x24
+ 887 0015 00       		.byte	0
+ 888 0016 0B       		.uleb128 0xb
+ 889 0017 0B       		.uleb128 0xb
+ 890 0018 3E       		.uleb128 0x3e
+ 891 0019 0B       		.uleb128 0xb
+ 892 001a 03       		.uleb128 0x3
+ 893 001b 0E       		.uleb128 0xe
+ 894 001c 00       		.byte	0
+ 895 001d 00       		.byte	0
+ 896 001e 03       		.uleb128 0x3
+ 897 001f 24       		.uleb128 0x24
+ 898 0020 00       		.byte	0
+ 899 0021 0B       		.uleb128 0xb
+ 900 0022 0B       		.uleb128 0xb
+ 901 0023 3E       		.uleb128 0x3e
+ 902 0024 0B       		.uleb128 0xb
+ 903 0025 03       		.uleb128 0x3
+ 904 0026 08       		.uleb128 0x8
+ 905 0027 00       		.byte	0
+ 906 0028 00       		.byte	0
+ 907 0029 04       		.uleb128 0x4
+ 908 002a 16       		.uleb128 0x16
+ 909 002b 00       		.byte	0
+ 910 002c 03       		.uleb128 0x3
+ 911 002d 0E       		.uleb128 0xe
+ 912 002e 3A       		.uleb128 0x3a
+ 913 002f 0B       		.uleb128 0xb
+ 914 0030 3B       		.uleb128 0x3b
+ 915 0031 05       		.uleb128 0x5
+ 916 0032 49       		.uleb128 0x49
+ 917 0033 13       		.uleb128 0x13
+ 918 0034 00       		.byte	0
+ 919 0035 00       		.byte	0
+ 920 0036 05       		.uleb128 0x5
+ 921 0037 35       		.uleb128 0x35
+ 922 0038 00       		.byte	0
+ 923 0039 49       		.uleb128 0x49
+ 924 003a 13       		.uleb128 0x13
+ 925 003b 00       		.byte	0
+ 926 003c 00       		.byte	0
+ 927 003d 06       		.uleb128 0x6
+ 928 003e 2E       		.uleb128 0x2e
+ 929 003f 01       		.byte	0x1
+ 930 0040 3F       		.uleb128 0x3f
+ 931 0041 19       		.uleb128 0x19
+ 932 0042 03       		.uleb128 0x3
+ 933 0043 0E       		.uleb128 0xe
+ 934 0044 3A       		.uleb128 0x3a
+ 935 0045 0B       		.uleb128 0xb
+ 936 0046 3B       		.uleb128 0x3b
+ 937 0047 0B       		.uleb128 0xb
+ 938 0048 27       		.uleb128 0x27
+ 939 0049 19       		.uleb128 0x19
+ 940 004a 11       		.uleb128 0x11
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 30
+
+
+ 941 004b 01       		.uleb128 0x1
+ 942 004c 12       		.uleb128 0x12
+ 943 004d 06       		.uleb128 0x6
+ 944 004e 40       		.uleb128 0x40
+ 945 004f 18       		.uleb128 0x18
+ 946 0050 9742     		.uleb128 0x2117
+ 947 0052 19       		.uleb128 0x19
+ 948 0053 01       		.uleb128 0x1
+ 949 0054 13       		.uleb128 0x13
+ 950 0055 00       		.byte	0
+ 951 0056 00       		.byte	0
+ 952 0057 07       		.uleb128 0x7
+ 953 0058 898201   		.uleb128 0x4109
+ 954 005b 01       		.byte	0x1
+ 955 005c 11       		.uleb128 0x11
+ 956 005d 01       		.uleb128 0x1
+ 957 005e 31       		.uleb128 0x31
+ 958 005f 13       		.uleb128 0x13
+ 959 0060 01       		.uleb128 0x1
+ 960 0061 13       		.uleb128 0x13
+ 961 0062 00       		.byte	0
+ 962 0063 00       		.byte	0
+ 963 0064 08       		.uleb128 0x8
+ 964 0065 8A8201   		.uleb128 0x410a
+ 965 0068 00       		.byte	0
+ 966 0069 02       		.uleb128 0x2
+ 967 006a 18       		.uleb128 0x18
+ 968 006b 9142     		.uleb128 0x2111
+ 969 006d 18       		.uleb128 0x18
+ 970 006e 00       		.byte	0
+ 971 006f 00       		.byte	0
+ 972 0070 09       		.uleb128 0x9
+ 973 0071 898201   		.uleb128 0x4109
+ 974 0074 01       		.byte	0x1
+ 975 0075 11       		.uleb128 0x11
+ 976 0076 01       		.uleb128 0x1
+ 977 0077 31       		.uleb128 0x31
+ 978 0078 13       		.uleb128 0x13
+ 979 0079 00       		.byte	0
+ 980 007a 00       		.byte	0
+ 981 007b 0A       		.uleb128 0xa
+ 982 007c 2E       		.uleb128 0x2e
+ 983 007d 00       		.byte	0
+ 984 007e 3F       		.uleb128 0x3f
+ 985 007f 19       		.uleb128 0x19
+ 986 0080 03       		.uleb128 0x3
+ 987 0081 0E       		.uleb128 0xe
+ 988 0082 3A       		.uleb128 0x3a
+ 989 0083 0B       		.uleb128 0xb
+ 990 0084 3B       		.uleb128 0x3b
+ 991 0085 05       		.uleb128 0x5
+ 992 0086 27       		.uleb128 0x27
+ 993 0087 19       		.uleb128 0x19
+ 994 0088 11       		.uleb128 0x11
+ 995 0089 01       		.uleb128 0x1
+ 996 008a 12       		.uleb128 0x12
+ 997 008b 06       		.uleb128 0x6
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 31
+
+
+ 998 008c 40       		.uleb128 0x40
+ 999 008d 18       		.uleb128 0x18
+ 1000 008e 9742     		.uleb128 0x2117
+ 1001 0090 19       		.uleb128 0x19
+ 1002 0091 00       		.byte	0
+ 1003 0092 00       		.byte	0
+ 1004 0093 0B       		.uleb128 0xb
+ 1005 0094 2E       		.uleb128 0x2e
+ 1006 0095 01       		.byte	0x1
+ 1007 0096 3F       		.uleb128 0x3f
+ 1008 0097 19       		.uleb128 0x19
+ 1009 0098 03       		.uleb128 0x3
+ 1010 0099 0E       		.uleb128 0xe
+ 1011 009a 3A       		.uleb128 0x3a
+ 1012 009b 0B       		.uleb128 0xb
+ 1013 009c 3B       		.uleb128 0x3b
+ 1014 009d 05       		.uleb128 0x5
+ 1015 009e 27       		.uleb128 0x27
+ 1016 009f 19       		.uleb128 0x19
+ 1017 00a0 11       		.uleb128 0x11
+ 1018 00a1 01       		.uleb128 0x1
+ 1019 00a2 12       		.uleb128 0x12
+ 1020 00a3 06       		.uleb128 0x6
+ 1021 00a4 40       		.uleb128 0x40
+ 1022 00a5 18       		.uleb128 0x18
+ 1023 00a6 9742     		.uleb128 0x2117
+ 1024 00a8 19       		.uleb128 0x19
+ 1025 00a9 01       		.uleb128 0x1
+ 1026 00aa 13       		.uleb128 0x13
+ 1027 00ab 00       		.byte	0
+ 1028 00ac 00       		.byte	0
+ 1029 00ad 0C       		.uleb128 0xc
+ 1030 00ae 05       		.uleb128 0x5
+ 1031 00af 00       		.byte	0
+ 1032 00b0 03       		.uleb128 0x3
+ 1033 00b1 0E       		.uleb128 0xe
+ 1034 00b2 3A       		.uleb128 0x3a
+ 1035 00b3 0B       		.uleb128 0xb
+ 1036 00b4 3B       		.uleb128 0x3b
+ 1037 00b5 05       		.uleb128 0x5
+ 1038 00b6 49       		.uleb128 0x49
+ 1039 00b7 13       		.uleb128 0x13
+ 1040 00b8 02       		.uleb128 0x2
+ 1041 00b9 17       		.uleb128 0x17
+ 1042 00ba 00       		.byte	0
+ 1043 00bb 00       		.byte	0
+ 1044 00bc 0D       		.uleb128 0xd
+ 1045 00bd 34       		.uleb128 0x34
+ 1046 00be 00       		.byte	0
+ 1047 00bf 03       		.uleb128 0x3
+ 1048 00c0 0E       		.uleb128 0xe
+ 1049 00c1 3A       		.uleb128 0x3a
+ 1050 00c2 0B       		.uleb128 0xb
+ 1051 00c3 3B       		.uleb128 0x3b
+ 1052 00c4 05       		.uleb128 0x5
+ 1053 00c5 49       		.uleb128 0x49
+ 1054 00c6 13       		.uleb128 0x13
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 32
+
+
+ 1055 00c7 02       		.uleb128 0x2
+ 1056 00c8 17       		.uleb128 0x17
+ 1057 00c9 00       		.byte	0
+ 1058 00ca 00       		.byte	0
+ 1059 00cb 0E       		.uleb128 0xe
+ 1060 00cc 2E       		.uleb128 0x2e
+ 1061 00cd 01       		.byte	0x1
+ 1062 00ce 3F       		.uleb128 0x3f
+ 1063 00cf 19       		.uleb128 0x19
+ 1064 00d0 03       		.uleb128 0x3
+ 1065 00d1 0E       		.uleb128 0xe
+ 1066 00d2 3A       		.uleb128 0x3a
+ 1067 00d3 0B       		.uleb128 0xb
+ 1068 00d4 3B       		.uleb128 0x3b
+ 1069 00d5 05       		.uleb128 0x5
+ 1070 00d6 27       		.uleb128 0x27
+ 1071 00d7 19       		.uleb128 0x19
+ 1072 00d8 49       		.uleb128 0x49
+ 1073 00d9 13       		.uleb128 0x13
+ 1074 00da 11       		.uleb128 0x11
+ 1075 00db 01       		.uleb128 0x1
+ 1076 00dc 12       		.uleb128 0x12
+ 1077 00dd 06       		.uleb128 0x6
+ 1078 00de 40       		.uleb128 0x40
+ 1079 00df 18       		.uleb128 0x18
+ 1080 00e0 9742     		.uleb128 0x2117
+ 1081 00e2 19       		.uleb128 0x19
+ 1082 00e3 01       		.uleb128 0x1
+ 1083 00e4 13       		.uleb128 0x13
+ 1084 00e5 00       		.byte	0
+ 1085 00e6 00       		.byte	0
+ 1086 00e7 0F       		.uleb128 0xf
+ 1087 00e8 898201   		.uleb128 0x4109
+ 1088 00eb 00       		.byte	0
+ 1089 00ec 11       		.uleb128 0x11
+ 1090 00ed 01       		.uleb128 0x1
+ 1091 00ee 31       		.uleb128 0x31
+ 1092 00ef 13       		.uleb128 0x13
+ 1093 00f0 00       		.byte	0
+ 1094 00f1 00       		.byte	0
+ 1095 00f2 10       		.uleb128 0x10
+ 1096 00f3 0F       		.uleb128 0xf
+ 1097 00f4 00       		.byte	0
+ 1098 00f5 0B       		.uleb128 0xb
+ 1099 00f6 0B       		.uleb128 0xb
+ 1100 00f7 49       		.uleb128 0x49
+ 1101 00f8 13       		.uleb128 0x13
+ 1102 00f9 00       		.byte	0
+ 1103 00fa 00       		.byte	0
+ 1104 00fb 11       		.uleb128 0x11
+ 1105 00fc 26       		.uleb128 0x26
+ 1106 00fd 00       		.byte	0
+ 1107 00fe 49       		.uleb128 0x49
+ 1108 00ff 13       		.uleb128 0x13
+ 1109 0100 00       		.byte	0
+ 1110 0101 00       		.byte	0
+ 1111 0102 12       		.uleb128 0x12
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 33
+
+
+ 1112 0103 34       		.uleb128 0x34
+ 1113 0104 00       		.byte	0
+ 1114 0105 03       		.uleb128 0x3
+ 1115 0106 0E       		.uleb128 0xe
+ 1116 0107 3A       		.uleb128 0x3a
+ 1117 0108 0B       		.uleb128 0xb
+ 1118 0109 3B       		.uleb128 0x3b
+ 1119 010a 0B       		.uleb128 0xb
+ 1120 010b 49       		.uleb128 0x49
+ 1121 010c 13       		.uleb128 0x13
+ 1122 010d 3F       		.uleb128 0x3f
+ 1123 010e 19       		.uleb128 0x19
+ 1124 010f 3C       		.uleb128 0x3c
+ 1125 0110 19       		.uleb128 0x19
+ 1126 0111 00       		.byte	0
+ 1127 0112 00       		.byte	0
+ 1128 0113 13       		.uleb128 0x13
+ 1129 0114 2E       		.uleb128 0x2e
+ 1130 0115 00       		.byte	0
+ 1131 0116 3F       		.uleb128 0x3f
+ 1132 0117 19       		.uleb128 0x19
+ 1133 0118 3C       		.uleb128 0x3c
+ 1134 0119 19       		.uleb128 0x19
+ 1135 011a 6E       		.uleb128 0x6e
+ 1136 011b 0E       		.uleb128 0xe
+ 1137 011c 03       		.uleb128 0x3
+ 1138 011d 0E       		.uleb128 0xe
+ 1139 011e 3A       		.uleb128 0x3a
+ 1140 011f 0B       		.uleb128 0xb
+ 1141 0120 3B       		.uleb128 0x3b
+ 1142 0121 0B       		.uleb128 0xb
+ 1143 0122 00       		.byte	0
+ 1144 0123 00       		.byte	0
+ 1145 0124 14       		.uleb128 0x14
+ 1146 0125 2E       		.uleb128 0x2e
+ 1147 0126 00       		.byte	0
+ 1148 0127 3F       		.uleb128 0x3f
+ 1149 0128 19       		.uleb128 0x19
+ 1150 0129 3C       		.uleb128 0x3c
+ 1151 012a 19       		.uleb128 0x19
+ 1152 012b 6E       		.uleb128 0x6e
+ 1153 012c 0E       		.uleb128 0xe
+ 1154 012d 03       		.uleb128 0x3
+ 1155 012e 0E       		.uleb128 0xe
+ 1156 012f 3A       		.uleb128 0x3a
+ 1157 0130 0B       		.uleb128 0xb
+ 1158 0131 3B       		.uleb128 0x3b
+ 1159 0132 05       		.uleb128 0x5
+ 1160 0133 00       		.byte	0
+ 1161 0134 00       		.byte	0
+ 1162 0135 00       		.byte	0
+ 1163              		.section	.debug_loc,"",%progbits
+ 1164              	.Ldebug_loc0:
+ 1165              	.LLST0:
+ 1166 0000 00000000 		.4byte	.LVL3
+ 1167 0004 0A000000 		.4byte	.LVL6
+ 1168 0008 0100     		.2byte	0x1
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 34
+
+
+ 1169 000a 50       		.byte	0x50
+ 1170 000b 0A000000 		.4byte	.LVL6
+ 1171 000f 14000000 		.4byte	.LFE3
+ 1172 0013 0400     		.2byte	0x4
+ 1173 0015 F3       		.byte	0xf3
+ 1174 0016 01       		.uleb128 0x1
+ 1175 0017 50       		.byte	0x50
+ 1176 0018 9F       		.byte	0x9f
+ 1177 0019 00000000 		.4byte	0
+ 1178 001d 00000000 		.4byte	0
+ 1179              	.LLST1:
+ 1180 0021 04000000 		.4byte	.LVL4
+ 1181 0025 0C000000 		.4byte	.LVL7
+ 1182 0029 0100     		.2byte	0x1
+ 1183 002b 53       		.byte	0x53
+ 1184 002c 0C000000 		.4byte	.LVL7
+ 1185 0030 14000000 		.4byte	.LFE3
+ 1186 0034 0100     		.2byte	0x1
+ 1187 0036 50       		.byte	0x50
+ 1188 0037 00000000 		.4byte	0
+ 1189 003b 00000000 		.4byte	0
+ 1190              	.LLST2:
+ 1191 003f 00000000 		.4byte	.LVL8
+ 1192 0043 0A000000 		.4byte	.LVL11
+ 1193 0047 0100     		.2byte	0x1
+ 1194 0049 50       		.byte	0x50
+ 1195 004a 0A000000 		.4byte	.LVL11
+ 1196 004e 18000000 		.4byte	.LFE4
+ 1197 0052 0400     		.2byte	0x4
+ 1198 0054 F3       		.byte	0xf3
+ 1199 0055 01       		.uleb128 0x1
+ 1200 0056 50       		.byte	0x50
+ 1201 0057 9F       		.byte	0x9f
+ 1202 0058 00000000 		.4byte	0
+ 1203 005c 00000000 		.4byte	0
+ 1204              	.LLST3:
+ 1205 0060 04000000 		.4byte	.LVL9
+ 1206 0064 08000000 		.4byte	.LVL10
+ 1207 0068 0100     		.2byte	0x1
+ 1208 006a 51       		.byte	0x51
+ 1209 006b 08000000 		.4byte	.LVL10
+ 1210 006f 0C000000 		.4byte	.LVL12
+ 1211 0073 0100     		.2byte	0x1
+ 1212 0075 53       		.byte	0x53
+ 1213 0076 0C000000 		.4byte	.LVL12
+ 1214 007a 18000000 		.4byte	.LFE4
+ 1215 007e 0100     		.2byte	0x1
+ 1216 0080 50       		.byte	0x50
+ 1217 0081 00000000 		.4byte	0
+ 1218 0085 00000000 		.4byte	0
+ 1219              	.LLST4:
+ 1220 0089 02000000 		.4byte	.LVL13
+ 1221 008d 0E000000 		.4byte	.LVL15
+ 1222 0091 0200     		.2byte	0x2
+ 1223 0093 30       		.byte	0x30
+ 1224 0094 9F       		.byte	0x9f
+ 1225 0095 0E000000 		.4byte	.LVL15
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 35
+
+
+ 1226 0099 10000000 		.4byte	.LVL16
+ 1227 009d 0100     		.2byte	0x1
+ 1228 009f 50       		.byte	0x50
+ 1229 00a0 10000000 		.4byte	.LVL16
+ 1230 00a4 12000000 		.4byte	.LVL17
+ 1231 00a8 0200     		.2byte	0x2
+ 1232 00aa 30       		.byte	0x30
+ 1233 00ab 9F       		.byte	0x9f
+ 1234 00ac 12000000 		.4byte	.LVL17
+ 1235 00b0 1E000000 		.4byte	.LVL18
+ 1236 00b4 0100     		.2byte	0x1
+ 1237 00b6 50       		.byte	0x50
+ 1238 00b7 1E000000 		.4byte	.LVL18
+ 1239 00bb 26000000 		.4byte	.LVL19
+ 1240 00bf 0200     		.2byte	0x2
+ 1241 00c1 30       		.byte	0x30
+ 1242 00c2 9F       		.byte	0x9f
+ 1243 00c3 26000000 		.4byte	.LVL19
+ 1244 00c7 2C000000 		.4byte	.LFE5
+ 1245 00cb 0100     		.2byte	0x1
+ 1246 00cd 50       		.byte	0x50
+ 1247 00ce 00000000 		.4byte	0
+ 1248 00d2 00000000 		.4byte	0
+ 1249              	.LLST5:
+ 1250 00d6 0E000000 		.4byte	.LVL21
+ 1251 00da 10000000 		.4byte	.LVL22
+ 1252 00de 0100     		.2byte	0x1
+ 1253 00e0 50       		.byte	0x50
+ 1254 00e1 14000000 		.4byte	.LVL23
+ 1255 00e5 34000000 		.4byte	.LFE6
+ 1256 00e9 0100     		.2byte	0x1
+ 1257 00eb 50       		.byte	0x50
+ 1258 00ec 00000000 		.4byte	0
+ 1259 00f0 00000000 		.4byte	0
+ 1260              	.LLST6:
+ 1261 00f4 18000000 		.4byte	.LVL24
+ 1262 00f8 20000000 		.4byte	.LVL25
+ 1263 00fc 0700     		.2byte	0x7
+ 1264 00fe 73       		.byte	0x73
+ 1265 00ff 00       		.sleb128 0
+ 1266 0100 0A       		.byte	0xa
+ 1267 0101 6003     		.2byte	0x360
+ 1268 0103 1A       		.byte	0x1a
+ 1269 0104 9F       		.byte	0x9f
+ 1270 0105 00000000 		.4byte	0
+ 1271 0109 00000000 		.4byte	0
+ 1272              	.LLST7:
+ 1273 010d 00000000 		.4byte	.LVL27
+ 1274 0111 08000000 		.4byte	.LVL29
+ 1275 0115 0100     		.2byte	0x1
+ 1276 0117 50       		.byte	0x50
+ 1277 0118 08000000 		.4byte	.LVL29
+ 1278 011c 14000000 		.4byte	.LVL33
+ 1279 0120 0100     		.2byte	0x1
+ 1280 0122 55       		.byte	0x55
+ 1281 0123 14000000 		.4byte	.LVL33
+ 1282 0127 16000000 		.4byte	.LFE7
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 36
+
+
+ 1283 012b 0400     		.2byte	0x4
+ 1284 012d F3       		.byte	0xf3
+ 1285 012e 01       		.uleb128 0x1
+ 1286 012f 50       		.byte	0x50
+ 1287 0130 9F       		.byte	0x9f
+ 1288 0131 00000000 		.4byte	0
+ 1289 0135 00000000 		.4byte	0
+ 1290              	.LLST8:
+ 1291 0139 04000000 		.4byte	.LVL28
+ 1292 013d 08000000 		.4byte	.LVL29
+ 1293 0141 0200     		.2byte	0x2
+ 1294 0143 30       		.byte	0x30
+ 1295 0144 9F       		.byte	0x9f
+ 1296 0145 08000000 		.4byte	.LVL29
+ 1297 0149 14000000 		.4byte	.LVL32
+ 1298 014d 0100     		.2byte	0x1
+ 1299 014f 54       		.byte	0x54
+ 1300 0150 00000000 		.4byte	0
+ 1301 0154 00000000 		.4byte	0
+ 1302              	.LLST9:
+ 1303 0158 00000000 		.4byte	.LVL34
+ 1304 015c 05000000 		.4byte	.LVL35-1
+ 1305 0160 0100     		.2byte	0x1
+ 1306 0162 50       		.byte	0x50
+ 1307 0163 05000000 		.4byte	.LVL35-1
+ 1308 0167 14000000 		.4byte	.LFE8
+ 1309 016b 0400     		.2byte	0x4
+ 1310 016d F3       		.byte	0xf3
+ 1311 016e 01       		.uleb128 0x1
+ 1312 016f 50       		.byte	0x50
+ 1313 0170 9F       		.byte	0x9f
+ 1314 0171 00000000 		.4byte	0
+ 1315 0175 00000000 		.4byte	0
+ 1316              		.section	.debug_aranges,"",%progbits
+ 1317 0000 5C000000 		.4byte	0x5c
+ 1318 0004 0200     		.2byte	0x2
+ 1319 0006 00000000 		.4byte	.Ldebug_info0
+ 1320 000a 04       		.byte	0x4
+ 1321 000b 00       		.byte	0
+ 1322 000c 0000     		.2byte	0
+ 1323 000e 0000     		.2byte	0
+ 1324 0010 00000000 		.4byte	.LFB0
+ 1325 0014 B4000000 		.4byte	.LFE0-.LFB0
+ 1326 0018 00000000 		.4byte	.LFB1
+ 1327 001c 2C000000 		.4byte	.LFE1-.LFB1
+ 1328 0020 00000000 		.4byte	.LFB2
+ 1329 0024 2C000000 		.4byte	.LFE2-.LFB2
+ 1330 0028 00000000 		.4byte	.LFB3
+ 1331 002c 14000000 		.4byte	.LFE3-.LFB3
+ 1332 0030 00000000 		.4byte	.LFB4
+ 1333 0034 18000000 		.4byte	.LFE4-.LFB4
+ 1334 0038 00000000 		.4byte	.LFB5
+ 1335 003c 2C000000 		.4byte	.LFE5-.LFB5
+ 1336 0040 00000000 		.4byte	.LFB6
+ 1337 0044 34000000 		.4byte	.LFE6-.LFB6
+ 1338 0048 00000000 		.4byte	.LFB7
+ 1339 004c 16000000 		.4byte	.LFE7-.LFB7
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 37
+
+
+ 1340 0050 00000000 		.4byte	.LFB8
+ 1341 0054 14000000 		.4byte	.LFE8-.LFB8
+ 1342 0058 00000000 		.4byte	0
+ 1343 005c 00000000 		.4byte	0
+ 1344              		.section	.debug_ranges,"",%progbits
+ 1345              	.Ldebug_ranges0:
+ 1346 0000 00000000 		.4byte	.LFB0
+ 1347 0004 B4000000 		.4byte	.LFE0
+ 1348 0008 00000000 		.4byte	.LFB1
+ 1349 000c 2C000000 		.4byte	.LFE1
+ 1350 0010 00000000 		.4byte	.LFB2
+ 1351 0014 2C000000 		.4byte	.LFE2
+ 1352 0018 00000000 		.4byte	.LFB3
+ 1353 001c 14000000 		.4byte	.LFE3
+ 1354 0020 00000000 		.4byte	.LFB4
+ 1355 0024 18000000 		.4byte	.LFE4
+ 1356 0028 00000000 		.4byte	.LFB5
+ 1357 002c 2C000000 		.4byte	.LFE5
+ 1358 0030 00000000 		.4byte	.LFB6
+ 1359 0034 34000000 		.4byte	.LFE6
+ 1360 0038 00000000 		.4byte	.LFB7
+ 1361 003c 16000000 		.4byte	.LFE7
+ 1362 0040 00000000 		.4byte	.LFB8
+ 1363 0044 14000000 		.4byte	.LFE8
+ 1364 0048 00000000 		.4byte	0
+ 1365 004c 00000000 		.4byte	0
+ 1366              		.section	.debug_line,"",%progbits
+ 1367              	.Ldebug_line0:
+ 1368 0000 62010000 		.section	.debug_str,"MS",%progbits,1
+ 1368      02007E00 
+ 1368      00000201 
+ 1368      FB0E0D00 
+ 1368      01010101 
+ 1369              	.LASF6:
+ 1370 0000 6C6F6E67 		.ascii	"long long int\000"
+ 1370      206C6F6E 
+ 1370      6720696E 
+ 1370      7400
+ 1371              	.LASF44:
+ 1372 000e 5C5C6D79 		.ascii	"\\\\myhome01.spu.edu\\users\\tdoan1\\Documents\\PSo"
+ 1372      686F6D65 
+ 1372      30312E73 
+ 1372      70752E65 
+ 1372      64755C75 
+ 1373 003b 43204372 		.ascii	"C Creator\\PSoC 4 Wi-Fi Module tEst\\PSoC 4 Wi-Fi M"
+ 1373      6561746F 
+ 1373      725C5053 
+ 1373      6F432034 
+ 1373      2057692D 
+ 1374 006c 6F64756C 		.ascii	"odule Test.cydsn\000"
+ 1374      65205465 
+ 1374      73742E63 
+ 1374      7964736E 
+ 1374      00
+ 1375              	.LASF16:
+ 1376 007d 72656733 		.ascii	"reg32\000"
+ 1376      3200
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 38
+
+
+ 1377              	.LASF19:
+ 1378 0083 5553425F 		.ascii	"USB_UART_UartPostEnable\000"
+ 1378      55415254 
+ 1378      5F556172 
+ 1378      74506F73 
+ 1378      74456E61 
+ 1379              	.LASF38:
+ 1380 009b 4379496E 		.ascii	"CyIntSetVector\000"
+ 1380      74536574 
+ 1380      56656374 
+ 1380      6F7200
+ 1381              	.LASF21:
+ 1382 00aa 5553425F 		.ascii	"USB_UART_UartInit\000"
+ 1382      55415254 
+ 1382      5F556172 
+ 1382      74496E69 
+ 1382      7400
+ 1383              	.LASF31:
+ 1384 00bc 5553425F 		.ascii	"USB_UART_UartPutString\000"
+ 1384      55415254 
+ 1384      5F556172 
+ 1384      74507574 
+ 1384      53747269 
+ 1385              	.LASF23:
+ 1386 00d3 5553425F 		.ascii	"USB_UART_UartSetRxAddressMask\000"
+ 1386      55415254 
+ 1386      5F556172 
+ 1386      74536574 
+ 1386      52784164 
+ 1387              	.LASF3:
+ 1388 00f1 73686F72 		.ascii	"short unsigned int\000"
+ 1388      7420756E 
+ 1388      7369676E 
+ 1388      65642069 
+ 1388      6E7400
+ 1389              	.LASF32:
+ 1390 0104 73747269 		.ascii	"string\000"
+ 1390      6E6700
+ 1391              	.LASF12:
+ 1392 010b 666C6F61 		.ascii	"float\000"
+ 1392      7400
+ 1393              	.LASF1:
+ 1394 0111 756E7369 		.ascii	"unsigned char\000"
+ 1394      676E6564 
+ 1394      20636861 
+ 1394      7200
+ 1395              	.LASF14:
+ 1396 011f 63686172 		.ascii	"char8\000"
+ 1396      3800
+ 1397              	.LASF22:
+ 1398 0125 5553425F 		.ascii	"USB_UART_UartSetRxAddress\000"
+ 1398      55415254 
+ 1398      5F556172 
+ 1398      74536574 
+ 1398      52784164 
+ 1399              	.LASF5:
+ 1400 013f 6C6F6E67 		.ascii	"long unsigned int\000"
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 39
+
+
+ 1400      20756E73 
+ 1400      69676E65 
+ 1400      6420696E 
+ 1400      7400
+ 1401              	.LASF9:
+ 1402 0151 75696E74 		.ascii	"uint8\000"
+ 1402      3800
+ 1403              	.LASF40:
+ 1404 0157 5553425F 		.ascii	"USB_UART_SpiUartReadRxData\000"
+ 1404      55415254 
+ 1404      5F537069 
+ 1404      55617274 
+ 1404      52656164 
+ 1405              	.LASF27:
+ 1406 0172 72784461 		.ascii	"rxData\000"
+ 1406      746100
+ 1407              	.LASF25:
+ 1408 0179 61646472 		.ascii	"addressMask\000"
+ 1408      6573734D 
+ 1408      61736B00 
+ 1409              	.LASF20:
+ 1410 0185 5553425F 		.ascii	"USB_UART_UartStop\000"
+ 1410      55415254 
+ 1410      5F556172 
+ 1410      7453746F 
+ 1410      7000
+ 1411              	.LASF13:
+ 1412 0197 646F7562 		.ascii	"double\000"
+ 1412      6C6500
+ 1413              	.LASF45:
+ 1414 019e 5553425F 		.ascii	"USB_UART_IntrTxMask\000"
+ 1414      55415254 
+ 1414      5F496E74 
+ 1414      7254784D 
+ 1414      61736B00 
+ 1415              	.LASF10:
+ 1416 01b2 75696E74 		.ascii	"uint16\000"
+ 1416      313600
+ 1417              	.LASF29:
+ 1418 01b9 5553425F 		.ascii	"USB_UART_UartGetByte\000"
+ 1418      55415254 
+ 1418      5F556172 
+ 1418      74476574 
+ 1418      42797465 
+ 1419              	.LASF11:
+ 1420 01ce 75696E74 		.ascii	"uint32\000"
+ 1420      333200
+ 1421              	.LASF8:
+ 1422 01d5 756E7369 		.ascii	"unsigned int\000"
+ 1422      676E6564 
+ 1422      20696E74 
+ 1422      00
+ 1423              	.LASF24:
+ 1424 01e2 61646472 		.ascii	"address\000"
+ 1424      65737300 
+ 1425              	.LASF7:
+ 1426 01ea 6C6F6E67 		.ascii	"long long unsigned int\000"
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 40
+
+
+ 1426      206C6F6E 
+ 1426      6720756E 
+ 1426      7369676E 
+ 1426      65642069 
+ 1427              	.LASF37:
+ 1428 0201 4379496E 		.ascii	"CyIntSetPriority\000"
+ 1428      74536574 
+ 1428      5072696F 
+ 1428      72697479 
+ 1428      00
+ 1429              	.LASF41:
+ 1430 0212 5553425F 		.ascii	"USB_UART_SpiUartWriteTxData\000"
+ 1430      55415254 
+ 1430      5F537069 
+ 1430      55617274 
+ 1430      57726974 
+ 1431              	.LASF39:
+ 1432 022e 5553425F 		.ascii	"USB_UART_SpiUartGetRxBufferSize\000"
+ 1432      55415254 
+ 1432      5F537069 
+ 1432      55617274 
+ 1432      47657452 
+ 1433              	.LASF33:
+ 1434 024e 62756649 		.ascii	"bufIndex\000"
+ 1434      6E646578 
+ 1434      00
+ 1435              	.LASF42:
+ 1436 0257 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1436      43313120 
+ 1436      352E342E 
+ 1436      31203230 
+ 1436      31363036 
+ 1437 028a 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1437      20726576 
+ 1437      6973696F 
+ 1437      6E203233 
+ 1437      37373135 
+ 1438 02bd 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1438      66756E63 
+ 1438      74696F6E 
+ 1438      2D736563 
+ 1438      74696F6E 
+ 1439              	.LASF18:
+ 1440 02e5 73697A65 		.ascii	"sizetype\000"
+ 1440      74797065 
+ 1440      00
+ 1441              	.LASF35:
+ 1442 02ee 74784461 		.ascii	"txDataByte\000"
+ 1442      74614279 
+ 1442      746500
+ 1443              	.LASF15:
+ 1444 02f9 63686172 		.ascii	"char\000"
+ 1444      00
+ 1445              	.LASF34:
+ 1446 02fe 5553425F 		.ascii	"USB_UART_UartPutCRLF\000"
+ 1446      55415254 
+ 1446      5F556172 
+ARM GAS  C:\Users\tdoan1\AppData\Local\Temp\ccpbQhbh.s 			page 41
+
+
+ 1446      74507574 
+ 1446      43524C46 
+ 1447              	.LASF36:
+ 1448 0313 4379496E 		.ascii	"CyIntDisable\000"
+ 1448      74446973 
+ 1448      61626C65 
+ 1448      00
+ 1449              	.LASF43:
+ 1450 0320 47656E65 		.ascii	"Generated_Source\\PSoC4\\USB_UART_UART.c\000"
+ 1450      72617465 
+ 1450      645F536F 
+ 1450      75726365 
+ 1450      5C50536F 
+ 1451              	.LASF2:
+ 1452 0347 73686F72 		.ascii	"short int\000"
+ 1452      7420696E 
+ 1452      7400
+ 1453              	.LASF4:
+ 1454 0351 6C6F6E67 		.ascii	"long int\000"
+ 1454      20696E74 
+ 1454      00
+ 1455              	.LASF30:
+ 1456 035a 746D7053 		.ascii	"tmpStatus\000"
+ 1456      74617475 
+ 1456      7300
+ 1457              	.LASF26:
+ 1458 0364 6D617463 		.ascii	"matchReg\000"
+ 1458      68526567 
+ 1458      00
+ 1459              	.LASF17:
+ 1460 036d 6C6F6E67 		.ascii	"long double\000"
+ 1460      20646F75 
+ 1460      626C6500 
+ 1461              	.LASF0:
+ 1462 0379 7369676E 		.ascii	"signed char\000"
+ 1462      65642063 
+ 1462      68617200 
+ 1463              	.LASF28:
+ 1464 0385 5553425F 		.ascii	"USB_UART_UartGetChar\000"
+ 1464      55415254 
+ 1464      5F556172 
+ 1464      74476574 
+ 1464      43686172 
+ 1465              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
